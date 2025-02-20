@@ -25,7 +25,7 @@ function Banner() {
                     <p className="capitalize tracking-wider text-[#a2a3a4]">
                         checkout beautiful places around the world
                     </p>
-                    <div>
+                    <div className="">
                         <SearchBar />
                     </div>
                 </div>

@@ -6,6 +6,7 @@ import {
 } from 'react-icons/fa';
 import { FaPeopleGroup } from 'react-icons/fa6';
 import HandDrawnArrow from './Arrow';
+import CardTypes from './CardTypes';
 
 function SearchBar() {
     return (
@@ -78,6 +79,9 @@ function SearchBar() {
                 <h1 className="text-3xl tracking-wider font-medium">
                     or browse the selected type
                 </h1>
+            </div>
+            <div className="absolute -bottom-[100%] ">
+                <CardTypes />
             </div>
         </div>
     );
