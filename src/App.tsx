@@ -1,9 +1,13 @@
+import Banner from './components/Banner/Banner';
+import Header from './components/Header/Header';
+
 export default function App() {
     return (
-        <div className="flex justify-center items-center  h-screen bg-gray-900 text-white">
-            <h1 className="text-4xl font-bold underline">
-                Hello, Tailwind CSS v4.0 with Vite! 🚀
-            </h1>
-        </div>
+        <>
+            <Header />
+            <div className="  flex-center flex-col  ">
+                <Banner />
+            </div>
+        </>
     );
 }
