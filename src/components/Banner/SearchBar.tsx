@@ -20,8 +20,8 @@ function SearchBar() {
                             <p className="text-xs text-gray-500">Location</p>
                             <input
                                 type="text"
-                                placeholder="Enter city, or country"
-                                className="bg-transparent text-black font-semibold focus:outline-none w-full"
+                                placeholder="Enter city or country"
+                                className="bg-transparent placeholder:text-sm placeholder:font-bold text-black font-semibold focus:outline-none w-full"
                             />
                         </div>
                     </div>

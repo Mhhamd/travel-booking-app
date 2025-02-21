@@ -3,7 +3,7 @@ import bannervideo from '/assets/BannerVideo.mp4';
 
 function Banner() {
     return (
-        <div className="w-full h-[740px] relative ">
+        <div className="w-full  h-[740px] relative ">
             <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-blend-overlay bg-black opacity-65"></div>
             <video
                 className="w-full h-full object-cover object-center"

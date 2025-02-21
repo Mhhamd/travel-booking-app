@@ -40,7 +40,7 @@ function CardTypes() {
     ];
 
     return (
-        <div className="py-20 px-4 flex-center">
+        <div className="py-20 px-4 flex-center mb-12">
             <Splide
                 options={{
                     type: 'loop',
@@ -63,15 +63,15 @@ function CardTypes() {
                     <SplideSlide key={index}>
                         <div
                             className="flex-center flex-col gap-3 w-full h-48
-                bg-white border border-gray-200 rounded-xl shadow-md transition-transform
-                hover:scale-105 hover:shadow-lg p-1 cursor-pointer duration-300"
+                bg-white border border-gray-200 rounded-xl shadow-lg transition-transform
+                hover:scale-105 hover:shadow-xl  p-1 cursor-pointer duration-300"
                         >
                             <div
                                 className={`${item.bg}  rounded-full flex items-center justify-center w-15 h-12`}
                             >
                                 {item.icon}
                             </div>
-                            <p className="text-lg font-[500] tracking-wider text-gray-700 mt-16 text-center">
+                            <p className="text-lg font-[500] tracking-wider text-gray-700 mt-3 text-center">
                                 {item.name}
                             </p>
                         </div>
