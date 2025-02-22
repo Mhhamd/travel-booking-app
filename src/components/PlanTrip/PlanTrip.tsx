@@ -2,7 +2,7 @@ import { IoIosCheckmarkCircle } from 'react-icons/io';
 
 function PlanTrip() {
     return (
-        <div className="flex-start gap-12 mb-36 w-[90%]">
+        <div className="flex-start gap-12  w-[90%]">
             <div className="w-[50%] relative mask">
                 <img
                     className="rounded-3xl"
