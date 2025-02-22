@@ -9,6 +9,14 @@ function PlanTrip() {
                     src="/assets/plansection.jpg"
                     alt=""
                 />
+                <div className="absolute top-6 right-5">
+                    <h1 className="text-3xl text-white font-semibold tracking-wider ">
+                        <span className="text-[#f96c50] text-5xl">
+                            30% <br />
+                        </span>{' '}
+                        Discount
+                    </h1>
+                </div>
             </div>
 
             <div className=" flex-start flex-col gap-6 p-12 py-0">

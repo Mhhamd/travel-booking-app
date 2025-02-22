@@ -13,8 +13,9 @@ function TopDestinations() {
                 <div className="relative w-80 rounded-xl overflow-hidden  ">
                     <img
                         className="object-center object-cover w-full h-full img-hover"
-                        src="/public/assets/morocco.jpg"
+                        src="/assets/morocco.jpg"
                         alt="morroco"
+                        loading="lazy"
                     />
                     <h1 className="absolute bottom-0 text-white text-2xl font-bold tracking-wider p-6">
                         Morocco
@@ -26,8 +27,9 @@ function TopDestinations() {
                 <div className="relative w-80 rounded-xl overflow-hidden ">
                     <img
                         className="object-center object-cover w-full h-full img-hover"
-                        src="/public/assets/unitedkingdom.jpg"
+                        src="/assets/unitedkingdom.jpg"
                         alt="morroco"
+                        loading="lazy"
                     />
                     <h1 className="absolute bottom-0 text-white text-2xl font-bold tracking-wider p-6">
                         United kingdom
@@ -39,7 +41,8 @@ function TopDestinations() {
                 <div className="relative w-80 rounded-xl overflow-hidden ">
                     <img
                         className="object-center object-cover w-full h-full img-hover"
-                        src="/public/assets/singapore.jpg"
+                        src="/assets/singapore.jpg"
+                        loading="lazy"
                         alt="morroco"
                     />
                     <h1 className="absolute bottom-0 text-white text-2xl font-bold tracking-wider p-6">
@@ -52,8 +55,9 @@ function TopDestinations() {
                 <div className="relative w-80 rounded-xl overflow-hidden ">
                     <img
                         className="object-center object-cover w-full h-full img-hover"
-                        src="/public/assets/thailand.jpg"
+                        src="/assets/thailand.jpg"
                         alt="morroco"
+                        loading="lazy"
                     />
                     <h1 className="absolute bottom-0 text-white text-2xl font-bold tracking-wider p-6">
                         thailand
@@ -65,8 +69,9 @@ function TopDestinations() {
                 <div className="relative w-80 rounded-xl overflow-hidden ">
                     <img
                         className="object-center object-cover w-full h-full img-hover"
-                        src="/public/assets/italy.jpg"
+                        src="/assets/italy.jpg"
                         alt="morroco"
+                        loading="lazy"
                     />
                     <h1 className="absolute bottom-0 text-white text-2xl font-bold tracking-wider p-6">
                         Italy
