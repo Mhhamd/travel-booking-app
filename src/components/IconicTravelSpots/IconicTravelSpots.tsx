@@ -1,91 +1,72 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
-// import Swiper and modules styles
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+// Import Swiper and modules styles
 import 'swiper/swiper-bundle.css';
+import { IoLocation } from 'react-icons/io5';
 
 function IconicTravelSpots() {
     return (
-        <>
+        <div className="flex-center w-full flex-col gap-12 p-12">
             <div className="flex-center gap-4 flex-col">
                 <p className="text-lg text-[#ff6b6b] font-semibold">
                     Not sure where to go next?
                 </p>
-                <h1 className="text-3xl font-bold text-gray-800">
+                <h1 className="text-3xl font-bold text-gray-700">
                     Explore Iconic Travel Spots
                 </h1>
             </div>
 
             {/* Swiper Section */}
             <Swiper
-                modules={[Navigation, Pagination]}
-                navigation
-                pagination={{ clickable: true }}
-                loop={true}
-                centeredSlides={true}
-                slidesPerView={1}
-                breakpoints={{
-                    640: { slidesPerView: 1 },
-                    768: { slidesPerView: 2 },
-                    1024: { slidesPerView: 3 },
-                }}
+                modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={20}
-                className="w-full max-w-5xl px-4"
+                slidesPerView={4}
+                navigation={false}
+                pagination={false}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                loop={true}
+                speed={800}
+                className="w-full flex justify-center relative h-[50vh]"
             >
+                {/* Slide 1 */}
                 <SwiperSlide>
-                    <div className="relative w-80 h-52 rounded-lg overflow-hidden shadow-lg">
+                    <div className="w-[100%] rounded-xl h-52 shadow-md relative">
                         <img
-                            className="w-full h-full object-cover"
                             src="/assets/singapore.jpg"
-                            alt="Singapore"
+                            alt="Singapore "
+                            className="object-cover rounded-xl"
                         />
-                        <p className="absolute top-3 left-3 bg-[#42afc4] text-white text-sm font-medium tracking-widest py-1 px-3 rounded-md">
-                            Featured
-                        </p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="relative w-80 h-52 rounded-lg overflow-hidden shadow-lg">
-                        <img
-                            className="w-full h-full object-cover"
-                            src="/assets/singapore.jpg"
-                            alt="Singapore"
-                        />
-                        <p className="absolute top-3 left-3 bg-[#42afc4] text-white text-sm font-medium tracking-widest py-1 px-3 rounded-md">
-                            Featured
-                        </p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="relative w-80 h-52 rounded-lg overflow-hidden shadow-lg">
-                        <img
-                            className="w-full h-full object-cover"
-                            src="/assets/singapore.jpg"
-                            alt="Singapore"
-                        />
-                        <p className="absolute top-3 left-3 bg-[#42afc4] text-white text-sm font-medium tracking-widest py-1 px-3 rounded-md">
-                            Featured
-                        </p>
+                        <div className="border w-full flex-start gap-6">
+                            <div className="p-4 pt-0 bg-white border border-gray-700 rounded-md absolute -bottom-41 w-[100%] shadow-lg">
+                                <div className="flex items-center justify-start">
+                                    <img
+                                        className="w-24"
+                                        src="/assets/rating.png"
+                                        alt="Rating"
+                                    />
+                                    <p className="text-gray-400">4.6</p>
+                                </div>
+                                <p className="text-gray-700 text-center font-bold tracking-wider">
+                                    Singapore and Tokyo Tour
+                                </p>
+                                <p className="text-[#ff6b6b] flex-start mt-4 gap-1 flex items-center justify-center">
+                                    <IoLocation />
+                                    <span className="text-gray-400">
+                                        Central Park West NY, USA
+                                    </span>
+                                </p>
+                                <p className="text-gray-400 mt-2 tracking-wider">
+                                    From{' '}
+                                    <span className="text-[#ff6b6b]">
+                                        $59.00
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </SwiperSlide>
             </Swiper>
-
-            {/* Additional Info Section */}
-            <div className="flex justify-center mt-8">
-                <div className="w-80 border rounded-xl overflow-hidden shadow-md">
-                    <img src="/assets/singapore.jpg" alt="Singapore" />
-                    <div className="p-4 bg-white">
-                        <img
-                            className="w-24"
-                            src="/assets/rating.png"
-                            alt="Rating"
-                        />
-                        <p className="text-gray-700 mt-2">
-                            Discover the best spots!
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </>
+        </div>
     );
 }
 
