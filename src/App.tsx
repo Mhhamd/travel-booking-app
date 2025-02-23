@@ -5,6 +5,7 @@ import IconicTravelSpots from './components/IconicTravelSpots/IconicTravelSpots'
 import TopDestinations from './components/TopDestinations/TopDestinations';
 import DiscoverSection from './components/DiscoverSection/DiscoverSection';
 import OurPartners from './components/OurPartners/OurPartners';
+import Customers from './components/Customers/Customers';
 
 export default function App() {
     return (
@@ -21,6 +22,7 @@ export default function App() {
                     <DiscoverSection />
                     <OurPartners />
                 </div>
+                <Customers />
             </div>
         </>
     );

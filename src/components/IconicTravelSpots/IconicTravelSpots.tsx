@@ -47,7 +47,7 @@ function IconicTravelSpots() {
                             </p>
                         </div>
                         <div className="border w-full flex-start gap-6">
-                            <div className="p-4 pt-0 bg-white border border-gray-700 rounded-md left-0 absolute -bottom-41 w-[100%] shadow-lg">
+                            <div className="p-4 pt-0 bg-white border border-black/90 rounded-md left-0 absolute -bottom-41 w-[100%] shadow-lg">
                                 <div className="flex items-center justify-start">
                                     <img
                                         className="w-24"
