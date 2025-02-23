@@ -3,6 +3,8 @@ import Header from './components/Header/Header';
 import PlanTrip from './components/PlanTrip/PlanTrip';
 import IconicTravelSpots from './components/IconicTravelSpots/IconicTravelSpots';
 import TopDestinations from './components/TopDestinations/TopDestinations';
+import DiscoverSection from './components/DiscoverSection/DiscoverSection';
+import OurPartners from './components/OurPartners/OurPartners';
 
 export default function App() {
     return (
@@ -14,7 +16,11 @@ export default function App() {
                 <Banner />
                 <TopDestinations />
                 <PlanTrip />
-                <IconicTravelSpots />
+                <div className="flex-center flex-col w-full">
+                    <IconicTravelSpots />
+                    <DiscoverSection />
+                    <OurPartners />
+                </div>
             </div>
         </>
     );
