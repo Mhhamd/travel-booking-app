@@ -15,23 +15,23 @@ interface UnsplashImage {
 function Customers() {
     const [images, setImages] = useState<string[]>([]);
     const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
-    async function fetchImages(query: string) {
-        try {
-            const response = await fetch(
-                `https://api.unsplash.com/search/photos?query=${query}&orientation=landscape&client_id=${accessKey}&per_page=30`
-            );
-            const data = await response.json();
-            const filteredImages = data.results.map(
-                (img: UnsplashImage) => img.urls.small + '&w=400'
-            );
-            setImages(filteredImages);
-        } catch (error) {
-            console.error('error fetching images', error);
-        }
-    }
     useEffect(() => {
+        async function fetchImages(query: string) {
+            try {
+                const response = await fetch(
+                    `https://api.unsplash.com/search/photos?query=${query}&orientation=landscape&client_id=${accessKey}&per_page=30`
+                );
+                const data = await response.json();
+                const filteredImages = data.results.map(
+                    (img: UnsplashImage) => img.urls.small + '&w=400'
+                );
+                setImages(filteredImages);
+            } catch (error) {
+                console.error('error fetching images', error);
+            }
+        }
         fetchImages('travel-nature');
-    }, []);
+    }, [accessKey]);
     const customerData = [
         {
             name: 'Olivia Carter',
@@ -94,7 +94,7 @@ function Customers() {
                     </svg>
                 </div>
             </div>
-            <div className="w-full absolute overflow-hidden bg-[#f9f5ef] bottom-0 h-[50%] flex-center ">
+            <div className="w-full absolute overflow-hidden bg-[#f9f5ef] -bottom-24 h-[60%] flex-center ">
                 <div className="absolute flex-center  w-full inset-0  ">
                     <img
                         className=" opacity-10 w-full object-cover object-center"
@@ -116,7 +116,8 @@ function Customers() {
                     slidesPerView={4}
                     pagination={false}
                     autoplay={{
-                        delay: 4000, // 3 seconds
+                        delay: 3000,
+                        disableOnInteraction: false,
                     }}
                     loop={true}
                     speed={800}
@@ -135,7 +136,6 @@ function Customers() {
                                         alt={person.name}
                                         loading="lazy"
                                     />
-                                    <div></div>
                                     <img
                                         className="w-20"
                                         src={person.rating}
@@ -156,34 +156,37 @@ function Customers() {
                 </Swiper>
             </div>
 
-            <div className="w-full relative mt-45  ">
-                <Swiper
-                    modules={[Navigation, Pagination, Autoplay]}
-                    spaceBetween={20}
-                    slidesPerView={5}
-                    pagination={false}
-                    autoplay={{
-                        delay: 4000, // 3 seconds
-                    }}
-                    loop={true}
-                    speed={800}
-                    className="w-full z-30  flex items-center  justify-center  "
-                >
-                    {images?.map((img) => {
-                        return (
-                            <SwiperSlide
-                                key={img}
-                                className=" z-30 flex flex-col items-center justify-center  rounded-2xl "
-                            >
-                                <img
-                                    className="w-full rounded-lg h-auto object-center object-cover"
-                                    src={img}
-                                    alt={img}
-                                />
-                            </SwiperSlide>
-                        );
-                    })}
-                </Swiper>
+            <div className="w-full relative mt-32  ">
+                {images.length > 0 && (
+                    <Swiper
+                        modules={[Navigation, Pagination, Autoplay]}
+                        spaceBetween={20}
+                        slidesPerView={4}
+                        pagination={false}
+                        autoplay={{
+                            delay: 3000,
+                            disableOnInteraction: false,
+                        }}
+                        loop={true}
+                        speed={800}
+                        className="w-full z-30  flex items-center  justify-center  h-auto overflow-hidden "
+                    >
+                        {images?.map((img) => {
+                            return (
+                                <SwiperSlide
+                                    key={img}
+                                    className=" z-30 flex h-full overflow-hidden  flex-col items-center justify-center  rounded-2xl "
+                                >
+                                    <img
+                                        className="w-full rounded-lg h-full  object-center object-cover"
+                                        src={img}
+                                        alt={img}
+                                    />
+                                </SwiperSlide>
+                            );
+                        })}
+                    </Swiper>
+                )}
             </div>
         </div>
     );

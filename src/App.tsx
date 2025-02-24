@@ -6,6 +6,7 @@ import TopDestinations from './components/TopDestinations/TopDestinations';
 import DiscoverSection from './components/DiscoverSection/DiscoverSection';
 import OurPartners from './components/OurPartners/OurPartners';
 import Customers from './components/Customers/Customers';
+import ChooseUs from './components/ChooseUs/ChooseUs';
 
 export default function App() {
     return (
@@ -23,6 +24,7 @@ export default function App() {
                     <OurPartners />
                 </div>
                 <Customers />
+                <ChooseUs />
             </div>
         </>
     );
