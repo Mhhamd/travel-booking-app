@@ -1,7 +1,37 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
+import { useEffect, useState } from 'react';
+
+interface UnsplashImage {
+    width: number;
+    height: number;
+    urls: {
+        full: string;
+        small: string;
+    };
+}
+
 function Customers() {
+    const [images, setImages] = useState<string[]>([]);
+    const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
+    async function fetchImages(query: string) {
+        try {
+            const response = await fetch(
+                `https://api.unsplash.com/search/photos?query=${query}&orientation=landscape&client_id=${accessKey}&per_page=30`
+            );
+            const data = await response.json();
+            const filteredImages = data.results.map(
+                (img: UnsplashImage) => img.urls.small + '&w=400'
+            );
+            setImages(filteredImages);
+        } catch (error) {
+            console.error('error fetching images', error);
+        }
+    }
+    useEffect(() => {
+        fetchImages('travel-nature');
+    }, []);
     const customerData = [
         {
             name: 'Olivia Carter',
@@ -11,11 +41,11 @@ function Customers() {
             quote: 'This website makes booking flights so easy! The design is clean, and the process is super smooth. Highly recommended!',
         },
         {
-            name: 'Olivia Carter',
+            name: 'Isabella Ramirez',
             image: '/assets/avatar3.jpg',
             rating: '/assets/rating.png',
             work: 'Founder & CEO',
-            quote: 'This website makes booking flights so easy! The design is clean, and the process is super smooth. Highly recommended!',
+            quote: 'A perfect combination of efficiency and great user experience. The team behind this truly understands what travelers need!',
         },
         {
             name: 'Daniel Foster',
@@ -40,57 +70,121 @@ function Customers() {
         },
     ];
     return (
-        <div className="flex-center flex-col w-full gap-12 pt-0  p-24">
-            <div className="flex-center flex-col">
-                <div className="flex-center flex-col gap-4">
-                    <p className="para-style">Testimonials & Reviews</p>
-                    <h1 className="header-style">What they're saying</h1>
+        <div className="w-full relative ">
+            <div className="absolute top-0">
+                <div className="relative ">
+                    <img
+                        src="/assets/airplane.png"
+                        className="absolute top-6 right-0 w-6"
+                        alt=""
+                    />
+                    <svg
+                        width="300"
+                        height="200"
+                        viewBox="0 0 300 200"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M20,150 Q100,50 200,80 T280,40"
+                            fill="none"
+                            stroke="#ccc"
+                            stroke-dasharray="5,5"
+                            stroke-width="2"
+                        />
+                    </svg>
                 </div>
             </div>
-            <Swiper
-                modules={[Navigation, Pagination, Autoplay]}
-                spaceBetween={20}
-                slidesPerView={4}
-                pagination={false}
-                autoplay={{
-                    delay: 4000, // 3 seconds
-                }}
-                loop={true}
-                speed={800}
-                className="w-full  flex items-center  justify-center  "
-            >
-                {customerData.map((person) => {
-                    return (
-                        <SwiperSlide
-                            className=" p-6 flex flex-col items-center justify-center border border-black/30 rounded-2xl "
-                            key={person.name}
-                        >
-                            <div className="flex justify-center flex-col items-center gap-4 h-[60vh]">
+            <div className="w-full absolute overflow-hidden bg-[#f9f5ef] bottom-0 h-[50%] flex-center ">
+                <div className="absolute flex-center  w-full inset-0  ">
+                    <img
+                        className=" opacity-10 w-full object-cover object-center"
+                        src="https://upload.wikimedia.org/wikipedia/commons/a/a0/World_map_with_points.svg"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <div className="flex-center relative flex-col w-full gap-12 pt-0  p-24 pb-0">
+                <div className="flex-center flex-col">
+                    <div className="flex-center flex-col gap-4">
+                        <p className="para-style">Testimonials & Reviews</p>
+                        <h1 className="header-style">What they're saying</h1>
+                    </div>
+                </div>
+                <Swiper
+                    modules={[Navigation, Pagination, Autoplay]}
+                    spaceBetween={20}
+                    slidesPerView={4}
+                    pagination={false}
+                    autoplay={{
+                        delay: 4000, // 3 seconds
+                    }}
+                    loop={true}
+                    speed={800}
+                    className="w-full z-30  flex items-center  justify-center  "
+                >
+                    {customerData.map((person) => {
+                        return (
+                            <SwiperSlide
+                                className=" z-30 p-6 flex flex-col items-center justify-center bg-white border border-black/30 rounded-2xl "
+                                key={person.name}
+                            >
+                                <div className="z-30 flex justify-center flex-col items-center gap-4 h-[60vh]">
+                                    <img
+                                        className="w-30 rounded-full object-center object-cover"
+                                        src={person.image}
+                                        alt={person.name}
+                                        loading="lazy"
+                                    />
+                                    <div></div>
+                                    <img
+                                        className="w-20"
+                                        src={person.rating}
+                                        alt="Rating"
+                                        loading="lazy"
+                                    />
+                                    <p className="text-gray-500 max-w-2xl">
+                                        {person.quote}
+                                    </p>
+                                    <h1 className="mt-6 tracking-widest text-gray-900 font-semibold">
+                                        {person.name}
+                                    </h1>
+                                    <p className="para-style">{person.work}</p>
+                                </div>
+                            </SwiperSlide>
+                        );
+                    })}
+                </Swiper>
+            </div>
+
+            <div className="w-full relative mt-45  ">
+                <Swiper
+                    modules={[Navigation, Pagination, Autoplay]}
+                    spaceBetween={20}
+                    slidesPerView={5}
+                    pagination={false}
+                    autoplay={{
+                        delay: 4000, // 3 seconds
+                    }}
+                    loop={true}
+                    speed={800}
+                    className="w-full z-30  flex items-center  justify-center  "
+                >
+                    {images?.map((img) => {
+                        return (
+                            <SwiperSlide
+                                key={img}
+                                className=" z-30 flex flex-col items-center justify-center  rounded-2xl "
+                            >
                                 <img
-                                    className="w-30 rounded-full object-center object-cover"
-                                    src={person.image}
-                                    alt={person.name}
-                                    loading="lazy"
+                                    className="w-full rounded-lg h-auto object-center object-cover"
+                                    src={img}
+                                    alt={img}
                                 />
-                                <div></div>
-                                <img
-                                    className="w-20"
-                                    src={person.rating}
-                                    alt="Rating"
-                                    loading="lazy"
-                                />
-                                <p className="text-gray-500 max-w-2xl">
-                                    {person.quote}
-                                </p>
-                                <h1 className="mt-6 tracking-widest text-gray-900 font-semibold">
-                                    {person.name}
-                                </h1>
-                                <p className="para-style">{person.work}</p>
-                            </div>
-                        </SwiperSlide>
-                    );
-                })}
-            </Swiper>
+                            </SwiperSlide>
+                        );
+                    })}
+                </Swiper>
+            </div>
         </div>
     );
 }
