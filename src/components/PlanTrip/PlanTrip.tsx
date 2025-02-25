@@ -25,7 +25,7 @@ function PlanTrip() {
                         Get to know us
                     </p>
                     <h1 className="text-gray-700 capitalize  font-bold text-3xl tracking-widest ">
-                        Plan you trip with <br /> skyFare
+                        Plan your trip with <br /> skyFare
                     </h1>
                 </div>
                 <div>

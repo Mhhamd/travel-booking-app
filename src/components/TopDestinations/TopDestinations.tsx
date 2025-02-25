@@ -21,7 +21,7 @@ function TopDestinations() {
                         Morocco
                     </h1>
                     <span className="absolute top-0 right-0 rounded-lg font-semibold bg-[#e06149] text-white m-6 py-2 px-6">
-                        4 tours
+                        Popular
                     </span>
                 </div>
                 <div className="relative w-80 rounded-xl overflow-hidden ">
@@ -35,7 +35,7 @@ function TopDestinations() {
                         United kingdom
                     </h1>
                     <span className="absolute top-0 right-0 rounded-lg font-semibold bg-[#e06149] text-white m-6 py-2 px-6">
-                        6 tours
+                        Popular{' '}
                     </span>
                 </div>
                 <div className="relative w-80 rounded-xl overflow-hidden ">
@@ -49,7 +49,7 @@ function TopDestinations() {
                         singapore
                     </h1>
                     <span className="absolute top-0 right-0 rounded-lg font-semibold bg-[#e06149] text-white m-6 py-2 px-6">
-                        3 tours
+                        Popular{' '}
                     </span>
                 </div>
                 <div className="relative w-80 rounded-xl overflow-hidden ">
@@ -63,7 +63,7 @@ function TopDestinations() {
                         thailand
                     </h1>
                     <span className="absolute top-0 right-0 rounded-lg font-semibold bg-[#e06149] text-white m-6 py-2 px-6">
-                        2 tours
+                        Popular{' '}
                     </span>
                 </div>
                 <div className="relative w-80 rounded-xl overflow-hidden ">
@@ -77,7 +77,7 @@ function TopDestinations() {
                         Italy
                     </h1>
                     <span className="absolute top-0 right-0 rounded-lg font-semibold bg-[#e06149] text-white m-6 py-2 px-6">
-                        5 tours
+                        Popular{' '}
                     </span>
                 </div>
             </div>

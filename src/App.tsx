@@ -7,6 +7,7 @@ import DiscoverSection from './components/DiscoverSection/DiscoverSection';
 import OurPartners from './components/OurPartners/OurPartners';
 import Customers from './components/Customers/Customers';
 import ChooseUs from './components/ChooseUs/ChooseUs';
+import Footer from './components/Footer/Footer';
 
 export default function App() {
     return (
@@ -25,6 +26,7 @@ export default function App() {
                 </div>
                 <Customers />
                 <ChooseUs />
+                <Footer />
             </div>
         </>
     );

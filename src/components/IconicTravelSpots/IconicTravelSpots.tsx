@@ -25,15 +25,14 @@ function IconicTravelSpots() {
                 slidesPerView={4}
                 pagination={false}
                 autoplay={{
-                    delay: 3000, // 3 seconds
+                    delay: 3000,
                     disableOnInteraction: false,
-                    pauseOnMouseEnter: true, // Stop on hover
+                    pauseOnMouseEnter: true,
                 }}
                 loop={true}
                 speed={800}
                 className="w-full flex justify-center  relative h-[55vh]"
             >
-                {/* Slide 1 */}
                 <SwiperSlide>
                     <div className="w-[100%] rounded-xl h-62 shadow-xl hover:shadow-[rgba(53,53,56,0.5)] transition-all  duration-500 relative  ">
                         <img
@@ -47,7 +46,7 @@ function IconicTravelSpots() {
                             </p>
                         </div>
                         <div className="border w-full flex-start gap-6">
-                            <div className="p-4 pt-0 bg-white border border-black/90 rounded-md left-0 absolute -bottom-41 w-[100%] shadow-lg">
+                            <div className="p-4 pt-0 bg-white border border-black/20 rounded-md left-0 absolute -bottom-41 w-[100%] shadow-lg">
                                 <div className="flex items-center justify-start">
                                     <img
                                         className="w-24"
@@ -105,7 +104,7 @@ function IconicTravelSpots() {
                             </p>
                         </div>
                         <div className="border w-full flex-start gap-6">
-                            <div className="p-4 pt-0 bg-white border border-gray-700 rounded-md left-0 absolute -bottom-41 w-[100%] shadow-lg">
+                            <div className="p-4 pt-0 bg-white border border-black/20 rounded-md left-0 absolute -bottom-41 w-[100%] shadow-lg">
                                 <div className="flex items-center justify-start">
                                     <img
                                         className="w-24"
@@ -163,7 +162,7 @@ function IconicTravelSpots() {
                             </p>
                         </div>
                         <div className="border w-full flex-start gap-6">
-                            <div className="p-4 pt-0 bg-white border border-gray-700 rounded-md left-0 absolute -bottom-41 w-[100%] shadow-lg">
+                            <div className="p-4 pt-0 bg-white border border-black/20 rounded-md left-0 absolute -bottom-41 w-[100%] shadow-lg">
                                 <div className="flex items-center justify-start">
                                     <img
                                         className="w-24"
@@ -221,7 +220,7 @@ function IconicTravelSpots() {
                             </p>
                         </div>
                         <div className="border w-full flex-start gap-6">
-                            <div className="p-4 pt-0 bg-white border border-gray-700 rounded-md left-0 absolute -bottom-41 w-[100%] shadow-lg">
+                            <div className="p-4 pt-0 bg-white border border-black/20 rounded-md left-0 absolute -bottom-41 w-[100%] shadow-lg">
                                 <div className="flex items-center justify-start">
                                     <img
                                         className="w-24"
@@ -279,7 +278,7 @@ function IconicTravelSpots() {
                             </p>
                         </div>
                         <div className="border w-full flex-start gap-6">
-                            <div className="p-4 pt-0 bg-white border border-gray-700 rounded-md left-0 absolute -bottom-41 w-[100%] shadow-lg">
+                            <div className="p-4 pt-0 bg-white border border-black/20 rounded-md left-0 absolute -bottom-41 w-[100%] shadow-lg">
                                 <div className="flex items-center justify-start">
                                     <img
                                         className="w-24"

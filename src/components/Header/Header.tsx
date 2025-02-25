@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { navData } from '../../data/navListData';
+import { GiCommercialAirplane } from 'react-icons/gi';
 
 function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -26,7 +27,9 @@ function Header() {
             }`}
         >
             <div className="flex-center">
-                <h1 className="text-3xl">SkyFare</h1>
+                <h1 className="flex-center cursor-pointer hover:opacity-70 transition-all duration-500 hover:gap-4 gap-2 tracking-widest font-semibold text-[#323043] text-2xl">
+                    <GiCommercialAirplane /> SkyFare{' '}
+                </h1>
             </div>
             <ul className="font-medium tracking-wide flex-center gap-6">
                 {navData.map((item) => (
