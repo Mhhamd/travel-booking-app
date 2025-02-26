@@ -1,6 +1,6 @@
 function TopDestinations() {
     return (
-        <div className="flex-center gap-12 flex-col p-12">
+        <div className="flex-center gap-12 flex-col p-12 mt-30">
             <div className=" flex-center flex-col gap-4">
                 <h1 className="font-medium  text-[#f96c50] tracking-wider">
                     Where to Go

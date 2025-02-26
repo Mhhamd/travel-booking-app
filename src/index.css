@@ -1,13 +1,9 @@
 /* src/index.css */
 @import 'tailwindcss';
 
-:root {
-    --font-inter: 'Inter', sans-serif;
-    --primarybg: #eda114;
-}
-
 * {
     box-sizing: border-box;
+    overscroll-behavior: contain; /* Prevents scroll blocking */
 }
 
 ::-webkit-scrollbar {
@@ -40,6 +36,7 @@
 .para-style {
     @apply font-medium  text-[#f96c50] tracking-wider;
 }
+
 .header-style {
     @apply text-gray-700 capitalize  font-bold text-3xl tracking-widest;
 }
