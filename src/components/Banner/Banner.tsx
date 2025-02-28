@@ -1,4 +1,4 @@
-import SearchBar from './SearchBar';
+import SearchBar from './SearchComponent/SearchBar';
 import bannervideo from '/assets/BannerVideo.mp4';
 
 function Banner() {
