@@ -3,7 +3,6 @@ import { FaPeopleGroup } from 'react-icons/fa6';
 import HandDrawnArrow from '../Arrow';
 import CardTypes from '../CardTypes';
 import CityInput from './CityInput';
-// import mockData from '../../data/MOCK_DATA.json?raw';
 
 function SearchBar() {
     return (

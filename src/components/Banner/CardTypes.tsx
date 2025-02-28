@@ -1,49 +1,53 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/splide/dist/css/splide.min.css'; // Import Splide styles
+import '@splidejs/splide/dist/css/splide.min.css';
+import { CiGlobe } from 'react-icons/ci';
+import { FaTag } from 'react-icons/fa';
+import { GiAirplane } from 'react-icons/gi';
+import { MdEventSeat } from 'react-icons/md';
 
 function CardTypes() {
     const cardData = [
         {
-            name: 'Popular Destinations',
-            icon: '🌍', // Globe emoji
-            bg: 'bg-blue-100',
-        },
-        {
-            name: 'Best Flight Deals',
-            icon: '🏷️', // Tag emoji
+            name: 'Lowest Price Flights',
+            icon: <FaTag />,
             bg: 'bg-green-100',
+            iconColor: 'text-green-600',
         },
         {
-            name: 'Top Airlines',
-            icon: '✈️', // Airplane emoji
-            bg: 'bg-orange-100',
+            name: 'Best Airlines to Fly',
+            icon: <GiAirplane />,
+            bg: 'bg-blue-100',
+            iconColor: 'text-blue-600',
         },
         {
-            name: 'Flight Classes',
-            icon: '💺', // Seat emoji
+            name: 'Business & Economy Options',
+            icon: <MdEventSeat />,
             bg: 'bg-indigo-100',
+            iconColor: 'text-indigo-600',
         },
         {
-            name: 'Trip Types',
-            icon: '🔄', // Exchange arrows emoji
-            bg: 'bg-red-100',
+            name: 'Top Arrival Destinations',
+            icon: <CiGlobe />,
+            bg: 'bg-teal-100',
+            iconColor: 'text-teal-600',
         },
     ];
 
     return (
-        <div className="py-20 px-4 flex-center ">
+        <div className="py-20 px-4 flex-center">
             <Splide
                 options={{
                     type: 'loop',
                     perPage: 4,
                     perMove: 1,
-                    gap: '1.5rem',
+                    gap: '2rem',
                     autoplay: true,
                     pauseOnHover: true,
                     pagination: false,
                     arrows: false,
-                    width: '50%',
+                    width: '40%',
                     breakpoints: {
+                        1280: { perPage: 5 },
                         1024: { perPage: 3 },
                         768: { perPage: 2 },
                         480: { perPage: 1 },
@@ -53,16 +57,18 @@ function CardTypes() {
                 {cardData.map((item, index) => (
                     <SplideSlide key={index}>
                         <div
-                            className="flex-center flex-col gap-3 w-full h-48
-                                bg-white border border-gray-200 rounded-xl shadow-lg transition-transform
-                                hover:scale-105 hover:shadow-xl p-4 cursor-pointer duration-300"
+                            className="flex-center flex-col gap-3 w-full h-52
+                                bg-white border border-gray-200 rounded-2xl shadow-lg transition-transform
+                                hover:scale-105 hover:shadow-xl p-6 cursor-pointer duration-300"
                         >
                             <div
-                                className={`${item.bg} rounded-full flex items-center justify-center w-14 h-14 p-3`}
+                                className={`${item.bg} rounded-2xl flex items-center justify-center w-16 h-16 shadow-md`}
                             >
-                                <span className="text-3xl">{item.icon}</span>
+                                <span className={`text-4xl ${item.iconColor}`}>
+                                    {item.icon}
+                                </span>
                             </div>
-                            <p className="text-lg font-[500] tracking-wider text-gray-700 mt-3 text-center">
+                            <p className="text-lg font-semibold tracking-wide text-gray-700 mt-3 text-center">
                                 {item.name}
                             </p>
                         </div>
