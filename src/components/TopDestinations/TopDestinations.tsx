@@ -16,40 +16,37 @@ interface Destination {
 }
 
 function TopDestinations() {
+    const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
     const [destinations, setDestinations] = useState<Destination[]>([]);
+
     const data = JSON.parse(mockData);
-    const filter = data.filter((item: dataTypes) => {
+    const filteredData = data.filter((item: dataTypes) => {
         return item.arrival_country_popular === 'Popular';
     });
 
-    const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
-
-    const uniqueDestinations: typeof filter = [];
+    const uniqueDestionations: typeof filteredData = [];
     const seenCities = new Set();
-    for (const item of filter) {
+    for (const item of filteredData) {
         if (!seenCities.has(item.arrival_city)) {
             seenCities.add(item.arrival_city);
-            uniqueDestinations.push(item);
+            uniqueDestionations.push(item);
         }
     }
-
-    const randomSelection = uniqueDestinations
+    const randomSelection = uniqueDestionations
         .sort(() => Math.random() - 0.5)
-        .slice(0, 5);
+        .splice(0, 5);
 
     async function fetchImages(query: string) {
         try {
             const response = await fetch(
-                `https://api.unsplash.com/search/photos?query=${query}&orientation=landscape&client_id=${accessKey}&per_page=1`
+                `https://api.unsplash.com/search/photos?query=${query}&orientation=landscape&client_id=${accessKey}&per_page=2`
             );
             const data = await response.json();
-            return data.results?.[0] || null;
+            return data?.results?.[0] || null;
         } catch (error) {
-            console.error('error fetching similar images', error);
-            return null;
+            console.error('error fetching images', error);
         }
     }
-
     useEffect(() => {
         async function fetchAndSetImages() {
             const results: Destination[] = await Promise.all(
@@ -73,14 +70,14 @@ function TopDestinations() {
                 </h1>
             </div>
             <div className="grid grid-cols-4 gap-x-4 gap-y-4 place-content-center capitalize">
-                {destinations.map(({ city, image }, index) => (
+                {destinations.map(({ city, image }) => (
                     <div
-                        key={index}
+                        key={city}
                         className="relative w-80 rounded-xl overflow-hidden"
                     >
                         <img
                             className="object-center object-cover w-full h-full img-hover"
-                            src={image?.urls.small || '/assets/placeholder.jpg'}
+                            src={image?.urls.small}
                             alt={city}
                             loading="lazy"
                         />
