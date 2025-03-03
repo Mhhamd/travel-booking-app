@@ -3,8 +3,31 @@ import { FaPeopleGroup } from 'react-icons/fa6';
 import HandDrawnArrow from '../Arrow';
 import CardTypes from '../CardTypes';
 import CityInput from './CityInput';
+import { Link } from 'react-router-dom';
+import { RootState } from '../../../state/store';
+import { useDispatch, useSelector } from 'react-redux';
+import * as React from 'react';
+import { setFrom, setGoingTo } from '../../../state/slices/searchSlice';
 
 function SearchBar() {
+    const dispatch = useDispatch();
+    const fromInputValue = useSelector((state: RootState) => state.search.from);
+    const goingToInputValue = useSelector(
+        (state: RootState) => state.search.goingTo
+    );
+
+    const handleSearch = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        if (fromInputValue.trim() === '' || goingToInputValue.trim() === '') {
+            event.preventDefault(); // Prevent navigation
+            alert('Please fill out the fields');
+        } else {
+            setTimeout(() => {
+                dispatch(setFrom(''));
+                dispatch(setGoingTo(''));
+            }, 500);
+        }
+    };
+
     return (
         <div className="flex-center relative flex-col">
             <div className="flex-center rounded-lg h-24 mt-10">
@@ -55,15 +78,19 @@ function SearchBar() {
                     </div>
 
                     {/* Search Button */}
-                    <button className="bg-[#e06149] btn-hover rounded-tr-lg rounded-br-lg text-white px-6 py-3 flex-center gap-2 w-52">
+                    <Link
+                        onClick={handleSearch}
+                        to={`/search/${fromInputValue}/${goingToInputValue}/`}
+                        className="bg-[#e06149] btn-hover rounded-tr-lg rounded-br-lg text-white px-6 py-3 flex-center gap-2 w-52"
+                    >
                         <FaSearch />
                         SEARCH
-                    </button>
+                    </Link>
                 </div>
             </div>
             <div className="flex-center flex-col">
                 <HandDrawnArrow />
-                <h1 className="text-3xl tracking-wider font-medium">
+                <h1 className="text-3xl tracking-wider -z-10 font-medium">
                     or browse the selected type
                 </h1>
             </div>

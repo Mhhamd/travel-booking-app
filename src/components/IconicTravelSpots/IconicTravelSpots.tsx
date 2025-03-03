@@ -37,7 +37,7 @@ function IconicTravelSpots() {
     async function fetchImages(query: string) {
         try {
             const response = await fetch(
-                `https://api.unsplash.com/search/photos?query=${query}&orientation=landscape&client_id=${accessKey}&per_page=10`
+                `https://api.unsplash.com/search/photos?query=${query}&orientation=landscape&client_id=${accessKey}&per_page=11`
             );
             const data = await response.json();
             return data?.results?.[0] || null;
@@ -66,7 +66,7 @@ function IconicTravelSpots() {
         fetchAndSetImages();
     }, []);
     const randomPrice = (min = 100, max = 300) => {
-        return (Math.random() * (max - min) + min).toFixed();
+        return (Math.random() * (max - min) + min).toFixed(2);
     };
 
     return (
@@ -109,22 +109,16 @@ function IconicTravelSpots() {
                                         Featured
                                     </p>
                                 </div>
-                                <div className="border w-full flex-start gap-6">
-                                    <div className="p-4 bg-white border border-black/20 rounded-md left-0 absolute -bottom-41 w-[100%] shadow-lg">
-                                        {/* <div className="flex items-center justify-start">
-                                            <img
-                                                className="w-24"
-                                                src="/assets/rating.png"
-                                                alt="Rating"
-                                            />
-                                            <p className="text-gray-400">4.6</p>
-                                        </div> */}
+                                <div className=" w-full flex-start gap-6">
+                                    <div className="p-4 bg-white border border-black/20 rounded-md left-0 absolute max-h-[30vh] -bottom-41 w-[100%] shadow-lg">
                                         <p className="text-gray-700 text-left font-bold tracking-wider">
                                             {destination.arrivalCity} (
                                             {destination.arrivalCountry})
                                         </p>
-                                        <p className="text-[#ff6b6b] flex-start mt-4 gap-1 ">
-                                            <IoLocation />
+                                        <div className="flex items-start justify-start gap-1 mt-4">
+                                            <p className="text-[#ff6b6b] ">
+                                                <IoLocation />
+                                            </p>
                                             <div className="flex-start flex-col">
                                                 <span className="text-gray-400 ">
                                                     Departure:{' '}
@@ -139,7 +133,7 @@ function IconicTravelSpots() {
                                                     {destination.arrivalCountry}
                                                 </span>
                                             </div>
-                                        </p>
+                                        </div>
                                         <p className="text-gray-400 mt-2 tracking-wider">
                                             From{' '}
                                             <span className="text-[#ff6b6b]">

@@ -67,7 +67,7 @@ function CityInput({ label }: CityInputProps) {
                             onWheel={(e) => {
                                 e.stopPropagation(); // Prevents parent interference
                             }}
-                            className="mt-8 border bg-white flex flex-col shadow-2xl rounded-lg max-h-[200px] leading-8 p-4 overflow-y-auto text-black z-[200]"
+                            className="mt-8 border  bg-white flex flex-col shadow-2xl rounded-lg max-h-[200px] leading-8 p-4 overflow-y-auto text-black z-[200]"
                         >
                             {filteredCities.map((item: string) => (
                                 <div

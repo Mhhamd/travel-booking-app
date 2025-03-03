@@ -25,6 +25,8 @@ function TopDestinations() {
     });
 
     const uniqueDestionations: typeof filteredData = [];
+
+    // preventing duplicates
     const seenCities = new Set();
     for (const item of filteredData) {
         if (!seenCities.has(item.arrival_city)) {
@@ -33,8 +35,8 @@ function TopDestinations() {
         }
     }
     const randomSelection = uniqueDestionations
-        .sort(() => Math.random() - 0.5)
-        .splice(0, 5);
+        .sort(() => Math.random() - 0.9)
+        .splice(0, 9);
 
     async function fetchImages(query: string) {
         try {
