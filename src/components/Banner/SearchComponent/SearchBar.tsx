@@ -5,12 +5,10 @@ import CardTypes from '../CardTypes';
 import CityInput from './CityInput';
 import { Link } from 'react-router-dom';
 import { RootState } from '../../../state/store';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import * as React from 'react';
-import { setFrom, setGoingTo } from '../../../state/slices/searchSlice';
 
 function SearchBar() {
-    const dispatch = useDispatch();
     const fromInputValue = useSelector((state: RootState) => state.search.from);
     const goingToInputValue = useSelector(
         (state: RootState) => state.search.goingTo
@@ -18,13 +16,9 @@ function SearchBar() {
 
     const handleSearch = (event: React.MouseEvent<HTMLAnchorElement>) => {
         if (fromInputValue.trim() === '' || goingToInputValue.trim() === '') {
-            event.preventDefault(); // Prevent navigation
+            event.preventDefault();
             alert('Please fill out the fields');
-        } else {
-            setTimeout(() => {
-                dispatch(setFrom(''));
-                dispatch(setGoingTo(''));
-            }, 500);
+            return;
         }
     };
 

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
-
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 0) {

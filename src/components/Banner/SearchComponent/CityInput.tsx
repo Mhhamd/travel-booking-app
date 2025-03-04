@@ -27,7 +27,7 @@ function CityInput({ label }: CityInputProps) {
 
     const handleBlur = () => {
         //adding delay to be able to select
-        setTimeout(() => setDropdownVisible(false), 100);
+        setTimeout(() => setDropdownVisible(false), 300);
     };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
