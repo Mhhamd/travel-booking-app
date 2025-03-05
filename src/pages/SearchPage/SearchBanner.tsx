@@ -1,14 +1,27 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
+import { useEffect, useState } from 'react';
+import { fetchImages } from '../../utils/fetchImages';
 
 function SearchBanner() {
+    const [bannerImage, setBannerImage] = useState('');
     const goingTo = useSelector((state: RootState) => state.search.goingTo);
+
+    useEffect(() => {
+        async function fetchAndSetImage() {
+            if (goingTo) {
+                const image = await fetchImages(goingTo);
+                setBannerImage(image.urls?.full);
+            }
+        }
+        fetchAndSetImage();
+    }, [goingTo]); // Runs only when 'goingTo' changes
     return (
         <div className=" mt-[5%] relative w-[80%] flex-center">
             <div className="w-full flex-center">
                 <img
                     className="object-center object-cover w-[100%] h-[600px] rounded-4xl"
-                    src="/assets/searchbanner.jpg"
+                    src={bannerImage}
                     alt=""
                 />
             </div>

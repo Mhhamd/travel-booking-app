@@ -30,7 +30,6 @@ function SearchResults() {
     const filteredData = data.filter((item) => {
         return item.arrival_city === goingTo;
     });
-    console.log(filteredData);
     useEffect(() => {
         async function fetchAndSetImages() {
             const results: Destination[] = await Promise.all(
