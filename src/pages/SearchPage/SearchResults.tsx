@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import SearchBanner from './SearchBanner';
@@ -6,8 +7,7 @@ import mockData from '../../data/MOCK_DATA.json?raw';
 import { fetchImages } from '../../utils/fetchImages';
 import FlightCard from '../../components/shared/FlightCard';
 import Footer from '../../components/Footer/Footer';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../state/store';
+import { useParams } from 'react-router-dom';
 interface UnsplashImage {
     urls: {
         full: string;
@@ -26,15 +26,21 @@ interface Destination {
 function SearchResults() {
     const [destinations, setDestinations] = useState<Destination[]>([]);
     const data: dataTypes[] = JSON.parse(mockData);
-    const goingTo = useSelector((state: RootState) => state.search.goingTo);
+    const params = useParams();
+
     const filteredData = data.filter((item) => {
-        return item.arrival_city === goingTo;
+        return (
+            item.arrival_city === params.to &&
+            item.departure_city === params.from
+        );
     });
     useEffect(() => {
         async function fetchAndSetImages() {
             const results: Destination[] = await Promise.all(
                 filteredData.map(async (item: dataTypes) => {
-                    const image = await fetchImages(item.arrival_city);
+                    const image = await fetchImages(
+                        params.to ?? 'airplane-flight'
+                    );
                     return {
                         arrivalCity: item.arrival_city,
                         arrivalCountry: item.arrival_country,
@@ -49,7 +55,7 @@ function SearchResults() {
             setDestinations(results);
         }
         fetchAndSetImages();
-    }, []);
+    }, [params]);
     return (
         <>
             <div className="flex items-center flex-col justify-center">
@@ -62,7 +68,7 @@ function SearchResults() {
                     {/* Add mx-auto to center the container */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         <h1 className="font-bold tracking-widest col-span-full">
-                            150 trips available
+                            {destinations.length} trips available
                         </h1>
                         {destinations.map((destination, index) => (
                             <div
