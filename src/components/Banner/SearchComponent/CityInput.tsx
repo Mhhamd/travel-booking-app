@@ -55,7 +55,11 @@ function CityInput({ label }: CityInputProps) {
                             value={inputValue}
                             onBlur={handleBlur}
                             onChange={handleInputChange}
-                            placeholder="Enter departure city or country"
+                            placeholder={
+                                label === 'From'
+                                    ? 'Enter departure city'
+                                    : 'Enter arrival city'
+                            }
                             className="bg-transparent capitalize  transition-all duration-300 placeholder:text-sm text-black font-semibold focus:outline-none "
                         />
                     </div>

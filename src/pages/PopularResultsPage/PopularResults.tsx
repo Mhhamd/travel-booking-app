@@ -1,14 +1,13 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
-import SearchBanner from './SearchBanner';
+import SearchBanner from '../SearchPage/SearchBanner';
+import { useParams } from 'react-router-dom';
 import { dataTypes } from '../../types/flightType';
 import mockData from '../../data/MOCK_DATA.json?raw';
 import { fetchImages } from '../../utils/fetchImages';
-// import FlightCard from '../../components/shared/FlightCard';
-import Footer from '../../components/Footer/Footer';
-import { useParams } from 'react-router-dom';
 import { IoLocation } from 'react-icons/io5';
+import Footer from '../../components/Footer/Footer';
+
 interface UnsplashImage {
     urls: {
         full: string;
@@ -25,24 +24,20 @@ interface Destination {
     airLine: string;
     image: UnsplashImage | null;
 }
-function SearchResults() {
+
+function PopularResults() {
     const [destinations, setDestinations] = useState<Destination[]>([]);
     const data: dataTypes[] = JSON.parse(mockData);
     const params = useParams();
 
     const filteredData = data.filter((item) => {
-        return (
-            item.arrival_city === params.to &&
-            item.departure_city === params.from
-        );
+        return item.arrival_city === params.to;
     });
     useEffect(() => {
         async function fetchAndSetImages() {
             const results: Destination[] = await Promise.all(
                 filteredData.map(async (item: dataTypes) => {
-                    const image = await fetchImages(
-                        params.to ?? 'airplane-flight'
-                    );
+                    const image = await fetchImages(params.to ?? 'airplane');
                     return {
                         arrivalCity: item.arrival_city,
                         arrivalCountry: item.arrival_country,
@@ -59,6 +54,7 @@ function SearchResults() {
         }
         fetchAndSetImages();
     }, [params]);
+
     return (
         <>
             <div className="flex items-center flex-col justify-center">
@@ -107,12 +103,9 @@ function SearchResults() {
                                                     <span className="text-gray-400 ">
                                                         Arival:{' '}
                                                         {
-                                                            destination.departureCity
+                                                            destination.arrivalCity
                                                         }
                                                         ,{' '}
-                                                        {
-                                                            destination.departureCountry
-                                                        }{' '}
                                                     </span>
                                                 </div>
                                             </div>
@@ -120,16 +113,16 @@ function SearchResults() {
                                     </div>
                                 </div>
                                 {/* <FlightCard
-                                    image={destination.image?.urls.small}
-                                    arrivalCity={destination.arrivalCity}
-                                    arrivalCountry={destination.arrivalCountry}
-                                    departureCity={destination.departureCity}
-                                    departureCountry={
-                                        destination.departureCountry
-                                    }
-                                    duration={destination.duration}
-                                    seatsAvailable={destination.seatsAvailable}
-                                /> */}
+                                image={destination.image?.urls.small}
+                                arrivalCity={destination.arrivalCity}
+                                arrivalCountry={destination.arrivalCountry}
+                                departureCity={destination.departureCity}
+                                departureCountry={
+                                    destination.departureCountry
+                                }
+                                duration={destination.duration}
+                                seatsAvailable={destination.seatsAvailable}
+                            /> */}
                             </div>
                         ))}
                     </div>
@@ -140,4 +133,4 @@ function SearchResults() {
     );
 }
 
-export default SearchResults;
+export default PopularResults;

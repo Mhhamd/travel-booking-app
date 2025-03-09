@@ -169,7 +169,7 @@ function Customers() {
                         }}
                         loop={true}
                         speed={800}
-                        className="w-full z-30  flex items-center  justify-center  h-auto overflow-hidden "
+                        className="w-full z-30  flex items-center  justify-center  h-full overflow-hidden "
                     >
                         {images?.map((img) => {
                             return (

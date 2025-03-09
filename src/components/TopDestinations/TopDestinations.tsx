@@ -2,6 +2,9 @@
 import { useEffect, useState } from 'react';
 import mockData from '../../data/MOCK_DATA.json?raw';
 import { dataTypes } from '../../types/flightType';
+import { useDispatch } from 'react-redux';
+import { setPopular } from '../../state/slices/popularSlice';
+import { Link } from 'react-router-dom';
 
 interface UnsplashImage {
     urls: {
@@ -17,6 +20,7 @@ interface Destination {
 
 function TopDestinations() {
     const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
+    const dispatch = useDispatch();
     const [destinations, setDestinations] = useState<Destination[]>([]);
 
     const data = JSON.parse(mockData);
@@ -73,7 +77,11 @@ function TopDestinations() {
             </div>
             <div className="grid grid-cols-4 gap-x-4 gap-y-4 place-content-center capitalize">
                 {destinations.map(({ city, image }) => (
-                    <div
+                    <Link
+                        to={`/popular/${city}`}
+                        onClick={() => {
+                            dispatch(setPopular(city));
+                        }}
                         key={city}
                         className="relative w-80 rounded-xl overflow-hidden"
                     >
@@ -89,7 +97,7 @@ function TopDestinations() {
                         <span className="absolute top-0 right-0 rounded-lg font-semibold bg-[#e06149] text-white m-6 py-2 px-6">
                             Popular
                         </span>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>
