@@ -1,59 +1,12 @@
-import { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import SearchBanner from '../SearchPage/SearchBanner';
-import { useParams } from 'react-router-dom';
-import { dataTypes } from '../../types/flightType';
-import mockData from '../../data/MOCK_DATA.json?raw';
-import { fetchImages } from '../../utils/fetchImages';
+
 import { IoLocation } from 'react-icons/io5';
 import Footer from '../../components/Footer/Footer';
-
-interface UnsplashImage {
-    urls: {
-        full: string;
-        small: string;
-    };
-}
-interface Destination {
-    arrivalCity: string;
-    departureCity: string;
-    arrivalCountry: string;
-    departureCountry: string;
-    duration: number;
-    seatsAvailable: number;
-    airLine: string;
-    image: UnsplashImage | null;
-}
+import { useDestinations } from '../../utils/useDestinations';
 
 function PopularResults() {
-    const [destinations, setDestinations] = useState<Destination[]>([]);
-    const data: dataTypes[] = JSON.parse(mockData);
-    const params = useParams();
-
-    const filteredData = data.filter((item) => {
-        return item.arrival_city === params.to;
-    });
-    useEffect(() => {
-        async function fetchAndSetImages() {
-            const results: Destination[] = await Promise.all(
-                filteredData.map(async (item: dataTypes) => {
-                    const image = await fetchImages(params.to ?? 'airplane');
-                    return {
-                        arrivalCity: item.arrival_city,
-                        arrivalCountry: item.arrival_country,
-                        departureCity: item.departure_city,
-                        departureCountry: item.departure_country,
-                        duration: item.duration,
-                        seatsAvailable: item.seats_available,
-                        airLine: item.airline,
-                        image,
-                    };
-                })
-            );
-            setDestinations(results);
-        }
-        fetchAndSetImages();
-    }, [params]);
+    const destinations = useDestinations();
 
     return (
         <>

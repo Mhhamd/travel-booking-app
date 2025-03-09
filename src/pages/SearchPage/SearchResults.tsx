@@ -1,64 +1,13 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import SearchBanner from './SearchBanner';
-import { dataTypes } from '../../types/flightType';
-import mockData from '../../data/MOCK_DATA.json?raw';
-import { fetchImages } from '../../utils/fetchImages';
+
 // import FlightCard from '../../components/shared/FlightCard';
 import Footer from '../../components/Footer/Footer';
-import { useParams } from 'react-router-dom';
 import { IoLocation } from 'react-icons/io5';
-interface UnsplashImage {
-    urls: {
-        full: string;
-        small: string;
-    };
-}
-interface Destination {
-    arrivalCity: string;
-    departureCity: string;
-    arrivalCountry: string;
-    departureCountry: string;
-    duration: number;
-    seatsAvailable: number;
-    airLine: string;
-    image: UnsplashImage | null;
-}
-function SearchResults() {
-    const [destinations, setDestinations] = useState<Destination[]>([]);
-    const data: dataTypes[] = JSON.parse(mockData);
-    const params = useParams();
+import { useDestinations } from '../../utils/useDestinations';
 
-    const filteredData = data.filter((item) => {
-        return (
-            item.arrival_city === params.to &&
-            item.departure_city === params.from
-        );
-    });
-    useEffect(() => {
-        async function fetchAndSetImages() {
-            const results: Destination[] = await Promise.all(
-                filteredData.map(async (item: dataTypes) => {
-                    const image = await fetchImages(
-                        params.to ?? 'airplane-flight'
-                    );
-                    return {
-                        arrivalCity: item.arrival_city,
-                        arrivalCountry: item.arrival_country,
-                        departureCity: item.departure_city,
-                        departureCountry: item.departure_country,
-                        duration: item.duration,
-                        seatsAvailable: item.seats_available,
-                        airLine: item.airline,
-                        image,
-                    };
-                })
-            );
-            setDestinations(results);
-        }
-        fetchAndSetImages();
-    }, [params]);
+function SearchResults() {
+    const destinations = useDestinations(true);
     return (
         <>
             <div className="flex items-center flex-col justify-center">
@@ -107,7 +56,7 @@ function SearchResults() {
                                                     <span className="text-gray-400 ">
                                                         Arival:{' '}
                                                         {
-                                                            destination.departureCity
+                                                            destination.arrivalCity
                                                         }
                                                         ,{' '}
                                                         {
