@@ -22,7 +22,7 @@ function FlightCard(props: Card) {
             <img
                 src={props.image}
                 alt={props.arrivalCity}
-                className="object-cover rounded-xl"
+                className="object-cover w-full object-center h-full rounded-xl"
             />
             <div>
                 <p className="absolute top-3 left-3 bg-[#42afc4] text-white tracking-wider py-1 rounded-md px-4">

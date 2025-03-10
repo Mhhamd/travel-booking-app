@@ -8,7 +8,7 @@ import { RootState } from '../../../state/store';
 import { useSelector } from 'react-redux';
 import * as React from 'react';
 
-function SearchBar() {
+function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
     const fromInputValue = useSelector((state: RootState) => state.search.from);
     const goingToInputValue = useSelector(
         (state: RootState) => state.search.goingTo
@@ -84,12 +84,14 @@ function SearchBar() {
             </div>
             <div className="flex-center flex-col">
                 <HandDrawnArrow />
-                <h1 className="text-3xl tracking-wider -z-10 font-medium">
-                    or browse the selected type
-                </h1>
+                {showSelectedTypes && (
+                    <h1 className="text-3xl tracking-wider -z-10 font-medium">
+                        or browse the selected type
+                    </h1>
+                )}
             </div>
             <div className="absolute -bottom-[130%] ">
-                <CardTypes />
+                {showSelectedTypes && <CardTypes />}
             </div>
         </div>
     );

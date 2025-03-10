@@ -29,7 +29,7 @@ function Banner() {
                         checkout beautiful places around the world
                     </p>
                     <div>
-                        <SearchBar />
+                        <SearchBar showSelcetedTypes={true} />
                     </div>
                 </div>
             </div>
