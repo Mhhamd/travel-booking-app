@@ -7,15 +7,20 @@ import { Link } from 'react-router-dom';
 import { RootState } from '../../../state/store';
 import { useSelector } from 'react-redux';
 import * as React from 'react';
+import { useRef } from 'react';
 
 function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
     const fromInputValue = useSelector((state: RootState) => state.search.from);
     const goingToInputValue = useSelector(
         (state: RootState) => state.search.goingTo
     );
-
+    const dateRef = useRef<HTMLInputElement>(null);
     const handleSearch = (event: React.MouseEvent<HTMLAnchorElement>) => {
-        if (fromInputValue.trim() === '' || goingToInputValue.trim() === '') {
+        if (
+            fromInputValue.trim() === '' ||
+            goingToInputValue.trim() === '' ||
+            dateRef.current?.value.trim() === ''
+        ) {
             event.preventDefault();
             alert('Please fill out the fields');
             return;
@@ -37,7 +42,10 @@ function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
                             <p className="text-xs text-gray-500">
                                 Select trip type
                             </p>
-                            <select className="bg-transparent text-black font-semibold focus:outline-none cursor-pointer">
+                            <select
+                                required
+                                className="bg-transparent text-black font-semibold focus:outline-none cursor-pointer"
+                            >
                                 <option>One-way</option>
                                 <option>Round-trip</option>
                                 <option>Multi-city</option>
@@ -51,6 +59,7 @@ function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
                         <div>
                             <p className="text-xs text-gray-500">Date From</p>
                             <input
+                                ref={dateRef}
                                 type="date"
                                 className="bg-transparent text-black font-semibold focus:outline-none"
                             />
