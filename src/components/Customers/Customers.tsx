@@ -169,7 +169,7 @@ function Customers() {
                         }}
                         loop={true}
                         speed={800}
-                        className="w-full z-30  flex items-center  justify-center  h-full overflow-hidden "
+                        className="w-full z-30  flex items-center  justify-center   h-full overflow-hidden "
                     >
                         {images?.map((img) => {
                             return (
@@ -178,7 +178,7 @@ function Customers() {
                                     className=" z-30 flex h-full overflow-hidden  flex-col items-center justify-center  rounded-2xl "
                                 >
                                     <img
-                                        className="w-full rounded-lg h-full  object-center object-cover"
+                                        className="w-full rounded-lg h-[30vh]  object-center object-cover"
                                         src={img}
                                         alt={img}
                                     />
