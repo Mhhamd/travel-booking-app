@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { navData } from '../../data/navListData';
 import { GiCommercialAirplane } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
+import { handleScroll } from '../../utils/scrollToTop';
 
 function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -26,7 +27,7 @@ function Header() {
                 isScrolled ? 'py-[15px] backdrop-blur-2xl' : 'py-[20px]'
             }`}
         >
-            <Link to={'/'} className="flex-center">
+            <Link onClick={handleScroll} to={'/'} className="flex-center">
                 <h1 className="flex-center cursor-pointer hover:opacity-70 transition-all duration-500 hover:gap-4 gap-2 tracking-widest font-semibold text-[#323043] text-2xl">
                     <GiCommercialAirplane /> SkyFare{' '}
                 </h1>

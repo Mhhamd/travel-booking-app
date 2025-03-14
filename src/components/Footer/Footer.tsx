@@ -25,7 +25,7 @@ function Footer() {
                         <span className="text-[#e06149]">
                             <MdEmail />
                         </span>
-                        contact@example.com
+                        skyfare@gmail.com
                     </p>
                     <p className="flex-center gap-4 text-[#a7a7a7]">
                         <span className="text-[#e06149]">

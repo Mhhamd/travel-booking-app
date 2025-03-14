@@ -8,6 +8,7 @@ import { RootState } from '../../../state/store';
 import { useSelector } from 'react-redux';
 import * as React from 'react';
 import { useRef } from 'react';
+import { handleScroll } from '../../../utils/scrollToTop';
 
 function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
     const fromInputValue = useSelector((state: RootState) => state.search.from);
@@ -82,7 +83,10 @@ function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
 
                     {/* Search Button */}
                     <Link
-                        onClick={handleSearch}
+                        onClick={(event) => {
+                            handleSearch(event);
+                            handleScroll();
+                        }}
                         to={`/search/${fromInputValue}/${goingToInputValue}/`}
                         className="bg-[#e06149] btn-hover rounded-tr-lg rounded-br-lg text-white px-6 py-3 flex-center gap-2 w-52"
                     >

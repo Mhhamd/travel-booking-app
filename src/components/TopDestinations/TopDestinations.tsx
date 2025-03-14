@@ -5,6 +5,7 @@ import { dataTypes } from '../../types/flightType';
 import { useDispatch } from 'react-redux';
 import { setPopular } from '../../state/slices/popularSlice';
 import { Link } from 'react-router-dom';
+import { handleScroll } from '../../utils/scrollToTop';
 
 interface UnsplashImage {
     urls: {
@@ -81,6 +82,7 @@ function TopDestinations() {
                         to={`/popular/${city}`}
                         onClick={() => {
                             dispatch(setPopular(city));
+                            handleScroll();
                         }}
                         key={city}
                         className="relative w-80 rounded-xl overflow-hidden"
