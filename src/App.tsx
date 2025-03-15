@@ -8,6 +8,7 @@ import OurPartners from './components/OurPartners/OurPartners';
 import Customers from './components/Customers/Customers';
 import ChooseUs from './components/ChooseUs/ChooseUs';
 import Footer from './components/Footer/Footer';
+import Articles from './components/Articles/Articles';
 
 export default function App() {
     return (
@@ -26,6 +27,7 @@ export default function App() {
                 </div>
                 <Customers />
                 <ChooseUs />
+                <Articles />
                 <Footer />
             </div>
         </>
