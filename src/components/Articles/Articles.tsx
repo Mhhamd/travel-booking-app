@@ -26,10 +26,14 @@ function Articles() {
             >
                 {blogPosts.map((blog) => {
                     return (
-                        <SwiperSlide className="w-full overflow-visible border shadow-lg border-black/50 rounded-lg relative">
+                        <SwiperSlide
+                            key={blog.id}
+                            className="w-full overflow-visible border shadow-lg border-black/50 rounded-lg relative"
+                        >
                             <div className="w-full relative  overflow-hidden">
                                 <img
                                     src={blog.image}
+                                    loading="lazy"
                                     className="object-cover rounded-lg object-center w-full h-[30vh]"
                                     alt={blog.title}
                                 />
