@@ -88,7 +88,7 @@ function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
                             handleScroll();
                         }}
                         to={`/search/${fromInputValue}/${goingToInputValue}/`}
-                        className="bg-[#e06149] btn-hover rounded-tr-lg rounded-br-lg text-white px-6 py-3 flex-center gap-2 w-52"
+                        className="bg-[#e06149]  rounded-tr-lg rounded-br-lg hover:opacity-80 transition-all duration-300 text-white px-6 py-3 flex-center gap-2 w-52"
                     >
                         <FaSearch />
                         SEARCH

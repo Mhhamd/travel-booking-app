@@ -57,9 +57,7 @@ function PlanTrip() {
                     </div>
                 </div>
                 <div>
-                    <button className="text-white font-semibold btn-hover tracking-widest py-4  px-10 rounded-lg bg-[#f96c50]">
-                        Find My Flight
-                    </button>
+                    <button className="btn-style">Find My Flight</button>
                 </div>
             </div>
         </div>

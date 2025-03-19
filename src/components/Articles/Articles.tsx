@@ -4,6 +4,8 @@ import { blogPosts } from '../../data/blogPosts';
 import { MdComment } from 'react-icons/md';
 import { IoMdArrowDropright } from 'react-icons/io';
 import { FaUser } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { handleScroll } from '../../utils/scrollToTop';
 function Articles() {
     return (
         <div className="w-full  px-40">
@@ -76,9 +78,13 @@ function Articles() {
                                     <p>{blog.shortDescription}</p>
                                 </div>
                                 <div className="w-full mt-5">
-                                    <button className="para-style flex-center gap-1 cursor-pointer hover:opacity-70 transition-all duration-300">
+                                    <Link
+                                        onClick={handleScroll}
+                                        to={'/blog/' + blog.id}
+                                        className="para-style flex-center gap-1 cursor-pointer hover:opacity-70 transition-all duration-300"
+                                    >
                                         Read more <IoMdArrowDropright />
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </SwiperSlide>

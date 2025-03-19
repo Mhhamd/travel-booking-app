@@ -104,7 +104,7 @@ function Footer() {
                             placeholder="Email Address"
                             type="text"
                         />
-                        <button className="w-full btn-hover font-semibold tracking-wide mt-4 bg-[#e06149] rounded-lg text-white uppercase h-15">
+                        <button className="w-full hover:opacity-80 cursor-pointer transition-all duration-300 font-semibold tracking-wide mt-4 bg-[#e06149] rounded-lg text-white uppercase h-15">
                             subscribe
                         </button>
                         <div className="flex mt-4 items-center gap-2 ">
