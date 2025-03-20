@@ -1,46 +1,63 @@
 import { useParams } from 'react-router-dom';
 import { blogPosts } from '../../../data/blogPosts';
+import { BlogPost } from '../../../types/blogType';
 
-function Banner() {
+function Banner({
+    scrollTo,
+}: {
+    scrollTo: React.RefObject<HTMLDivElement | null>;
+}) {
     const params = useParams();
-    const blogs = blogPosts;
+    const blogs: BlogPost[] = blogPosts;
     const currentBlog = blogs.filter((blog) => blog.id === Number(params.id));
+    const blog = currentBlog[0];
+    const scrollToSection = () => {
+        if (scrollTo.current) {
+            const top =
+                scrollTo.current.getBoundingClientRect().top +
+                window.scrollY -
+                100;
+            window.scrollTo({ top, behavior: 'smooth' });
+        }
+    };
     return (
         <div className="w-full mt-18 relative h-[85vh]">
             <div className="absolute inset-0 bg-black/60"></div>
             <img
                 className="w-full h-full object-center object-cover"
-                src={currentBlog[0]?.image}
-                alt={currentBlog[0].title}
+                src={blog.image}
+                alt={blog.title}
             />
             <div className="absolute inset-0 flex-center flex-col z-30">
                 <h1 className="  capitalize  font-bold text-3xl tracking-widest  text-white">
-                    {currentBlog[0].title}
+                    {blog.title}
                 </h1>
                 <div className="flex items-center space-x-4 text-gray-300 text-sm mt-3">
                     <p>
                         ✍️{' '}
                         <span className="font-medium text-white/70">
-                            {currentBlog[0].author}
+                            {blog.author}
                         </span>
                     </p>
                     <p>
                         📅{' '}
                         <span className="text-white/70">
-                            {currentBlog[0].day} {currentBlog[0].month}, 2025
+                            {blog.day} {blog.month}, 2025
                         </span>
                     </p>
                     <p>
                         💬{' '}
                         <span className="text-white/70">
-                            {currentBlog[0].comments} Comments
+                            {blog.comments} Comments
                         </span>
                     </p>
                 </div>
                 <p className="text-white/70 font-semibold tracking-widest  max-w-[40%] mt-5 ">
-                    {currentBlog[0].fullDescription}
+                    {blog.fullDescription}
                 </p>
-                <button className="btn-style mt-5">Continue Reading</button>
+                <button onClick={scrollToSection} className="btn-style mt-5">
+                    Continue Reading
+                </button>
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
         </div>

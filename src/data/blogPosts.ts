@@ -1,4 +1,6 @@
-export const blogPosts = [
+import { BlogPost } from '../types/blogType';
+
+export const blogPosts: BlogPost[] = [
     {
         id: 1,
         title: 'Things to See and Do When Visiting Japan',
@@ -20,23 +22,23 @@ export const blogPosts = [
                     'As one of the world’s most advanced cities, Tokyo is a blend of high-tech innovation and deep-rooted traditions.',
                 mustSee: [
                     {
-                        title: 'Shibuya Crossing',
-                        description:
+                        name: 'Shibuya Crossing',
+                        whyVisit:
                             'One of the busiest pedestrian crossings in the world.',
                     },
                     {
-                        title: 'Akihabara',
-                        description:
+                        name: 'Akihabara',
+                        whyVisit:
                             'A paradise for anime, gaming, and tech lovers.',
                     },
                     {
-                        title: 'Shinjuku Gyoen',
-                        description:
+                        name: 'Shinjuku Gyoen',
+                        whyVisit:
                             ' A stunning park perfect for cherry blossom viewing in spring.',
                     },
                     {
-                        title: 'Tsukiji Outer Market',
-                        description:
+                        name: 'Tsukiji Outer Market',
+                        whyVisit:
                             ' Try fresh sushi and street food from vendors.',
                     },
                 ],
