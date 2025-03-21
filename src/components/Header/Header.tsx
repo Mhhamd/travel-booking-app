@@ -28,7 +28,7 @@ function Header() {
             }`}
         >
             <Link onClick={handleScroll} to={'/'} className="flex-center">
-                <h1 className="flex-center cursor-pointer hover:opacity-70 transition-all duration-500 hover:gap-4 gap-2 tracking-widest font-semibold text-[#323043] text-2xl">
+                <h1 className="flex-center cursor-pointer hover:opacity-70 transition-all duration-500 hover:gap-4 gap-2 tracking-widest font-semibold text-[#f96c50] text-2xl">
                     <GiCommercialAirplane /> SkyFare{' '}
                 </h1>
             </Link>
