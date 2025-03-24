@@ -6,7 +6,13 @@ import Banner from './BlogBanner/Banner';
 import { BlogPost } from '../../types/blogType';
 import { useEffect, useRef, useState } from 'react';
 import { fetchImages } from '../../utils/fetchImages';
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import {
+    Autoplay,
+    Navigation,
+    Pagination,
+    EffectCreative,
+} from 'swiper/modules';
 interface UnsplashImage {
     urls: {
         full: string;
@@ -38,7 +44,7 @@ function Blog() {
                 <Header />
             </header>
             <Banner scrollTo={introRef} />
-            <div className="p-10 md:p-16 gap-10 flex flex-col items-start justify-start max-w-[80%] md:max-w-[60%] mx-auto">
+            <div className="p-10 md:p-16 gap-10 flex flex-col items-start justify-start max-w-[100%] lg:max-w-[80%] mx-auto">
                 <div>
                     <h1
                         ref={introRef}
@@ -51,43 +57,69 @@ function Blog() {
                     </p>
                 </div>
                 <div>
-                    <h1 className="text-2xl md:text-4xl font-bold mt-15 mb-10 text-[#f96c50] ">
+                    <h1 className="text-2xl lg:text-4xl font-bold mt-5  text-[#f96c50] ">
                         Top Destinations
                     </h1>
-                    <div>
-                        {blog.topDestinations.map((item, index) => {
-                            return (
-                                <div className="bg-gray-50 p-6 rounded-xl shadow-md border-l-4 mb-7 border-[#f96c50]">
-                                    {titleImage[index] && (
-                                        <img
-                                            src={titleImage[index].urls.full}
-                                            alt={item.title}
-                                            className="w-full h-48 object-center object-cover rounded-lg mb-4"
-                                        />
-                                    )}
-                                    <h1 className="text-xl md:text-3xl font-bold text-gray-700 tracking-wide">
-                                        {item.title}
-                                    </h1>
-                                    <p className="text-gray-700  text-lg leading-relaxed mt-2">
-                                        {item.titleDescription}
-                                    </p>
-
-                                    {/* Looping through mustSee inside each destination */}
-                                    <ul className="ml-6 list-disc text-gray-600">
-                                        {item.mustSee.map((place, idx) => (
-                                            <li key={idx} className="mt-2 ">
-                                                <span className="font-bold text-gray-700">
-                                                    {place.name}:
-                                                </span>{' '}
-                                                {place.whyVisit}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            );
-                        })}
-                    </div>
                 </div>
+                <Swiper
+                    modules={[Navigation, Pagination, Autoplay, EffectCreative]}
+                    effect="creative"
+                    creativeEffect={{
+                        prev: {
+                            shadow: true,
+                            translate: ['-120%', 0, -500],
+                        },
+                        next: {
+                            shadow: true,
+                            translate: ['120%', 0, -500],
+                        },
+                    }}
+                    spaceBetween={20}
+                    slidesPerView={2}
+                    pagination={false}
+                    autoplay={{
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    }}
+                    loop={true}
+                    speed={1000}
+                    className="w-full z-30   "
+                >
+                    {blog.topDestinations.map((item, index) => {
+                        return (
+                            <SwiperSlide
+                                key={index}
+                                className="bg-gray-50 h-[100vh] p-6 w-[80%] rounded-xl shadow-md border-l-4 mb-7 border-[#f96c50]"
+                            >
+                                {titleImage[index] && (
+                                    <img
+                                        src={titleImage[index].urls.full}
+                                        alt={item.title}
+                                        className="w-full h-70 object-center object-cover rounded-lg mb-4"
+                                    />
+                                )}
+                                <h1 className="text-xl md:text-3xl font-bold text-gray-700 tracking-wide">
+                                    {item.title}
+                                </h1>
+                                <p className="text-gray-700  text-lg leading-relaxed mt-2">
+                                    {item.titleDescription}
+                                </p>
+
+                                {/* Looping through mustSee inside each destination */}
+                                <ul className="ml-6 list-disc text-gray-600">
+                                    {item.mustSee.map((place, idx) => (
+                                        <li key={idx} className="mt-2 ">
+                                            <span className="font-bold text-gray-700">
+                                                {place.name}:
+                                            </span>{' '}
+                                            {place.whyVisit}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </SwiperSlide>
+                        );
+                    })}
+                </Swiper>
             </div>
         </div>
     );

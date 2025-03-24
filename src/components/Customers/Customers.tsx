@@ -178,7 +178,7 @@ function Customers() {
                                     className=" z-30 flex h-full overflow-hidden  flex-col items-center justify-center  rounded-2xl "
                                 >
                                     <img
-                                        className="w-full rounded-lg h-[30vh]  object-center object-cover"
+                                        className="w-full rounded-md h-[30vh]  object-center object-cover"
                                         src={img}
                                         alt={img}
                                     />

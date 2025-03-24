@@ -29,10 +29,6 @@
     border-radius: 10px;
 }
 
-.mask {
-    mask-image: url('/assets/maskimage.gif');
-    mask-size: cover;
-}
 .para-style {
     @apply font-medium  text-[#f96c50] tracking-wider;
 }

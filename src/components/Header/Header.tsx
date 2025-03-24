@@ -24,12 +24,12 @@ function Header() {
     return (
         <div
             className={`flex-between fixed top-0 left-0 right-0 bg-white z-50 px-[70px] transition-all duration-300 ${
-                isScrolled ? 'py-[15px] backdrop-blur-2xl' : 'py-[20px]'
+                isScrolled ? 'py-[15px] ' : 'py-[20px]'
             }`}
         >
             <Link onClick={handleScroll} to={'/'} className="flex-center">
-                <h1 className="flex-center cursor-pointer hover:opacity-70 transition-all duration-500 hover:gap-4 gap-2 tracking-widest font-semibold text-[#f96c50] text-2xl">
-                    <GiCommercialAirplane /> SkyFare{' '}
+                <h1 className="flex-center cursor-pointer hover:opacity-70 transition-all duration-500 hover:gap-4 gap-2 tracking-widest font-semibold text-gray-700 text-2xl">
+                    <GiCommercialAirplane /> SkyFare
                 </h1>
             </Link>
             <ul className="font-medium tracking-wide flex-center gap-6">

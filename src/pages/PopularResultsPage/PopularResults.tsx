@@ -16,9 +16,8 @@ function PopularResults() {
                 </div>
                 <SearchBanner />
                 {/* <SearchBar showSelcetedTypes={false} /> */}
-                <div className="mt-13 w-[80%] mx-auto">
+                <div className="mt-13 w-[90%] mx-auto">
                     {' '}
-                    {/* Add mx-auto to center the container */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         <h1 className="font-bold tracking-widest col-span-full">
                             {destinations.length} trips available

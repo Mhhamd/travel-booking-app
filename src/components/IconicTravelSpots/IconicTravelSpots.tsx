@@ -80,6 +80,7 @@ function IconicTravelSpots() {
                     speed={800}
                     className="w-full flex justify-center  relative h-[55vh]"
                 >
+                    <div className="absolute right-0 w-[50%] h-[50vh] bg-black/50 z-10"></div>
                     {destinations.map((destination, index) => (
                         <SwiperSlide key={index}>
                             <FlightCard
