@@ -9,7 +9,9 @@ import { useSelector } from 'react-redux';
 import * as React from 'react';
 import { useRef } from 'react';
 import { handleScroll } from '../../../utils/scrollToTop';
+import { motion } from 'framer-motion';
 
+const MotionLink = motion(Link);
 function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
     const fromInputValue = useSelector((state: RootState) => state.search.from);
     const goingToInputValue = useSelector(
@@ -70,8 +72,8 @@ function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
                     {/* Guests */}
                     <div className="flex-center gap-2 px-4 py-3 border-r w-52">
                         <FaPeopleGroup className="text-[#e06149]" />
-                        <div>
-                            <p className="text-xs text-gray-500">Guests</p>
+                        <div className="flex-center flex-col">
+                            <p className="text-xs text-gray-500">Passengers</p>
                             <input
                                 type="number"
                                 min="1"
@@ -80,19 +82,24 @@ function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
                             />
                         </div>
                     </div>
-
                     {/* Search Button */}
-                    <Link
+                    <MotionLink
+                        whileHover={{
+                            scale: 1.05,
+                        }}
+                        whileTap={{
+                            scale: 1,
+                        }}
                         onClick={(event) => {
                             handleSearch(event);
                             handleScroll();
                         }}
                         to={`/search/${fromInputValue}/${goingToInputValue}/`}
-                        className="bg-[#e06149]  rounded-tr-lg rounded-br-lg hover:opacity-80 transition-all duration-300 text-white px-6 py-3 flex-center gap-2 w-52"
+                        className="bg-[#e06149]  rounded-tr-lg rounded-br-lg  transition-all duration-300 text-white px-6 py-3 flex-center gap-2 w-52"
                     >
                         <FaSearch />
                         SEARCH
-                    </Link>
+                    </MotionLink>
                 </div>
             </div>
             <div className="flex-center flex-col">

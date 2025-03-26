@@ -1,4 +1,5 @@
 import { IoIosCheckmarkCircle } from 'react-icons/io';
+import { motion } from 'framer-motion';
 
 function PlanTrip() {
     return (
@@ -57,7 +58,22 @@ function PlanTrip() {
                     </div>
                 </div>
                 <div>
-                    <button className="btn-style">Find My Flight</button>
+                    <motion.button
+                        whileHover={{
+                            scale: 1.05,
+                            opacity: 1,
+                        }}
+                        whileTap={{
+                            scale: 1,
+                        }}
+                        transition={{
+                            duration: 0.125,
+                            ease: 'easeInOut',
+                        }}
+                        className="btn-style"
+                    >
+                        Find My Flight
+                    </motion.button>
                 </div>
             </div>
         </div>

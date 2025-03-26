@@ -2,6 +2,7 @@ import { GiCommercialAirplane } from 'react-icons/gi';
 import { FaPhone } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { FaLocationDot } from 'react-icons/fa6';
+import { motion } from 'framer-motion';
 function Footer() {
     return (
         <footer className="bg-[#323043] w-full h-[45vh] px-25 flex-between">
@@ -104,9 +105,21 @@ function Footer() {
                             placeholder="Email Address"
                             type="text"
                         />
-                        <button className="w-full hover:opacity-80 cursor-pointer transition-all duration-300 font-semibold tracking-wide mt-4 bg-[#e06149] rounded-lg text-white uppercase h-15">
+                        <motion.button
+                            whileHover={{
+                                scale: 1.05,
+                            }}
+                            whileTap={{
+                                scale: 1,
+                            }}
+                            transition={{
+                                duration: 0.125,
+                                ease: 'easeInOut',
+                            }}
+                            className="w-full  cursor-pointer   font-semibold tracking-wide mt-4 bg-[#e06149] rounded-lg text-white uppercase h-15"
+                        >
                             subscribe
-                        </button>
+                        </motion.button>
                         <div className="flex mt-4 items-center gap-2 ">
                             <input
                                 type="checkbox"

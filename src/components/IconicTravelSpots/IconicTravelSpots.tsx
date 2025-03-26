@@ -5,9 +5,10 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
 import mockData from '../../data/MOCK_DATA.json?raw';
 import { dataTypes } from '../../types/flightType';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import FlightCard from '../shared/FlightCard';
 import { fetchImages } from '../../utils/fetchImages';
+import { motion, useInView } from 'framer-motion';
 
 interface UnsplashImage {
     urls: {
@@ -26,6 +27,8 @@ interface Destination {
 }
 
 function IconicTravelSpots() {
+    const ref = useRef<HTMLDivElement | null>(null);
+    const isInView = useInView(ref, { once: true });
     const [destinations, setDestinations] = useState<Destination[]>([]);
     const data: dataTypes[] = JSON.parse(mockData);
     const randomSelection: dataTypes[] = data
@@ -54,7 +57,20 @@ function IconicTravelSpots() {
     }, []);
 
     return (
-        <div className="flex-center w-full flex-col gap-12 p-12">
+        <motion.div
+            ref={ref}
+            initial={{
+                opacity: 0,
+                scale: 0,
+                y: '20%',
+            }}
+            animate={isInView ? { opacity: 1, y: '0%', scale: 1 } : {}}
+            transition={{
+                duration: 1,
+                ease: 'easeInOut',
+            }}
+            className="flex-center w-full flex-col gap-12 p-12"
+        >
             <div className="flex-center gap-4 flex-col">
                 <p className="text-lg text-[#ff6b6b] font-semibold">
                     Not sure where to go next?
@@ -96,7 +112,7 @@ function IconicTravelSpots() {
                     ))}
                 </Swiper>
             )}
-        </div>
+        </motion.div>
     );
 }
 

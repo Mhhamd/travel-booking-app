@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import mockData from '../../data/MOCK_DATA.json?raw';
 import { dataTypes } from '../../types/flightType';
 import { useDispatch } from 'react-redux';
 import { setPopular } from '../../state/slices/popularSlice';
 import { Link } from 'react-router-dom';
 import { handleScroll } from '../../utils/scrollToTop';
-
+import { motion, useInView } from 'framer-motion';
 interface UnsplashImage {
     urls: {
         full: string;
@@ -19,7 +19,10 @@ interface Destination {
     image: UnsplashImage | null;
 }
 
+const MotionLink = motion(Link);
 function TopDestinations() {
+    const ref = useRef<HTMLDivElement | null>(null);
+    const isInView = useInView(ref, { once: true });
     const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
     const dispatch = useDispatch();
     const [destinations, setDestinations] = useState<Destination[]>([]);
@@ -66,8 +69,36 @@ function TopDestinations() {
         }
         fetchAndSetImages();
     }, []);
+
+    const container = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.3, // Adjust this value for the stagger delay
+                delayChildren: 0.3, // Delay before starting the stagger
+            },
+        },
+    };
+    const item = {
+        hidden: { opacity: 0, y: 20 },
+        show: { opacity: 1, y: 0 },
+    };
     return (
-        <div className="flex-center gap-12 flex-col p-12 mt-30">
+        <motion.div
+            initial={{
+                opacity: 0,
+                scale: 0,
+                y: '20%',
+            }}
+            animate={isInView ? { opacity: 1, y: '0%', scale: 1 } : {}}
+            transition={{
+                duration: 1,
+                ease: 'easeInOut',
+                staggerChildren: 0.5,
+            }}
+            className="flex-center gap-12 flex-col p-12 mt-30"
+        >
             <div className="flex-center flex-col gap-4">
                 <h1 className="font-medium text-[#f96c50] tracking-wider">
                     Where to Go
@@ -76,9 +107,17 @@ function TopDestinations() {
                     Explore Exotic Destinations
                 </h1>
             </div>
-            <div className="grid grid-cols-4 gap-x-4 gap-y-4 place-content-center capitalize">
+            <motion.div
+                initial="hidden"
+                animate={isInView ? 'show' : 'hidden'}
+                ref={ref}
+                variants={container}
+                className="grid grid-cols-4 gap-x-4 gap-y-4 place-content-center capitalize"
+            >
                 {destinations.map(({ city, image }) => (
-                    <Link
+                    <MotionLink
+                        variants={item}
+                        transition={{ duration: 0.5 }}
                         to={`/popular/${city}`}
                         onClick={() => {
                             dispatch(setPopular(city));
@@ -99,10 +138,10 @@ function TopDestinations() {
                         <span className="absolute top-0 right-0 rounded-lg font-semibold bg-[#e06149] text-white m-6 py-2 px-6">
                             Popular
                         </span>
-                    </Link>
+                    </MotionLink>
                 ))}
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 }
 
