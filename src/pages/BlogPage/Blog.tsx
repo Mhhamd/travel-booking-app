@@ -26,6 +26,7 @@ function Blog() {
     const currentBlog = blogs.filter((blog) => blog.id === Number(params.id));
     const blog = currentBlog[0];
     const introRef = useRef<HTMLDivElement | null>(null);
+    console.log(blog);
     useEffect(() => {
         async function fetchAndSetImages() {
             const results: UnsplashImage[] = await Promise.all(
@@ -83,8 +84,31 @@ function Blog() {
                     }}
                     loop={true}
                     speed={1000}
-                    className="w-full z-30   "
+                    className="w-full z-30  relative"
                 >
+                    <div className="absolute -top-2 right-0">
+                        <div>
+                            <img
+                                src="/assets/airplane.png"
+                                className="absolute top-6 right-0 w-6"
+                                alt=""
+                            />
+                            <svg
+                                width="300"
+                                height="200"
+                                viewBox="0 0 300 200"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M20,150 Q100,50 200,80 T280,40"
+                                    fill="none"
+                                    stroke="#ccc"
+                                    stroke-dasharray="5,5"
+                                    stroke-width="2"
+                                />
+                            </svg>
+                        </div>
+                    </div>
                     {blog.topDestinations.map((item, index) => {
                         return (
                             <SwiperSlide
