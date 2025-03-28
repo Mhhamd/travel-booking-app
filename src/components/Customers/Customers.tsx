@@ -1,8 +1,9 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
-import { useEffect, useState } from 'react';
-
+import { useEffect, useRef, useState } from 'react';
+import { useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 interface UnsplashImage {
     width: number;
     height: number;
@@ -14,6 +15,8 @@ interface UnsplashImage {
 
 function Customers() {
     const [images, setImages] = useState<string[]>([]);
+    const ref = useRef<HTMLDivElement | null>(null);
+    const isInView = useInView(ref, { once: true });
     const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
     useEffect(() => {
         async function fetchImages(query: string) {
@@ -70,9 +73,21 @@ function Customers() {
         },
     ];
     return (
-        <div className="w-full relative ">
+        <motion.div
+            ref={ref}
+            initial={{
+                opacity: 0,
+                y: '20%',
+            }}
+            animate={isInView ? { opacity: 1, y: '0%' } : {}}
+            transition={{
+                duration: 1.5,
+                ease: 'easeInOut',
+            }}
+            className="w-full relative "
+        >
             <div className="absolute top-0">
-                <div className="relative ">
+                <div>
                     <img
                         src="/assets/airplane.png"
                         className="absolute top-6 right-0 w-6"
@@ -188,7 +203,7 @@ function Customers() {
                     </Swiper>
                 )}
             </div>
-        </div>
+        </motion.div>
     );
 }
 

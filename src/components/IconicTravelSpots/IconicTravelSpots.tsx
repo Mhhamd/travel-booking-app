@@ -66,10 +66,10 @@ function IconicTravelSpots() {
             }}
             animate={isInView ? { opacity: 1, y: '0%', scale: 1 } : {}}
             transition={{
-                duration: 1,
+                duration: 1.5,
                 ease: 'easeInOut',
             }}
-            className="flex-center w-full flex-col gap-12 p-12"
+            className="flex-center w-full flex-col gap-12 p-12 pt-3"
         >
             <div className="flex-center gap-4 flex-col">
                 <p className="text-lg text-[#ff6b6b] font-semibold">

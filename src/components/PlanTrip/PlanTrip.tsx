@@ -1,11 +1,28 @@
 import { IoIosCheckmarkCircle } from 'react-icons/io';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 function PlanTrip() {
+    const ref = useRef<HTMLDivElement | null>(null);
+    const isInView = useInView(ref, { once: true });
+
     return (
-        <div className="flex-start gap-12  w-[90%]">
+        <motion.div
+            ref={ref}
+            initial={{
+                opacity: 0,
+                y: '20%',
+            }}
+            animate={isInView ? { opacity: 1, y: '0%' } : {}}
+            transition={{
+                duration: 1.5,
+                ease: 'easeInOut',
+            }}
+            className="flex-start gap-12  w-[90%]"
+        >
             <div className="w-[50%] relative mask">
                 <img
+                    loading="lazy"
                     className="rounded-3xl"
                     src="/assets/plansection.jpg"
                     alt=""
@@ -76,7 +93,7 @@ function PlanTrip() {
                     </motion.button>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

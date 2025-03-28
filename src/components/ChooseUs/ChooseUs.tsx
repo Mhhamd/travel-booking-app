@@ -1,8 +1,11 @@
 import { VscWorkspaceTrusted } from 'react-icons/vsc';
 import { IoIosSpeedometer } from 'react-icons/io';
 import { FaCreditCard } from 'react-icons/fa';
-
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 function ChooseUs() {
+    const ref = useRef<HTMLDivElement | null>(null);
+    const isInView = useInView(ref, { once: true });
     const benefits = [
         {
             icon: <VscWorkspaceTrusted className="para-style text-4xl" />,
@@ -24,7 +27,19 @@ function ChooseUs() {
         },
     ];
     return (
-        <div className="flex w-full">
+        <motion.div
+            ref={ref}
+            initial={{
+                opacity: 0,
+                y: '20%',
+            }}
+            animate={isInView ? { opacity: 1, y: '0%' } : {}}
+            transition={{
+                duration: 1.5,
+                ease: 'easeInOut',
+            }}
+            className="flex w-full"
+        >
             <div className="w-full relative">
                 <div className="absolute h-[60%] -right-2 top-[25%] bg-[#f96c50]  w-3 rounded-2xl flex-center "></div>
                 <img
@@ -65,7 +80,7 @@ function ChooseUs() {
                     ))}
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

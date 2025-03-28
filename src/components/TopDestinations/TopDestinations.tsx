@@ -93,11 +93,11 @@ function TopDestinations() {
             }}
             animate={isInView ? { opacity: 1, y: '0%', scale: 1 } : {}}
             transition={{
-                duration: 1,
+                duration: 1.5,
                 ease: 'easeInOut',
                 staggerChildren: 0.5,
             }}
-            className="flex-center gap-12 flex-col p-12 mt-30"
+            className="flex-center gap-12 flex-col p-12 mt-10"
         >
             <div className="flex-center flex-col gap-4">
                 <h1 className="font-medium text-[#f96c50] tracking-wider">
@@ -117,7 +117,7 @@ function TopDestinations() {
                 {destinations.map(({ city, image }) => (
                     <MotionLink
                         variants={item}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 1.5 }}
                         to={`/popular/${city}`}
                         onClick={() => {
                             dispatch(setPopular(city));

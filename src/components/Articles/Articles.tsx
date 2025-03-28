@@ -6,9 +6,25 @@ import { IoMdArrowDropright } from 'react-icons/io';
 import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { handleScroll } from '../../utils/scrollToTop';
+import { useInView, motion } from 'framer-motion';
+import { useRef } from 'react';
 function Articles() {
+    const ref = useRef<HTMLDivElement | null>(null);
+    const isInView = useInView(ref, { once: true });
     return (
-        <div className="w-full  px-40">
+        <motion.div
+            ref={ref}
+            initial={{
+                opacity: 0,
+                y: '20%',
+            }}
+            animate={isInView ? { opacity: 1, y: '0%' } : {}}
+            transition={{
+                duration: 1.5,
+                ease: 'easeInOut',
+            }}
+            className="w-full  px-40"
+        >
             <div className="flex-start flex-col gap-2">
                 <p className="para-style">From the blog post</p>
                 <h1 className="header-style">News & Articles</h1>
@@ -91,7 +107,7 @@ function Articles() {
                     );
                 })}
             </Swiper>
-        </div>
+        </motion.div>
     );
 }
 
