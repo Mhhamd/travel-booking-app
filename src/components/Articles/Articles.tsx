@@ -48,10 +48,9 @@ function Articles() {
                             key={blog.id}
                             className="w-full overflow-visible border shadow-lg border-black/50 rounded-lg relative"
                         >
-                            <div className="w-full relative  overflow-hidden">
+                            <div className="w-full relative overflow-hidden">
                                 <img
-                                    src={blog.image}
-                                    loading="lazy"
+                                    src={`${blog.image}?w=300&h=200&fit=crop`} // Adjust resolution dynamically
                                     className="object-cover rounded-lg object-center w-full h-[30vh]"
                                     alt={blog.title}
                                 />
