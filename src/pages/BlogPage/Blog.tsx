@@ -13,6 +13,7 @@ import {
     Pagination,
     EffectCreative,
 } from 'swiper/modules';
+import AirPlaneSVG from '../../components/shared/AirPlaneSVG';
 interface UnsplashImage {
     urls: {
         full: string;
@@ -39,26 +40,24 @@ function Blog() {
         }
         fetchAndSetImages();
     }, []);
+
     return (
         <div className="w-full ">
             <header>
                 <Header />
             </header>
             <Banner scrollTo={introRef} />
-            <div className="p-10 md:p-16 gap-10 flex flex-col items-start justify-start max-w-[100%] lg:max-w-[80%] mx-auto">
+            <div className="p-10 lg:p-16 gap-10 flex flex-col items-start justify-start max-w-[100%] xl:max-w-[85%] mx-auto">
                 <div>
-                    <h1
-                        ref={introRef}
-                        className="text-4xl md:text-5xl font-bold bg-gradient-to-r text-[#f96c50] bg-clip-text mb-6 md:mb-10"
-                    >
+                    <h1 ref={introRef} className="blog-header  mb-6 lg:mb-10">
                         Introduction
                     </h1>
-                    <p className="text-gray-700 text-lg md:text-xl font-medium leading-relaxed tracking-wide">
+                    <p className="text-gray-700 text-lg lg:text-xl font-medium leading-relaxed tracking-wide">
                         {blog.introduction}
                     </p>
                 </div>
                 <div>
-                    <h1 className="text-2xl lg:text-4xl font-bold mt-5  text-[#f96c50] ">
+                    <h1 className="blog-header font-bold mt-5  ">
                         Top Destinations
                     </h1>
                 </div>
@@ -84,30 +83,21 @@ function Blog() {
                     }}
                     loop={true}
                     speed={1000}
-                    className="w-full z-30  relative"
+                    className="w-full z-30  relative "
+                    breakpoints={{
+                        881: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                            effect: 'creative',
+                        },
+                        0: {
+                            slidesPerView: 1,
+                            spaceBetween: 20,
+                        },
+                    }}
                 >
-                    <div className="absolute -top-2 right-0">
-                        <div>
-                            <img
-                                src="/assets/airplane.png"
-                                className="absolute top-6 right-0 w-6"
-                                alt=""
-                            />
-                            <svg
-                                width="300"
-                                height="200"
-                                viewBox="0 0 300 200"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M20,150 Q100,50 200,80 T280,40"
-                                    fill="none"
-                                    stroke="#ccc"
-                                    stroke-dasharray="5,5"
-                                    stroke-width="2"
-                                />
-                            </svg>
-                        </div>
+                    <div className="absolute 881px:-top-2 881px:right-0">
+                        <AirPlaneSVG />
                     </div>
                     {blog.topDestinations.map((item, index) => {
                         return (
@@ -122,7 +112,7 @@ function Blog() {
                                         className="w-full h-70 object-center object-cover rounded-lg mb-4"
                                     />
                                 )}
-                                <h1 className="text-xl md:text-3xl font-bold text-gray-700 tracking-wide">
+                                <h1 className="text-md font-extrabold lg:font-bold lg:text-xl text-gray-700 tracking-wide">
                                     {item.title}
                                 </h1>
                                 <p className="text-gray-700  text-lg leading-relaxed mt-2">

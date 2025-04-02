@@ -6,16 +6,14 @@ import { handleScroll } from '../../utils/scrollToTop';
 
 function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
+
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 0) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
+            setIsScrolled(window.scrollY > 0);
         };
 
         window.addEventListener('scroll', handleScroll);
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -24,7 +22,7 @@ function Header() {
     return (
         <div
             className={`flex-between fixed top-0 left-0 right-0 bg-white z-50 px-[70px] transition-all duration-300 ${
-                isScrolled ? 'py-[15px] ' : 'py-[20px]'
+                isScrolled ? 'py-[15px]' : 'py-[20px]'
             }`}
         >
             <Link onClick={handleScroll} to={'/'} className="flex-center">
@@ -34,16 +32,16 @@ function Header() {
             </Link>
             <ul className="font-medium tracking-wide flex-center gap-6">
                 {navData.map((item) => (
-                    <Link
-                        to={item.link}
-                        className={`list-none relative group cursor-pointer transition-all duration-300 hover:scale-110 hover:text-[#e06149]${
-                            item.active ? ' active' : ''
-                        }`}
+                    <a
                         key={item.name}
+                        className={`list-none relative group cursor-pointer transition-all duration-300 hover:scale-110 ${
+                            item.active
+                                ? 'text-[#e06149] font-bold '
+                                : 'text-gray-700'
+                        }`}
                     >
                         {item.name}
-                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#e06149] transition-all duration-500 group-hover:w-full"></span>
-                    </Link>
+                    </a>
                 ))}
             </ul>
         </div>

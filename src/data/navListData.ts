@@ -6,12 +6,12 @@ export const navData = [
     },
     {
         name: 'Discover',
-        link: '/',
+        link: '#top',
         active: false,
     },
     {
         name: 'Flights',
-        link: '/',
+        link: '#flights',
         active: false,
     },
     {

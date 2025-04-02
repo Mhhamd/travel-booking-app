@@ -70,3 +70,11 @@ body {
 .img-hover {
     @apply hover:scale-115 transition-all duration-300 cursor-pointer;
 }
+
+.blog-header {
+    @apply text-2xl lg:text-4xl font-bold  text-[#f96c50];
+}
+
+@theme {
+    --breakpoint-881px: 881px;
+}

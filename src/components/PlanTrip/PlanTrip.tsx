@@ -20,7 +20,7 @@ function PlanTrip() {
             }}
             className="flex-start gap-12  w-[90%]"
         >
-            <div className="w-[50%] relative mask">
+            <div className="w-[50%] relative">
                 <img
                     loading="lazy"
                     className="rounded-3xl"
@@ -58,19 +58,19 @@ function PlanTrip() {
                     <div className="flex-center gap-2">
                         <IoIosCheckmarkCircle className="text-[#f96c50]" />
                         <p className="text-gray-800 font-medium">
-                            Invest in your simply neighborhood
+                            Find the best flight deals easily
                         </p>
                     </div>
                     <div className="flex-center gap-2">
                         <IoIosCheckmarkCircle className="text-[#f96c50]" />
                         <p className="text-gray-800 font-medium">
-                            Invest in your simply neighborhood
+                            Explore different destinations worldwide{' '}
                         </p>
                     </div>
                     <div className="flex-center gap-2">
                         <IoIosCheckmarkCircle className="text-[#f96c50]" />
                         <p className="text-gray-800 font-medium">
-                            Invest in your simply neighborhood
+                            Book with confidence and safety
                         </p>
                     </div>
                 </div>

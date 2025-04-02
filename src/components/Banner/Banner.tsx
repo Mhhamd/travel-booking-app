@@ -3,7 +3,7 @@ import bannervideo from '/assets/BannerVideo.mp4';
 
 function Banner() {
     return (
-        <div className="w-full  h-[740px] relative ">
+        <section id="top" className="w-full  h-[740px] relative ">
             <div className="absolute inset-0 z-10  bg-black/80 bg-blend-overlay"></div>
             <div className="w-full h-full">
                 <video
@@ -33,7 +33,7 @@ function Banner() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

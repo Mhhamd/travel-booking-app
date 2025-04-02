@@ -57,12 +57,13 @@ function IconicTravelSpots() {
     }, []);
 
     return (
-        <motion.div
+        <motion.section
+            id="flights"
             ref={ref}
             initial={{
                 opacity: 0,
                 scale: 0,
-                y: '20%',
+                y: '-20%',
             }}
             animate={isInView ? { opacity: 1, y: '0%', scale: 1 } : {}}
             transition={{
@@ -112,7 +113,7 @@ function IconicTravelSpots() {
                     ))}
                 </Swiper>
             )}
-        </motion.div>
+        </motion.section>
     );
 }
 
