@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
 import { navData } from '../../data/navListData';
 import { GiCommercialAirplane } from 'react-icons/gi';
@@ -5,11 +6,18 @@ import { Link } from 'react-router-dom';
 import { handleScroll } from '../../utils/scrollToTop';
 
 function Header() {
-    const [isScrolled, setIsScrolled] = useState(false);
-
+    const [isScrolledDown, setIsScrolledDown] = useState(false);
+    const [lastScrollY, setLastScrollY] = useState(0);
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 0);
+            // If scrolling down
+            if (window.scrollY > lastScrollY) {
+                setIsScrolledDown(true);
+            } else if (window.scrollY < lastScrollY) {
+                setIsScrolledDown(false);
+            }
+            // Update the scroll position
+            setLastScrollY(window.scrollY);
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -17,12 +25,12 @@ function Header() {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [lastScrollY]);
 
     return (
         <div
-            className={`flex-between fixed top-0 left-0 right-0 bg-white z-50 px-[70px] transition-all duration-300 ${
-                isScrolled ? 'py-[15px]' : 'py-[20px]'
+            className={`flex-between fixed top-0 py-[20px] left-0 right-0 bg-white z-50 px-[70px] transition-all duration-300 ${
+                isScrolledDown ? '-translate-y-full' : 'translate-y-0'
             }`}
         >
             <Link onClick={handleScroll} to={'/'} className="flex-center">
