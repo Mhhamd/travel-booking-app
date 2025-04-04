@@ -22,9 +22,10 @@ function PopularResults() {
                         <h1 className="font-bold tracking-widest col-span-full">
                             {destinations.length} trips available
                         </h1>
-                        {destinations.map((destination) => (
+                        {destinations.map((destination, index) => (
                             <div className="flex-center mb-50">
                                 <FlightCard
+                                    id={index}
                                     image={destination.image?.urls.small}
                                     arrivalCity={destination.arrivalCity}
                                     arrivalCountry={destination.arrivalCountry}

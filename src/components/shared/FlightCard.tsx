@@ -11,6 +11,7 @@ interface Card {
     departureCountry: string;
     duration: number;
     seatsAvailable: number;
+    id: number;
 }
 
 function FlightCard(props: Card) {
@@ -66,7 +67,14 @@ function FlightCard(props: Card) {
                                 {props.seatsAvailable} Seats Left
                             </span>
                         </p>
-                        <p className="flex-center font-bold gap-2 text-sm btn-hover cursor-pointer transition-all duration-500 text-[#ff6b6b]">
+                        <p
+                            onClick={() => {
+                                if (props.id === props.id) {
+                                    console.log(props);
+                                }
+                            }}
+                            className="flex-center font-bold gap-2 text-sm btn-hover cursor-pointer transition-all duration-500 text-[#ff6b6b]"
+                        >
                             explore <FaArrowRightLong />
                         </p>
                     </div>

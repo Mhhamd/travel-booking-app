@@ -10,13 +10,11 @@ function Header() {
     const [lastScrollY, setLastScrollY] = useState(0);
     useEffect(() => {
         const handleScroll = () => {
-            // If scrolling down
             if (window.scrollY > lastScrollY) {
                 setIsScrolledDown(true);
             } else if (window.scrollY < lastScrollY) {
                 setIsScrolledDown(false);
             }
-            // Update the scroll position
             setLastScrollY(window.scrollY);
         };
 

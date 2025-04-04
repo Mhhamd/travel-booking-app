@@ -2,6 +2,7 @@ import { BlogPost } from '../types/blogType';
 
 export const blogPosts: BlogPost[] = [
     {
+        country: 'Japan',
         id: 1,
         title: 'Things to See and Do When Visiting Japan',
         author: 'Admin',
@@ -153,6 +154,7 @@ export const blogPosts: BlogPost[] = [
             'Japan is a country that captivates travelers with its balance of modern innovation and rich traditions. Whether you’re exploring the neon streets of Tokyo or finding peace in a Kyoto temple, your journey will be unforgettable.',
     },
     {
+        country: 'South Korea',
         id: 2,
         title: 'The Magic of Autumn in South Korea',
         author: 'Admin',
@@ -277,6 +279,7 @@ export const blogPosts: BlogPost[] = [
             'South Korea in autumn is like stepping into a painting. Whether you’re exploring palaces in Seoul, hiking through Seoraksan, or experiencing local traditions in Jeonju, the season offers breathtaking beauty and rich cultural experiences.',
     },
     {
+        country: 'Thailand',
         id: 3,
         title: 'Exploring the Hidden Gems of Thailand',
         author: 'Admin',
@@ -399,6 +402,7 @@ export const blogPosts: BlogPost[] = [
             'Thailand’s hidden gems offer a deeper, more authentic experience beyond the usual tourist spots. Whether you’re seeking adventure, culture, or relaxation, this beautiful country has something for everyone.',
     },
     {
+        country: 'Italy',
         id: 4,
         title: 'A Journey Through the Historic Wonders of Italy',
         author: 'Admin',

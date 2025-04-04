@@ -21,6 +21,7 @@ type TravelTip = {
 };
 
 export type BlogPost = {
+    country: string;
     id: number;
     title: string;
     author: string;
