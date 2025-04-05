@@ -6,13 +6,15 @@ import Banner from './BlogBanner/Banner';
 import { BlogPost } from '../../types/blogType';
 import { useEffect, useRef, useState } from 'react';
 import { fetchImages } from '../../utils/fetchImages';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import Footer from '../../components/Footer/Footer';
 
 function Blog() {
     const params = useParams();
     const blogs: BlogPost[] = blogPosts;
     const currentBlog = blogs.find((blog) => blog.id === Number(params.id));
-
+    const targetRef = useRef(null);
+    const isInView = useInView(targetRef, { once: true });
     return (
         <div className="w-full">
             <header>
@@ -28,10 +30,30 @@ function Blog() {
             <div className="h-[120vh] relative">
                 <TopDestinationIntro />
             </div>
-            <div></div>
-            <TopDestinations
-                topDestinations={currentBlog?.topDestinations ?? []}
-            />
+            <div>
+                <TopDestinations
+                    topDestinations={currentBlog?.topDestinations ?? []}
+                />
+            </div>
+            <motion.div
+                ref={targetRef}
+                initial={{
+                    opacity: 0,
+                    y: '20%',
+                }}
+                animate={isInView ? { opacity: 1, y: '0%' } : {}}
+                transition={{
+                    duration: 1.5,
+                    ease: 'easeInOut',
+                }}
+                className="w-full h-[50vh] flex items-start flex-col  justify-start p-15 mt-10"
+            >
+                <h1 className="header-style">final Thoughts</h1>
+                <p className="mt-10 text-xl tracking-widest max-w-300 text-gray-700 leading-10 font-medium">
+                    {currentBlog?.finalThoughts}
+                </p>
+            </motion.div>
+            <Footer />
         </div>
     );
 }
@@ -159,11 +181,12 @@ function TopDestinations({ topDestinations }: TopDestinationProps) {
     return (
         <div className="w-full ">
             {topDestinations.map((item, index) => {
+                const cityLocation = item.title.trim().split(' ')[0];
                 return (
                     <div>
                         <div key={index} className="relative w-full h-[130vh]">
                             {/* Background Image */}
-                            <SetBackgroundImage fetchImg={item.title} />
+                            <SetBackgroundImage fetchImg={cityLocation} />
                             <TopDestinationsText
                                 title={item.title}
                                 titleDescription={item.titleDescription}

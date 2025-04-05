@@ -295,7 +295,7 @@ export const blogPosts: BlogPost[] = [
             'Thailand is known for its bustling cities, stunning beaches, and rich culture. But beyond the famous attractions, hidden gems await travelers willing to go off the beaten path. From ancient temples lost in the jungle to secret islands, Thailand offers more than meets the eye.',
         topDestinations: [
             {
-                title: '1. Bangkok – The Vibrant Capital',
+                title: 'Bangkok – The Vibrant Capital',
                 titleDescription: 'A city where history and modernity collide.',
 
                 mustSee: [
@@ -315,7 +315,7 @@ export const blogPosts: BlogPost[] = [
                 ],
             },
             {
-                title: '2. Chiang Mai – The Cultural Hub',
+                title: 'Chiang Mai – The Cultural Hub',
                 titleDescription:
                     'Surrounded by misty mountains, Chiang Mai is rich in history and tradition.',
                 mustSee: [
@@ -336,7 +336,7 @@ export const blogPosts: BlogPost[] = [
                 ],
             },
             {
-                title: '3. Krabi – Thailand’s Secret Paradise',
+                title: 'Krabi – Thailand’s Secret Paradise',
                 titleDescription:
                     'Less crowded than Phuket, but just as stunning.',
                 mustSee: [
