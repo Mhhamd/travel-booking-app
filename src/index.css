@@ -78,7 +78,3 @@ body {
 @theme {
     --breakpoint-881px: 881px;
 }
-
-body {
-    height: 500vh;
-}

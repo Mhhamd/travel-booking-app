@@ -8,32 +8,10 @@ import { useEffect, useRef, useState } from 'react';
 import { fetchImages } from '../../utils/fetchImages';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-interface UnsplashImage {
-    urls: {
-        full: string;
-        small: string;
-    };
-}
-
 function Blog() {
     const params = useParams();
     const blogs: BlogPost[] = blogPosts;
-    const currentBlog = blogs.filter((blog) => blog.id === Number(params.id));
-    const blog = currentBlog[0];
-    const [, setTitleImage] = useState<UnsplashImage[]>([]);
-
-    useEffect(() => {
-        async function fetchAndSetImages() {
-            const results: UnsplashImage[] = await Promise.all(
-                blog.topDestinations.map((item) => {
-                    const image = fetchImages(item.title);
-                    return image;
-                })
-            );
-            setTitleImage(results);
-        }
-        fetchAndSetImages();
-    }, []);
+    const currentBlog = blogs.find((blog) => blog.id === Number(params.id));
 
     return (
         <div className="w-full">
@@ -42,97 +20,28 @@ function Blog() {
             </header>
             <Banner />
             <div className="h-[120vh] relative">
-                <IntroductionSection introduction={blog.introduction} />
+                <IntroductionSection
+                    imgUrl={currentBlog?.country ?? ''}
+                    introduction={currentBlog?.introduction ?? ''}
+                />
             </div>
-            {/* <div className="p-10 lg:p-16 gap-10 flex flex-col items-start justify-start max-w-[100%] xl:max-w-[85%] mx-auto">
-                <div>
-                    <h1 className="blog-header font-bold mt-5  ">
-                        Top Destinations
-                    </h1>
-                </div>
-                <Swiper
-                    modules={[Navigation, Pagination, Autoplay, EffectCreative]}
-                    effect="creative"
-                    creativeEffect={{
-                        prev: {
-                            shadow: true,
-                            translate: ['-120%', 0, -500],
-                        },
-                        next: {
-                            shadow: true,
-                            translate: ['120%', 0, -500],
-                        },
-                    }}
-                    spaceBetween={20}
-                    slidesPerView={2}
-                    pagination={false}
-                    autoplay={{
-                        delay: 5000,
-                        disableOnInteraction: false,
-                    }}
-                    loop={true}
-                    speed={1000}
-                    className="w-full z-30  relative "
-                    breakpoints={{
-                        881: {
-                            slidesPerView: 2,
-                            spaceBetween: 20,
-                            effect: 'creative',
-                        },
-                        0: {
-                            slidesPerView: 1,
-                            spaceBetween: 20,
-                        },
-                    }}
-                >
-                    <div className="absolute 881px:-top-2 881px:right-0">
-                        <AirPlaneSVG />
-                    </div>
-                    {/* {blog.topDestinations.map((item, index) => {
-                        return (
-                            <SwiperSlide
-                                key={index}
-                                className="bg-gray-50 h-[100vh] p-6 w-[80%] rounded-xl shadow-md border-l-4 mb-7 border-[#f96c50]"
-                            >
-                                {titleImage[index] && (
-                                    <img
-                                        src={titleImage[index].urls.full}
-                                        alt={item.title}
-                                        className="w-full h-70 object-center object-cover rounded-lg mb-4"
-                                    />
-                                )}
-                                <h1 className="text-md font-extrabold lg:font-bold lg:text-xl text-gray-700 tracking-wide">
-                                    {item.title}
-                                </h1>
-                                <p className="text-gray-700  text-lg leading-relaxed mt-2">
-                                    {item.titleDescription}
-                                </p>
-
-                                <ul className="ml-6 list-disc text-gray-600">
-                                    {item.mustSee.map((place, idx) => (
-                                        <li key={idx} className="mt-2 ">
-                                            <span className="font-bold text-gray-700">
-                                                {place.name}:
-                                            </span>{' '}
-                                            {place.whyVisit}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </SwiperSlide>
-                        );
-                    })}
-                </Swiper>
-            </div> */}
+            <div className="h-[120vh] relative">
+                <TopDestinationIntro />
+            </div>
+            <div></div>
+            <TopDestinations
+                topDestinations={currentBlog?.topDestinations ?? []}
+            />
         </div>
     );
 }
 
-function IntroductionImage() {
-    const params = useParams();
+type BackgroundImage = {
+    fetchImg: string;
+};
+
+function SetBackgroundImage({ fetchImg }: BackgroundImage) {
     const [introImage, setIntroImage] = useState('');
-    const blogs: BlogPost[] = blogPosts;
-    const currentBlog = blogs.filter((blog) => blog.id === Number(params.id));
-    const blog = currentBlog[0];
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: targetRef,
@@ -142,7 +51,7 @@ function IntroductionImage() {
     const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
     useEffect(() => {
         async function fetchAndSet() {
-            const image = await fetchImages(blog.country);
+            const image = await fetchImages(fetchImg);
             setIntroImage(image.urls.full);
         }
         fetchAndSet();
@@ -155,13 +64,14 @@ function IntroductionImage() {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 scale,
+                willChange: scale,
             }}
             className="sticky top-0 w-full h-screen  z-[-1]"
         >
-            {' '}
             <motion.div
                 style={{
                     opacity,
+                    willChange: opacity,
                 }}
                 className="absolute inset-0 bg-neutral-950/80"
             />
@@ -169,7 +79,13 @@ function IntroductionImage() {
     );
 }
 
-function IntroductionSection({ introduction }: { introduction: string }) {
+function IntroductionSection({
+    introduction,
+    imgUrl,
+}: {
+    introduction: string;
+    imgUrl: string;
+}) {
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: targetRef,
@@ -180,7 +96,7 @@ function IntroductionSection({ introduction }: { introduction: string }) {
 
     return (
         <div className="w-full h-full">
-            <IntroductionImage />
+            <SetBackgroundImage fetchImg={imgUrl} />
             <motion.div
                 ref={targetRef}
                 style={{
@@ -197,6 +113,143 @@ function IntroductionSection({ introduction }: { introduction: string }) {
                 </p>
             </motion.div>
         </div>
+    );
+}
+
+function TopDestinationIntro() {
+    const targetRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: targetRef,
+        offset: ['start end', 'end start'],
+    });
+    const y = useTransform(scrollYProgress, [0, 1], [250, -250]);
+    const opacity = useTransform(scrollYProgress, [0.25, 0.5, 0.75], [0, 1, 0]);
+    return (
+        <div className="w-full h-full">
+            <SetBackgroundImage fetchImg="airplane window" />
+            <motion.div
+                ref={targetRef}
+                style={{
+                    opacity,
+                    y,
+                }}
+                className="absolute p-10 left-0 top-0 w-full justify-center flex items-center h-screen flex-col  z-30"
+            >
+                <h1 className="text-white text-3xl md:text-4xl font-bold  mb-6 lg:mb-5">
+                    Top Destinations
+                </h1>
+                <p className="text-white/80 text-md md:text-lg font-medium leading-relaxed tracking-wide">
+                    Ready for your next escape? Discover where fellow travelers
+                    are heading and get inspired for your next big journey.
+                </p>
+            </motion.div>
+        </div>
+    );
+}
+
+type TopDestinationProps = {
+    topDestinations: {
+        title: string;
+        titleDescription: string;
+        mustSee: { name: string; whyVisit: string }[];
+    }[];
+};
+
+function TopDestinations({ topDestinations }: TopDestinationProps) {
+    return (
+        <div className="w-full ">
+            {topDestinations.map((item, index) => {
+                return (
+                    <div>
+                        <div key={index} className="relative w-full h-[130vh]">
+                            {/* Background Image */}
+                            <SetBackgroundImage fetchImg={item.title} />
+                            <TopDestinationsText
+                                title={item.title}
+                                titleDescription={item.titleDescription}
+                                mustSeeItems={item.mustSee}
+                            />
+                        </div>
+                    </div>
+                );
+            })}
+        </div>
+    );
+}
+
+type MustSeeProps = {
+    mustSeeItems: { name: string; whyVisit: string }[];
+    title: string;
+    titleDescription: string;
+};
+
+function TopDestinationsText({
+    title,
+    titleDescription,
+    mustSeeItems,
+}: MustSeeProps) {
+    const targetRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: targetRef,
+        offset: ['start end', 'end start'],
+    });
+    const y = useTransform(scrollYProgress, [0, 1], [250, -250]);
+    const opacity = useTransform(scrollYProgress, [0.25, 0.5, 0.75], [0, 1, 0]);
+    const cityLocation = title.trim().split(' ')[0];
+    const citySplit = title.trim().split('–')[1];
+    return (
+        <motion.div
+            ref={targetRef}
+            style={{
+                opacity,
+                y,
+                willChange: 'transform, opacity', // Hint to the browser
+            }}
+            className="absolute p-10 left-0 top-0 w-full h-full flex justify-center items-center flex-col z-30"
+        >
+            <h1 className="text-white text-3xl md:text-6xl font-bold mb-6 lg:mb-5">
+                {cityLocation}
+            </h1>
+            <h1 className="text-white text-md md:text-lg font-medium mb-6 lg:mb-5">
+                {citySplit}
+            </h1>
+            <p className="text-[#f96c50] text-md md:text-lg font-medium leading-relaxed tracking-wide">
+                {titleDescription}
+            </p>
+
+            <div className="flex-center flex-col mt-12 w-full">
+                <h1 className="text-white mt-7 capitalize font-bold tracking-widest mb-7 text-2xl">
+                    Top Attractions in {cityLocation}
+                </h1>
+                <ul className="list-disc flex-col text-white/80">
+                    {mustSeeItems.map((place, placeIdx) => (
+                        <li key={placeIdx} className="mt-5">
+                            <span className="font-bold tracking-wider text-white ">
+                                {place.name}:
+                            </span>{' '}
+                            {place.whyVisit}
+                        </li>
+                    ))}
+                </ul>
+                <motion.button
+                    whileHover={{
+                        scale: 1.05,
+                        opacity: 1,
+                    }}
+                    whileTap={{
+                        scale: 1,
+                    }}
+                    transition={{
+                        duration: 0.125,
+                        ease: 'easeInOut',
+                    }}
+                    className="text-white font-semibold tracking-widest py-4 w-70 rounded-sm bg-[#f96c50]
+           hover:cursor-pointer hover:opacity-80 transition-opacity duration-300 mt-10"
+                >
+                    Save to itinerary
+                </motion.button>
+            </div>
+        </motion.div>
     );
 }
 

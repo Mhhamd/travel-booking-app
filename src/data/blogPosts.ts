@@ -18,7 +18,7 @@ export const blogPosts: BlogPost[] = [
             "Japan is a country where ancient traditions meet cutting-edge technology. Whether you're captivated by the neon-lit streets of Tokyo, the historical beauty of Kyoto, or the natural landscapes of Hokkaido, Japan offers something unique for every traveler. In this guide, we’ll explore the must-visit locations, cultural experiences, and travel tips to make your trip unforgettable.",
         topDestinations: [
             {
-                title: '1. Tokyo – The Futuristic Capital',
+                title: 'Tokyo – The Futuristic Capital',
                 titleDescription:
                     'As one of the world’s most advanced cities, Tokyo is a blend of high-tech innovation and deep-rooted traditions.',
                 mustSee: [
@@ -45,7 +45,7 @@ export const blogPosts: BlogPost[] = [
                 ],
             },
             {
-                title: '2. Kyoto – The Heart of Japanese Tradition',
+                title: 'Kyoto – The Heart of Japanese Tradition',
                 titleDescription:
                     'Kyoto, the former capital of Japan, is home to breathtaking temples, shrines, and traditional geisha culture.',
                 mustSee: [
@@ -66,7 +66,7 @@ export const blogPosts: BlogPost[] = [
                 ],
             },
             {
-                title: '3. Osaka – The Food Capital',
+                title: 'Osaka – The Food Capital',
                 titleDescription:
                     'Known for its vibrant nightlife and incredible street food, Osaka is a must-visit for food lovers.',
                 mustSee: [
@@ -87,7 +87,7 @@ export const blogPosts: BlogPost[] = [
                 ],
             },
             {
-                title: '4. Hokkaido – Nature Lover’s Paradise',
+                title: 'Hokkaido – Nature Lover’s Paradise',
                 titleDescription:
                     'If you love outdoor adventures, Hokkaido is the perfect destination.',
                 mustSee: [
@@ -111,7 +111,7 @@ export const blogPosts: BlogPost[] = [
         ],
         culture: [
             {
-                title: '🎎 1. Try a Traditional Tea Ceremony',
+                title: '🎎 Try a Traditional Tea Ceremony',
                 tips: [
                     {
                         tip: 'Participate in an authentic Japanese tea ceremony in Kyoto.',
@@ -122,7 +122,7 @@ export const blogPosts: BlogPost[] = [
                 ],
             },
             {
-                title: '🛏️ 2. Stay in a Ryokan (Traditional Inn)',
+                title: '🛏️ Stay in a Ryokan (Traditional Inn)',
                 tips: [
                     {
                         tip: 'Experience traditional Japanese hospitality in a ryokan.',
@@ -168,7 +168,7 @@ export const blogPosts: BlogPost[] = [
         introduction: `Autumn in South Korea is a breathtaking experience, with landscapes painted in shades of fiery red, orange, and yellow. From serene palace gardens in Seoul to the golden forests of Seoraksan National Park, this season transforms the country into a visual masterpiece. Whether you're a nature lover, a cultural explorer, or a foodie, fall is the best time to visit South Korea.`,
         topDestinations: [
             {
-                title: '1. Seoul – A City of Contrast',
+                title: 'Seoul – A City of Contrast',
                 titleDescription:
                     'A blend of ancient history and modern technology, Seoul is stunning in autumn.',
                 mustSee: [
@@ -190,7 +190,7 @@ export const blogPosts: BlogPost[] = [
                 ],
             },
             {
-                title: '2. Seoraksan National Park – The Best Fall Hike',
+                title: 'Seoraksan National Park – The Best Fall Hike',
                 titleDescription:
                     'One of Korea’s most famous destinations for autumn foliage.',
                 mustSee: [
@@ -211,7 +211,7 @@ export const blogPosts: BlogPost[] = [
                 ],
             },
             {
-                title: '3. Jeonju – The Heart of Korean Tradition',
+                title: 'Jeonju – The Heart of Korean Tradition',
                 titleDescription:
                     'Home to Korea’s best-preserved hanok village and a UNESCO City of Gastronomy.',
                 mustSee: [
@@ -417,7 +417,7 @@ export const blogPosts: BlogPost[] = [
         introduction: `Italy is a land of history, art, and breathtaking landscapes. From the Roman ruins of Rome to the canals of Venice, every city tells a unique story. Whether you're indulging in authentic Italian cuisine or admiring Renaissance masterpieces, Italy is a dream destination.`,
         topDestinations: [
             {
-                title: '1. Rome – The Eternal City',
+                title: 'Rome – The Eternal City',
                 titleDescription: 'A city where history comes alive.',
                 mustSee: [
                     {
@@ -437,7 +437,7 @@ export const blogPosts: BlogPost[] = [
                 ],
             },
             {
-                title: '2. Florence – The Cradle of the Renaissance',
+                title: 'Florence – The Cradle of the Renaissance',
                 titleDescription:
                     'A city of art, culture, and stunning architecture.',
                 mustSee: [
@@ -458,7 +458,7 @@ export const blogPosts: BlogPost[] = [
                 ],
             },
             {
-                title: '3. Venice – The City of Canals',
+                title: 'Venice – The City of Canals',
                 titleDescription: 'A romantic and mysterious city.',
                 mustSee: [
                     {
