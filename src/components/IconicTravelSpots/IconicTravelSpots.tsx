@@ -24,6 +24,8 @@ interface Destination {
     duration: number;
     seatsAvailable: number;
     image: UnsplashImage | null;
+    airLine: string;
+    class: string;
 }
 
 function IconicTravelSpots() {
@@ -47,6 +49,8 @@ function IconicTravelSpots() {
                         departureCountry: item.departure_country,
                         duration: item.duration,
                         seatsAvailable: item.seats_available,
+                        airLine: item.airline,
+                        class: item.class,
                         image,
                     };
                 })
@@ -101,6 +105,9 @@ function IconicTravelSpots() {
                     {destinations.map((destination, index) => (
                         <SwiperSlide key={index}>
                             <FlightCard
+                                class={destination.class}
+                                airLine={destination.airLine}
+                                id={index}
                                 image={destination.image?.urls.small}
                                 arrivalCity={destination.arrivalCity}
                                 arrivalCountry={destination.arrivalCountry}

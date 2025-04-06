@@ -40,7 +40,7 @@ function Articles() {
                 }}
                 loop={true}
                 speed={800}
-                className="w-full z-30 mt-5 flex items-center overflow-visible  h-[60vh]  justify-center "
+                className="w-full z-30 mt-5 flex items-center overflow-visible h-[60vh]  justify-center "
             >
                 {blogPosts.map((blog) => {
                     return (

@@ -19,6 +19,7 @@ interface Destination {
     duration: number;
     seatsAvailable: number;
     airLine: string;
+    class: string;
     image: UnsplashImage | null;
 }
 
@@ -30,6 +31,7 @@ interface DataTypes {
     duration: number;
     seats_available: number;
     airline: string;
+    class: string;
 }
 
 export function useDestinations(filterByBoth: boolean = false) {
@@ -57,6 +59,7 @@ export function useDestinations(filterByBoth: boolean = false) {
                         duration: item.duration,
                         seatsAvailable: item.seats_available,
                         airLine: item.airline,
+                        class: item.class,
                         image,
                     };
                 })

@@ -2,6 +2,9 @@ import { CiClock1 } from 'react-icons/ci';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { IoLocation } from 'react-icons/io5';
 import { MdGroup } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFlight } from '../../state/slices/flightSlice';
+import { RootState } from '../../state/store';
 
 interface Card {
     image: string | undefined;
@@ -12,9 +15,13 @@ interface Card {
     duration: number;
     seatsAvailable: number;
     id: number;
+    airLine: string;
+    class: string;
 }
 
 function FlightCard(props: Card) {
+    const flights = useSelector((state: RootState) => state.selectedFlight);
+    const dispatch = useDispatch();
     const randomPrice = (min = 100, max = 300) => {
         return (Math.random() * (max - min) + min).toFixed(2);
     };
@@ -70,7 +77,8 @@ function FlightCard(props: Card) {
                         <p
                             onClick={() => {
                                 if (props.id === props.id) {
-                                    console.log(props);
+                                    dispatch(addFlight(props));
+                                    console.log(flights);
                                 }
                             }}
                             className="flex-center font-bold gap-2 text-sm btn-hover cursor-pointer transition-all duration-500 text-[#ff6b6b]"
