@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { blogPosts } from '../../data/blogPosts';
 import Header from '../../components/Header/Header';
 import Banner from './BlogBanner/Banner';
@@ -8,6 +8,9 @@ import { useEffect, useRef, useState } from 'react';
 import { fetchImages } from '../../utils/fetchImages';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import Footer from '../../components/Footer/Footer';
+import { handleScroll } from '../../utils/scrollToTop';
+
+const MotionLink = motion(Link);
 
 function Blog() {
     const params = useParams();
@@ -15,6 +18,7 @@ function Blog() {
     const currentBlog = blogs.find((blog) => blog.id === Number(params.id));
     const targetRef = useRef(null);
     const isInView = useInView(targetRef, { once: true });
+
     return (
         <div className="w-full">
             <header>
@@ -46,12 +50,32 @@ function Blog() {
                     duration: 1.5,
                     ease: 'easeInOut',
                 }}
-                className="w-full h-[50vh] flex items-start flex-col  justify-start p-15 mt-10"
+                className="w-full h-[50vh] flex items-start flex-col mb-12 justify-start p-15 mt-10"
             >
                 <h1 className="header-style">final Thoughts</h1>
                 <p className="mt-10 text-xl tracking-widest max-w-300 text-gray-700 leading-10 font-medium">
                     {currentBlog?.finalThoughts}
                 </p>
+                <div className="flex-center  w-full mt-10">
+                    <MotionLink
+                        to={'/'}
+                        onClick={handleScroll}
+                        whileHover={{
+                            scale: 1.05,
+                            opacity: 1,
+                        }}
+                        whileTap={{
+                            scale: 1,
+                        }}
+                        transition={{
+                            duration: 0.125,
+                            ease: 'easeInOut',
+                        }}
+                        className="btn-style"
+                    >
+                        Book Now
+                    </MotionLink>
+                </div>
             </motion.div>
             <Footer />
         </div>
@@ -183,8 +207,8 @@ function TopDestinations({ topDestinations }: TopDestinationProps) {
             {topDestinations.map((item, index) => {
                 const cityLocation = item.title.trim().split(' ')[0];
                 return (
-                    <div>
-                        <div key={index} className="relative w-full h-[130vh]">
+                    <div key={index}>
+                        <div className="relative w-full h-[130vh]">
                             {/* Background Image */}
                             <SetBackgroundImage fetchImg={cityLocation} />
                             <TopDestinationsText

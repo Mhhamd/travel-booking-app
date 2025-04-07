@@ -3,6 +3,7 @@ import App from '../App';
 import SearchResults from '../pages/SearchPage/SearchResults';
 import PopularResults from '../pages/PopularResultsPage/PopularResults';
 import Blog from '../pages/BlogPage/Blog';
+import Flight from '../pages/FlightPage/Flight';
 
 export const router = createBrowserRouter([
     {
@@ -20,5 +21,9 @@ export const router = createBrowserRouter([
     {
         path: '/blog/:id/',
         element: <Blog />,
+    },
+    {
+        path: '/flight/:flightId',
+        element: <Flight />,
     },
 ]);

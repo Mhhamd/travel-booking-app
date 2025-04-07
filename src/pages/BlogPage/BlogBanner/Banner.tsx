@@ -11,7 +11,7 @@ function Banner() {
     const blog = currentBlog[0];
     return (
         <div className="relative h-[120vh]">
-            <StickyImage imgUrl={blog.image} />
+            <StickyImage imgUrl={blog.highImage} />
             <OverLayCopy
                 title={blog.title}
                 author={blog.author}

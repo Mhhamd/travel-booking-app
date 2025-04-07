@@ -13,14 +13,25 @@ interface FlightState {
     class: string;
 }
 
-const initialState: FlightState[] = [];
+const initialState: FlightState = {
+    airLine: '',
+    arrivalCity: '',
+    arrivalCountry: '',
+    departureCity: '',
+    departureCountry: '',
+    duration: 0,
+    id: 0,
+    image: '',
+    seatsAvailable: 0,
+    class: '',
+};
 
 const flightsSlice = createSlice({
     name: 'flights',
     initialState,
     reducers: {
         addFlight: (state, action: PayloadAction<FlightState>) => {
-            state.push(action.payload);
+            return { ...action.payload };
         },
     },
 });

@@ -14,6 +14,7 @@ export const blogPosts: BlogPost[] = [
         fullDescription:
             'Japan is a country rich in history, culture, and breathtaking scenery. From the bustling streets of Tokyo to the serene temples of Kyoto, there is something for every traveler.',
         image: '/assets/japanblog.jpg',
+        highImage: '/assets/highjapanblog.jpg',
         introduction:
             "Japan is a country where ancient traditions meet cutting-edge technology. Whether you're captivated by the neon-lit streets of Tokyo, the historical beauty of Kyoto, or the natural landscapes of Hokkaido, Japan offers something unique for every traveler. In this guide, we’ll explore the must-visit locations, cultural experiences, and travel tips to make your trip unforgettable.",
         topDestinations: [
@@ -165,6 +166,8 @@ export const blogPosts: BlogPost[] = [
             'Autumn in South Korea is a breathtaking season, with landscapes...',
         fullDescription: `Autumn in South Korea is a breathtaking season, with landscapes painted in shades of red, orange, and yellow. Whether you're strolling through ancient palaces or hiking in national parks, the beauty of fall is everywhere.`,
         image: '/assets/koreablog.jpg',
+        highImage: '/assets/highkoreablog.jpg',
+
         introduction: `Autumn in South Korea is a breathtaking experience, with landscapes painted in shades of fiery red, orange, and yellow. From serene palace gardens in Seoul to the golden forests of Seoraksan National Park, this season transforms the country into a visual masterpiece. Whether you're a nature lover, a cultural explorer, or a foodie, fall is the best time to visit South Korea.`,
         topDestinations: [
             {
@@ -291,6 +294,8 @@ export const blogPosts: BlogPost[] = [
         fullDescription:
             'Thailand is famous for its stunning beaches, vibrant cities, and rich culture, but beyond the well-known tourist spots, there are hidden gems waiting to be explored.',
         image: '/assets/thailandblog.jpg',
+        highImage: '/assets/highthailandblog.jpg',
+
         introduction:
             'Thailand is known for its bustling cities, stunning beaches, and rich culture. But beyond the famous attractions, hidden gems await travelers willing to go off the beaten path. From ancient temples lost in the jungle to secret islands, Thailand offers more than meets the eye.',
         topDestinations: [
@@ -414,6 +419,8 @@ export const blogPosts: BlogPost[] = [
         fullDescription:
             'Italy is a land of history, art, and breathtaking architecture, where every city tells a unique story. From ancient ruins to Renaissance masterpieces, there’s no shortage of wonders to explore.',
         image: '/assets/italyblog.jpg',
+        highImage: '/assets/highitalyblog.jpg',
+
         introduction: `Italy is a land of history, art, and breathtaking landscapes. From the Roman ruins of Rome to the canals of Venice, every city tells a unique story. Whether you're indulging in authentic Italian cuisine or admiring Renaissance masterpieces, Italy is a dream destination.`,
         topDestinations: [
             {

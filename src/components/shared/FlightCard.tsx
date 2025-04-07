@@ -2,9 +2,11 @@ import { CiClock1 } from 'react-icons/ci';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { IoLocation } from 'react-icons/io5';
 import { MdGroup } from 'react-icons/md';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addFlight } from '../../state/slices/flightSlice';
-import { RootState } from '../../state/store';
+import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
+import { handleScroll } from '../../utils/scrollToTop';
 
 interface Card {
     image: string | undefined;
@@ -20,11 +22,10 @@ interface Card {
 }
 
 function FlightCard(props: Card) {
-    const flights = useSelector((state: RootState) => state.selectedFlight);
     const dispatch = useDispatch();
-    const randomPrice = (min = 100, max = 300) => {
+    const randomPrice = useMemo((min = 100, max = 300) => {
         return (Math.random() * (max - min) + min).toFixed(2);
-    };
+    }, []);
     return (
         <div className="w-full rounded-xl h-62 shadow-xl hover:shadow-[rgba(53,53,56,0.5)] transition-all  duration-500 relative  ">
             <img
@@ -59,7 +60,7 @@ function FlightCard(props: Card) {
                     </div>
                     <p className="text-gray-400 mt-2 tracking-wider">
                         From{' '}
-                        <span className="text-[#ff6b6b]">${randomPrice()}</span>
+                        <span className="text-[#ff6b6b]">${randomPrice}</span>
                     </p>
                     <div className="bg-gray-200 mt-4 p-2 flex-between">
                         <p className="flex-center font-extrabold gap-2 text-sm text-[#ff6b6b]">
@@ -74,17 +75,18 @@ function FlightCard(props: Card) {
                                 {props.seatsAvailable} Seats Left
                             </span>
                         </p>
-                        <p
+                        <Link
+                            to={`/flight/` + props.id}
                             onClick={() => {
                                 if (props.id === props.id) {
                                     dispatch(addFlight(props));
-                                    console.log(flights);
+                                    handleScroll();
                                 }
                             }}
                             className="flex-center font-bold gap-2 text-sm btn-hover cursor-pointer transition-all duration-500 text-[#ff6b6b]"
                         >
-                            explore <FaArrowRightLong />
-                        </p>
+                            View <FaArrowRightLong />
+                        </Link>
                     </div>
                 </div>
             </div>

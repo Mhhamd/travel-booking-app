@@ -32,6 +32,7 @@ export type BlogPost = {
     fullDescription: string;
     finalThoughts: string;
     image: string;
+    highImage: string;
     introduction: string;
     topDestinations: TopDestination[];
     culture: CultureItem[]; // Add this
