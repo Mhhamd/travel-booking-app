@@ -83,9 +83,9 @@ function FlightCard(props: Card) {
                                     handleScroll();
                                 }
                             }}
-                            className="flex-center font-bold gap-2 text-sm btn-hover cursor-pointer transition-all duration-500 text-[#ff6b6b]"
+                            className="flex-center font-bold gap-2 text-sm btn-hover cursor-pointer transition-all duration-500 text-[#ff6b6b] hover:scale-105 hover:opacity-80"
                         >
-                            View <FaArrowRightLong />
+                            View Trip <FaArrowRightLong />
                         </Link>
                     </div>
                 </div>

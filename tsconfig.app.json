@@ -7,6 +7,8 @@
         "module": "ESNext",
         "skipLibCheck": true,
         "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true, // Add this
+        "types": ["vite/client"], // If using Vite
 
         /* Bundler mode */
         "moduleResolution": "node",
