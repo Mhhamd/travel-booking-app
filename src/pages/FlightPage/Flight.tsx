@@ -12,7 +12,7 @@ import Footer from '../../components/Footer/Footer';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
-import successAnimation from '../../../public/assets/successAnimation.json';
+import successAnimation from '../../assets/successAnimation.json';
 import { handleScroll } from '../../utils/scrollToTop';
 
 type InputField = {
@@ -73,7 +73,6 @@ function Flight() {
                 id: 'passport',
                 name: 'passport', // Added name attribute
                 type: 'text',
-                pattern: '[A-Za-z0-9]{6,9}',
                 maxLength: 9,
                 placeHolder: 'e.g., A12345678',
                 title: 'Enter a valid Passport number',
@@ -96,8 +95,6 @@ function Flight() {
                 id: 'phone',
                 name: 'phone', // Added name attribute
                 type: 'tel',
-                pattern:
-                    '^?[0-9]{1,4}?[-.]?[0-9]{1,4}[-.]?[0-9]{1,4}[-.]?[0-9]{1,9}$',
                 placeHolder: 'e.g., +123 456 7890',
                 title: 'Enter a valid phone number',
                 value: inputValues.phone,

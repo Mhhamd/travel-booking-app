@@ -4,7 +4,7 @@ import bannervideo from '/assets/BannerVideo.mp4';
 function Banner() {
     return (
         <section id="top" className="w-full  h-[740px] relative ">
-            <div className="absolute inset-0 z-10  bg-black/80 bg-blend-overlay"></div>
+            <div className="absolute inset-0 z-10  bg-black/70"></div>
             <div className="w-full h-full">
                 <video
                     className="w-full h-full -z-10 object-cover object-center"
@@ -25,7 +25,7 @@ function Banner() {
                     </h1>
                 </div>
                 <div className="flex-center flex-col gap-4">
-                    <p className="capitalize tracking-wider text-[#a2a3a4]">
+                    <p className="capitalize tracking-wider text-white/80">
                         checkout beautiful places around the world
                     </p>
                     <div>
