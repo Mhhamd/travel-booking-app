@@ -38,7 +38,7 @@ function FlightCard(props: Card) {
                 </p>
             </div>
             <div className=" w-full flex-start gap-6">
-                <div className="p-4 bg-white border border-black/20 rounded-md left-0 absolute max-h-[35vh] text-nowrap overflow-hidden text-ellipsis -bottom-41  w-[100%] shadow-lg">
+                <div className="p-4 bg-white border border-black/20 rounded-md left-0 absolute max-h-[35vh] text-nowrap overflow-hidden text-ellipsis -bottom-41 w-[100%] shadow-lg">
                     <p className="text-gray-700 text-left font-bold tracking-wider">
                         {props.arrivalCity} ({props.arrivalCountry})
                     </p>
@@ -61,14 +61,14 @@ function FlightCard(props: Card) {
                         From{' '}
                         <span className="text-[#ff6b6b]">${randomPrice}</span>
                     </p>
-                    <div className="bg-gray-200 mt-4 p-2 flex-between">
-                        <p className="flex-center font-extrabold gap-2 text-sm text-[#ff6b6b]">
+                    <div className="bg-gray-200 mt-4 p-2 flex-between ">
+                        <p className=" hidden md:flex items-center justify-between font-extrabold gap-2 text-base text-[#ff6b6b]">
                             <CiClock1 />{' '}
                             <span className="text-gray-700 font-medium">
                                 {props.duration}h
                             </span>
                         </p>
-                        <p className="flex-center font-extrabold gap-2 text-sm text-[#ff6b6b]">
+                        <p className="flex-center font-extrabold gap-2 text-[14px] md:text-base text-[#ff6b6b]">
                             <MdGroup />{' '}
                             <span className="text-gray-700 font-medium">
                                 {props.seatsAvailable} Seats Left
@@ -82,7 +82,7 @@ function FlightCard(props: Card) {
                                     handleScroll();
                                 }
                             }}
-                            className="flex-center font-bold gap-2 text-sm btn-hover cursor-pointer transition-all duration-500 text-[#ff6b6b] hover:scale-105 hover:opacity-80 "
+                            className="flex-center font-bold gap-2 text-[13px] md:text-base btn-hover cursor-pointer transition-all duration-500 text-[#ff6b6b] hover:scale-105 hover:opacity-80 "
                         >
                             View Trip <FaArrowRightLong />
                         </Link>

@@ -103,7 +103,7 @@ function TopDestinations() {
                 <h1 className="font-medium text-[#f96c50] tracking-wider">
                     Where to Go
                 </h1>
-                <h1 className="text-gray-700 md:text-3xl font-bold tracking-widest text-2xl  text-nowrap">
+                <h1 className="text-gray-700 md:text-3xl font-bold tracking-widest text-xl sm:text-2xl  text-nowrap">
                     Explore Exotic Destinations
                 </h1>
             </div>

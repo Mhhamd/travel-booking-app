@@ -17,18 +17,18 @@ function Banner() {
 
             <div className="absolute sm:top-[30%] xl:top-[32%] lg:top-[28%] top-[30%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex-center z-10 text-white flex-col gap-4 ">
                 <div className="flex-center flex-col mb-20">
-                    <p className="text-xl md:text-2xl tracking-wider text-[#f96c50]">
+                    <p className="text-lg md:text-2xl tracking-wider text-[#f96c50]">
                         Let's explore
                     </p>
-                    <h1 className="text-2xl mb-2 md:text-4xl text-nowrap capitalize font-semibold tracking-wider">
+                    <h1 className="text-xl mb-2 md:text-4xl text-nowrap capitalize font-semibold tracking-wider">
                         Where would you like to go?
                     </h1>
-                    <p className="capitalize tracking-wider text-white/80">
+                    <p className="capitalize text-center tracking-wider  text-white/80">
                         checkout beautiful places around the world
                     </p>
                 </div>
             </div>
-            <div className="absolute sm:top[50%] top-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex-center z-10 text-white flex-col gap-4 ">
+            <div className="absolute sm:top[50%] top-[65%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex-center z-10 text-white flex-col gap-4 ">
                 <div className="flex-center flex-col gap-4">
                     <div>
                         <SearchBar showSelcetedTypes={true} />

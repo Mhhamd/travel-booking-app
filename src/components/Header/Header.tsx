@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
 import { navData } from '../../data/navListData';
 import { GiCommercialAirplane } from 'react-icons/gi';
@@ -55,7 +54,7 @@ function Header() {
     return (
         <div className="w-full relative">
             <div
-                className={`flex-between w-full fixed top-0 py-1 md:py-[20px] left-0 right-0 bg-white z-50 px-[70px] transition-all duration-300 ${
+                className={`flex-between w-full fixed top-0 py-1 md:py-[20px] left-0 right-0 bg-white z-50 md:px-[70px] px-[40px] transition-all duration-300 ${
                     isScrolledDown ? '-translate-y-full' : 'translate-y-0'
                 }`}
             >
@@ -103,6 +102,7 @@ function Header() {
                                 </div>
                                 {navData.map((item) => (
                                     <a
+                                        href={item.link}
                                         key={item.name}
                                         onClick={() => {
                                             if (item.active) {

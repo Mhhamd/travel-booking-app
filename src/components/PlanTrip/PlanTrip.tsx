@@ -20,7 +20,7 @@ function PlanTrip() {
             }}
             className="flex items-center justify-start flex-col lg:flex-row lg:items-start gap-12  w-[90%]"
         >
-            <div className="w-[90%] lg:w-[50%] relative">
+            <div className="w-[100%] md:w-[50%] relative">
                 <img
                     loading="lazy"
                     className="rounded-3xl"

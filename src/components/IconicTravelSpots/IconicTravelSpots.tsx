@@ -80,7 +80,7 @@ function IconicTravelSpots() {
                 <p className="text-lg text-[#ff6b6b] font-semibold">
                     Not sure where to go next?
                 </p>
-                <h1 className="text-3xl font-bold text-nowrap text-gray-700">
+                <h1 className="text-2xl md:text-3xl font-bold text-nowrap text-gray-700">
                     Explore Iconic Travel Spots
                 </h1>
             </div>
@@ -89,7 +89,7 @@ function IconicTravelSpots() {
             {destinations.length > 0 && (
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay]}
-                    spaceBetween={1}
+                    spaceBetween={50}
                     slidesPerView={1}
                     pagination={false}
                     autoplay={{
