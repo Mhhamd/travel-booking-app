@@ -22,7 +22,7 @@ function CardTypes() {
     ];
 
     return (
-        <div className="py-20 px-4 flex-center">
+        <div className="py-20 px-20  w-[100vw] mx-auto  items-center justify-center hidden xl:flex">
             <Splide
                 options={{
                     type: 'loop',

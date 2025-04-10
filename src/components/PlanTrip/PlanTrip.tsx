@@ -18,9 +18,9 @@ function PlanTrip() {
                 duration: 1.5,
                 ease: 'easeInOut',
             }}
-            className="flex-start gap-12  w-[90%]"
+            className="flex items-center justify-start flex-col lg:flex-row lg:items-start gap-12  w-[90%]"
         >
-            <div className="w-[50%] relative">
+            <div className="w-[90%] lg:w-[50%] relative">
                 <img
                     loading="lazy"
                     className="rounded-3xl"
@@ -28,8 +28,8 @@ function PlanTrip() {
                     alt=""
                 />
                 <div className="absolute top-6 right-5">
-                    <h1 className="text-3xl text-white font-semibold tracking-wider ">
-                        <span className="text-[#f96c50] text-5xl">
+                    <h1 className="text-base lg:text-xl xl:text-3xl text-white font-semibold tracking-wider ">
+                        <span className="text-[#f96c50] text-4xl lg:text-4xl xl:text-5xl">
                             30% <br />
                         </span>{' '}
                         Discount
@@ -42,12 +42,12 @@ function PlanTrip() {
                     <p className="text-[#f96c50] font-semibold tracking-wide">
                         Get to know us
                     </p>
-                    <h1 className="text-gray-700 capitalize  font-bold text-3xl tracking-widest ">
+                    <h1 className="text-gray-700 capitalize text-nowrap  font-bold text-3xl tracking-widest ">
                         Plan your trip with <br /> skyFare
                     </h1>
                 </div>
                 <div>
-                    <p className="text-gray-600 font-medium tracking-wide">
+                    <p className="text-gray-600  font-medium tracking-wide">
                         There are many variations of passages of available but
                         the majority <br /> have suffered alteration in some
                         form, by injected hum randomised words which don't look

@@ -103,7 +103,7 @@ function TopDestinations() {
                 <h1 className="font-medium text-[#f96c50] tracking-wider">
                     Where to Go
                 </h1>
-                <h1 className="text-gray-700 font-bold tracking-widest text-3xl">
+                <h1 className="text-gray-700 md:text-3xl font-bold tracking-widest text-2xl  text-nowrap">
                     Explore Exotic Destinations
                 </h1>
             </div>
@@ -112,7 +112,7 @@ function TopDestinations() {
                 animate={isInView ? 'show' : 'hidden'}
                 ref={ref}
                 variants={container}
-                className="grid grid-cols-4 gap-x-4 gap-y-4 place-content-center capitalize"
+                className="grid lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-4 place-content-center capitalize"
             >
                 {destinations.map(({ city, image }) => (
                     <MotionLink

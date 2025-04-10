@@ -104,7 +104,12 @@ function Header() {
                                 {navData.map((item) => (
                                     <a
                                         key={item.name}
-                                        onClick={() => setIsMenuOpen(false)}
+                                        onClick={() => {
+                                            if (item.active) {
+                                                setIsMenuOpen(false);
+                                                handleScroll();
+                                            }
+                                        }}
                                         className={`list-none relative group transition-all duration-300 ${
                                             item.active
                                                 ? 'text-[#e06149] font-bold cursor-pointer hover:scale-110'

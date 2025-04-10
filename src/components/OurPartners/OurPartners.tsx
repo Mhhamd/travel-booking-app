@@ -1,8 +1,31 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+
 function OurPartners() {
     const ref = useRef<HTMLDivElement | null>(null);
     const isInView = useInView(ref, { once: true });
+
+    const partnersImg = [
+        {
+            image: '/assets/TRIP_BIG.D.svg',
+            alter: 'Partner 1',
+        },
+        {
+            image: '/assets/EASEMYTRIP.NS_BIG.D.svg',
+            alter: 'Partner 2',
+        },
+        {
+            image: '/assets/MMYT_BIG.D.svg',
+            alter: 'Partner 3',
+        },
+        {
+            image: '/assets/TRVG_BIG.D.svg',
+            alter: 'Partner 4',
+        },
+    ];
+
     return (
         <motion.div
             ref={ref}
@@ -16,20 +39,40 @@ function OurPartners() {
                 duration: 1,
                 ease: 'easeInOut',
             }}
-            className="bg-red-400 w-screen h-[20vh] flex-center  gap-96"
+            className="bg-red-400 w-full h-[20vh] flex items-center justify-between px-8 md:px-16 lg:px-32 gap-8 md:gap-16"
         >
             <div>
-                <h1 className="text-white text-4xl font-bold">Our partners</h1>
+                <h1 className="text-white text-2xl md:text-4xl font-bold text-center text-nowrap md:text-left">
+                    Our partners
+                </h1>
             </div>
-            <div className=" flex-center gap-24">
-                <img className="w-30" src="/assets/TRIP_BIG.D.svg" alt="" />
-                <img
-                    className="w-30"
-                    src="/assets/EASEMYTRIP.NS_BIG.D.svg"
-                    alt=""
-                />
-                <img className="w-30" src="/assets/MMYT_BIG.D.svg" alt="" />
-                <img className="w-30" src="/assets/TRVG_BIG.D.svg" alt="" />
+            <div className="flex-1 overflow-hidden">
+                <Swiper
+                    modules={[Navigation, Pagination, Autoplay]}
+                    spaceBetween={20}
+                    slidesPerView={3}
+                    pagination={false}
+                    autoplay={{
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    }}
+                    loop={true}
+                    speed={800}
+                    className="w-full z-30  flex items-center  justify-center  "
+                >
+                    {partnersImg.map((partner, index) => (
+                        <SwiperSlide
+                            className="  flex items-center justify-center mx-4"
+                            key={`${partner.alter}-${index}`}
+                        >
+                            <img
+                                className="w-24 md:w-32 h-auto"
+                                src={partner.image}
+                                alt={partner.alter}
+                            />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
         </motion.div>
     );

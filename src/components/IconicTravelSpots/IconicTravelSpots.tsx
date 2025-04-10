@@ -80,7 +80,7 @@ function IconicTravelSpots() {
                 <p className="text-lg text-[#ff6b6b] font-semibold">
                     Not sure where to go next?
                 </p>
-                <h1 className="text-3xl font-bold text-gray-700">
+                <h1 className="text-3xl font-bold text-nowrap text-gray-700">
                     Explore Iconic Travel Spots
                 </h1>
             </div>
@@ -89,8 +89,8 @@ function IconicTravelSpots() {
             {destinations.length > 0 && (
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay]}
-                    spaceBetween={20}
-                    slidesPerView={4}
+                    spaceBetween={1}
+                    slidesPerView={1}
                     pagination={false}
                     autoplay={{
                         delay: 3000,
@@ -99,6 +99,23 @@ function IconicTravelSpots() {
                     }}
                     loop={true}
                     speed={800}
+                    breakpoints={{
+                        640: {
+                            slidesPerView: 1,
+                            spaceBetween: 10,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                        },
+                        // when window width is >= 1280px
+                        1280: {
+                            slidesPerView: 4,
+                            spaceBetween: 20,
+                        },
+                    }}
                     className="w-full flex justify-center  relative h-[55vh]"
                 >
                     <div className="absolute right-0 w-[50%] h-[50vh] bg-black/50 z-10"></div>

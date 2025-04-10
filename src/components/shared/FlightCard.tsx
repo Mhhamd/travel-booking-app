@@ -7,7 +7,6 @@ import { addFlight } from '../../state/slices/flightSlice';
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { handleScroll } from '../../utils/scrollToTop';
-
 interface Card {
     image: string | undefined;
     arrivalCity: string;
@@ -39,7 +38,7 @@ function FlightCard(props: Card) {
                 </p>
             </div>
             <div className=" w-full flex-start gap-6">
-                <div className="p-4 bg-white border border-black/20 rounded-md left-0 absolute max-h-[35vh] text-nowrap overflow-hidden text-ellipsis -bottom-41 w-[100%] shadow-lg">
+                <div className="p-4 bg-white border border-black/20 rounded-md left-0 absolute max-h-[35vh] text-nowrap overflow-hidden text-ellipsis -bottom-41  w-[100%] shadow-lg">
                     <p className="text-gray-700 text-left font-bold tracking-wider">
                         {props.arrivalCity} ({props.arrivalCountry})
                     </p>
@@ -83,7 +82,7 @@ function FlightCard(props: Card) {
                                     handleScroll();
                                 }
                             }}
-                            className="flex-center font-bold gap-2 text-sm btn-hover cursor-pointer transition-all duration-500 text-[#ff6b6b] hover:scale-105 hover:opacity-80"
+                            className="flex-center font-bold gap-2 text-sm btn-hover cursor-pointer transition-all duration-500 text-[#ff6b6b] hover:scale-105 hover:opacity-80 "
                         >
                             View Trip <FaArrowRightLong />
                         </Link>

@@ -60,7 +60,9 @@ function CityInput({ label }: CityInputProps) {
                                     ? 'Enter departure city'
                                     : 'Enter arrival city'
                             }
-                            className="bg-transparent capitalize  transition-all duration-300 placeholder:text-sm text-black font-semibold focus:outline-none "
+                            className={`bg-transparent capitalize rounded  transition-all duration-300 placeholder:text-sm text-black font-semibold focus:outline-none ${
+                                label === 'From' ? 'rounded-l-lg' : ''
+                            }`}
                         />
                     </div>
                 </div>
@@ -71,7 +73,7 @@ function CityInput({ label }: CityInputProps) {
                             onWheel={(e) => {
                                 e.stopPropagation(); // Prevents parent interference
                             }}
-                            className="mt-8 border  bg-white flex flex-col shadow-2xl rounded-lg max-h-[200px] leading-8 p-4 overflow-y-auto text-black z-[200]"
+                            className="mt-8 border absolute w-70  bg-white flex flex-col shadow-2xl rounded-lg max-h-[200px] leading-8 p-4 overflow-y-auto text-black z-[200]"
                         >
                             {filteredCities.map((item: string) => (
                                 <div

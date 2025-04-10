@@ -12,12 +12,14 @@ import { handleScroll } from '../../../utils/scrollToTop';
 import { motion } from 'framer-motion';
 
 const MotionLink = motion(Link);
+
 function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
     const fromInputValue = useSelector((state: RootState) => state.search.from);
     const goingToInputValue = useSelector(
         (state: RootState) => state.search.goingTo
     );
     const dateRef = useRef<HTMLInputElement>(null);
+
     const handleSearch = (event: React.MouseEvent<HTMLAnchorElement>) => {
         if (
             fromInputValue.trim() === '' ||
@@ -33,13 +35,13 @@ function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
     return (
         <div className="flex-center relative flex-col">
             <div className="flex-center rounded-lg h-24 mt-10">
-                <div className="flex bg-white rounded-lg shadow-md h-full">
+                <div className="  bg-white rounded-xl shadow-md xl:flex-nowrap flex flex-col lg:flex-row flex-wrap justify-center ">
                     {/* Location Inputs */}
                     <CityInput label="From" />
                     <CityInput label="Going to" />
 
                     {/* Trip Type (changed to input) */}
-                    <div className="flex-center gap-2 px-4 py-3 border-r border-gray-500 w-52">
+                    <div className="flex-center gap-2 p-4 border-r border-gray-500 w-full xl:w-52">
                         <FaHiking className="text-[#e06149]" />
                         <div>
                             <p className="text-xs text-gray-500">
@@ -57,7 +59,7 @@ function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
                     </div>
 
                     {/* Date */}
-                    <div className="flex-center gap-2 px-4 py-3 border-r border-gray-500 w-52">
+                    <div className="flex-center gap-2 p-4 border-r border-gray-500 w-full xl:w-52">
                         <FaCalendarAlt className="text-[#e06149]" />
                         <div>
                             <p className="text-xs text-gray-500">Date From</p>
@@ -70,7 +72,7 @@ function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
                     </div>
 
                     {/* Guests */}
-                    <div className="flex-center gap-2 px-4 py-3 border-r w-52">
+                    <div className="flex-center gap-2 p-4 border-r  w-full xl:w-52">
                         <FaPeopleGroup className="text-[#e06149]" />
                         <div className="flex-center flex-col">
                             <p className="text-xs text-gray-500">Passengers</p>
@@ -82,6 +84,7 @@ function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
                             />
                         </div>
                     </div>
+
                     {/* Search Button */}
                     <MotionLink
                         whileHover={{
@@ -95,14 +98,15 @@ function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
                             handleScroll();
                         }}
                         to={`/search/${fromInputValue}/${goingToInputValue}/`}
-                        className="bg-[#e06149]  rounded-tr-lg rounded-br-lg  transition-all duration-300 text-white px-6 py-3 flex-center gap-2 w-52"
+                        className="bg-[#e06149] rounded-tr-lg rounded-br-lg transition-all duration-300 text-white px-6 py-3 flex-center gap-2  w-full xl:w-52"
                     >
                         <FaSearch />
                         SEARCH
                     </MotionLink>
                 </div>
             </div>
-            <div className="flex-center flex-col">
+
+            <div className="hidden xl:flex items-center justify-center flex-col">
                 <HandDrawnArrow />
                 {showSelectedTypes && (
                     <h1 className="text-3xl tracking-wider -z-10 font-medium">
@@ -110,7 +114,8 @@ function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
                     </h1>
                 )}
             </div>
-            <div className="absolute -bottom-[130%] ">
+
+            <div className="absolute -bottom-[130%]">
                 {showSelectedTypes && <CardTypes />}
             </div>
         </div>
