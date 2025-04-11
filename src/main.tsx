@@ -13,7 +13,7 @@ createRoot(document.getElementById('root')!).render(
         <SmoothScroll>
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
-                    <HashRouter basename="/travel-booking-app">
+                    <HashRouter basename="/travel-booking-app/">
                         <RouterProvider router={router} />
                     </HashRouter>
                 </PersistGate>
