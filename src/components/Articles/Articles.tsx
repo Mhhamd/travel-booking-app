@@ -25,7 +25,7 @@ function Articles() {
             }}
             className="w-full flex-center flex-col px-0 md:px-40"
         >
-            <div className="flex md:items-start items-center justify-center md:justify-start  flex-col gap-2">
+            <div className="flex md:items-start items-center justify-center md:justify-start mb-5 flex-col gap-2">
                 <p className="para-style text-nowrap">From the blog post</p>
                 <h1 className="header-style text-nowrap">News & Articles</h1>
             </div>
