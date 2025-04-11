@@ -26,7 +26,7 @@ export default function App() {
                 <DiscoverSection />
                 <OurPartners />
             </div>
-            <div className="flex flex-col w-full gap-24">
+            <div className="flex-center flex-col w-full gap-24">
                 <Customers />
                 <ChooseUs />
                 <Articles />

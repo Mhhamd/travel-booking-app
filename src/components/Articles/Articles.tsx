@@ -58,7 +58,7 @@ function Articles() {
                         spaceBetween: 20,
                     },
                 }}
-                className="sm:w-[50vw] w-[90vw] lg:w-full z-30 mt-5 flex items-center overflow-visible h-[60vh]  justify-center "
+                className="sm:w-[60vw] w-[70vw] md:w-[40vw] lg:w-full z-30 mt-5 flex items-center overflow-visible h-[60vh]  justify-center "
             >
                 {blogPosts.map((blog) => {
                     return (

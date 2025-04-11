@@ -87,7 +87,7 @@ function Customers() {
             }}
             className="w-full relative mt-10 "
         >
-            <div className="absolute top-3 -rotate-5 -left-24 md:top-12 md:left-3">
+            <div className="absolute top-3 -rotate-5 -left-24 md:top-0 md:left-0">
                 <AirPlaneSVG />
             </div>
             <div className="w-full absolute overflow-hidden bg-[#f9f5ef] -bottom-24 h-[60%] flex-center ">
@@ -136,7 +136,7 @@ function Customers() {
                             spaceBetween: 20,
                         },
                     }}
-                    className="w-full z-30  flex items-center  justify-center  "
+                    className=" z-30  sm:w-[50vw] w-[60vw] md:w-[70vw] lg:w-full flex items-center  justify-center  "
                 >
                     {customerData.map((person) => {
                         return (
