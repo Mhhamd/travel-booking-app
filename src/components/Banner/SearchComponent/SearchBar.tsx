@@ -35,10 +35,12 @@ function SearchBar({ showSelcetedTypes: showSelectedTypes = true }) {
     return (
         <div className="flex-center relative flex-col">
             <div className="flex-center rounded-lg h-24 mt-10">
-                <div className="  bg-white rounded-xl shadow-md xl:flex-nowrap flex flex-col lg:flex-row flex-wrap justify-center ">
+                <div className="  bg-white rounded-xl shadow-md xl:flex-nowrap flex flex-col  xl:flex-row flex-wrap justify-center ">
                     {/* Location Inputs */}
-                    <CityInput label="From" />
-                    <CityInput label="Going to" />
+                    <div className="flex flex-col items-center justify-center xl:items-start xl:flex-row">
+                        <CityInput label="From" />
+                        <CityInput label="Going to" />
+                    </div>
 
                     {/* Trip Type (changed to input) */}
                     <div className="flex-center gap-2 p-4 border-r border-gray-500 w-full xl:w-52">
