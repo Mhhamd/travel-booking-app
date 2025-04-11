@@ -14,7 +14,7 @@ createRoot(document.getElementById('root')!).render(
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
                     <RouterProvider
-                        basename="/travel-search-app"
+                        basename="/travel-search-app/"
                         router={router}
                     />
                 </PersistGate>
