@@ -22,4 +22,4 @@ This is a **travel booking app** built using **React**, **TypeScript**, and **Re
 
 ## Deployment
 
-The app is live and can be accessed at: [https://skyfaree.netlify.app/]
+The app is live and can be accessed at: https://skyfaree.netlify.app/
