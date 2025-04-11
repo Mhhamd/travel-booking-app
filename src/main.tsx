@@ -13,7 +13,10 @@ createRoot(document.getElementById('root')!).render(
         <SmoothScroll>
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
-                    <RouterProvider router={router} />
+                    <RouterProvider
+                        basename="/travel-search-app"
+                        router={router}
+                    />
                 </PersistGate>
             </Provider>
         </SmoothScroll>
