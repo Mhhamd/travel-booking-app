@@ -10,7 +10,7 @@ function Banner() {
     const currentBlog = blogs.filter((blog) => blog.id === Number(params.id));
     const blog = currentBlog[0];
     return (
-        <div className="relative h-[120vh]">
+        <div className="relative min-h-[130vh]">
             <StickyImage imgUrl={blog.highImage} />
             <OverLayCopy
                 title={blog.title}
@@ -35,7 +35,7 @@ function StickyImage({ imgUrl }: { imgUrl: string }) {
     return (
         <motion.div
             ref={targetRef}
-            className="sticky top-0 w-full h-screen  z-[-1]"
+            className="sticky top-0 w-full min-h-[130vh] z-[-1]"
             style={{
                 backgroundImage: `url(${imgUrl})`,
                 backgroundSize: 'cover',
@@ -75,8 +75,15 @@ function OverLayCopy({
         target: targetRef,
         offset: ['start end', 'end start'],
     });
-    const y = useTransform(scrollYProgress, [0, 1], [250, -250]);
-    const opacity = useTransform(scrollYProgress, [0.25, 0.5, 0.75], [0, 1, 0]);
+
+    // Scroll effect: move the overlay text upwards as you scroll, and fade it out.
+    const y = useTransform(scrollYProgress, [0, 1], [0, -150]); // Adjust to move the text upwards
+    const opacity = useTransform(
+        scrollYProgress,
+        [0.25, 0.5, 0.75],
+        [1, 0.75, 0]
+    ); // Fade effect
+
     return (
         <motion.div
             ref={targetRef}
@@ -84,13 +91,13 @@ function OverLayCopy({
                 y,
                 opacity,
             }}
-            className="absolute left-0 top-0 w-full justify-center flex items-center h-screen flex-col  z-30"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 w-full flex items-center justify-center flex-col z-30"
         >
-            <h1 className="capitalize font-bold text-center text-2xl md:text-4xl tracking-widest text-white drop-shadow-lg">
+            <h1 className="capitalize font-bold text-center text-xl md:text-4xl tracking-widest text-white drop-shadow-lg">
                 {title}
             </h1>
 
-            <div className="flex items-center space-x-6 md:space-x-10 text-gray-300 text-base md:text-lg mt-4">
+            <div className="flex items-center  space-x-6 md:space-x-10 text-gray-300 text-[13px] md:text-2xl mt-4">
                 <p>
                     ✍️{' '}
                     <span className="font-semibold text-white/80">
@@ -109,7 +116,7 @@ function OverLayCopy({
                 </p>
             </div>
 
-            <p className="text-white/80 font-medium leading-relaxed max-w-[70%] md:max-w-[50%] mt-5 drop-shadow-md">
+            <p className="text-white/80 font-medium  leading-relaxed max-w-[80%] md:max-w-[50%] mt-5 drop-shadow-md">
                 {fullDescription}
             </p>
         </motion.div>

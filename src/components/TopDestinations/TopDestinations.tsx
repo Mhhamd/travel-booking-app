@@ -7,6 +7,7 @@ import { setPopular } from '../../state/slices/popularSlice';
 import { Link } from 'react-router-dom';
 import { handleScroll } from '../../utils/scrollToTop';
 import { motion, useInView } from 'framer-motion';
+import { fetchImages } from '../../utils/fetchImages';
 interface UnsplashImage {
     urls: {
         full: string;
@@ -23,7 +24,6 @@ const MotionLink = motion(Link);
 function TopDestinations() {
     const ref = useRef<HTMLDivElement | null>(null);
     const isInView = useInView(ref, { once: true });
-    const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
     const dispatch = useDispatch();
     const [destinations, setDestinations] = useState<Destination[]>([]);
 
@@ -46,17 +46,6 @@ function TopDestinations() {
         .sort(() => Math.random() - 0.9)
         .splice(0, 9);
 
-    async function fetchImages(query: string) {
-        try {
-            const response = await fetch(
-                `https://api.unsplash.com/search/photos?query=${query}&orientation=landscape&client_id=${accessKey}&per_page=2`
-            );
-            const data = await response.json();
-            return data?.results?.[0] || null;
-        } catch (error) {
-            console.error('error fetching images', error);
-        }
-    }
     useEffect(() => {
         async function fetchAndSetImages() {
             const results: Destination[] = await Promise.all(

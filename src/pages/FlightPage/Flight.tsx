@@ -157,10 +157,11 @@ function Flight() {
             <header>
                 <Header />
             </header>
-            <div className="w-full h-[60vh] relative">
+            <div className="w-full h-[90vh] md:h-[70vh] relative">
                 <img
                     className="object-center object-cover h-full w-full"
                     src={airLineImage}
+                    alt="Airline Image"
                 />
                 <div className="absolute h-full w-full inset-0 bg-neutral-950/80"></div>
                 <motion.div
@@ -173,51 +174,52 @@ function Flight() {
                         duration: 1.5,
                         ease: 'easeInOut',
                     }}
-                    className="absolute h-full w-full inset-0 flex-center flex-col "
+                    className="absolute h-full w-full inset-0 flex justify-center items-center flex-col"
                 >
-                    <h1 className="text-4xl mb-5 text-[#f96c50] font-bold tracking-widest">
+                    <h1 className="text-3xl md:text-4xl mb-5 text-[#f96c50] font-bold tracking-widest text-center px-4">
                         {selectedFlight.airLine}
                     </h1>
-                    <div className=" flex-start  gap-5  py-5 ">
-                        <div className="flex-center  gap-3 text-2xl">
-                            <span className=" text-[#f96c50]">
+                    <div className="flex md:flex-row flex-col items-center justify-start gap-5 py-5 px-4">
+                        <div className="flex justify-start gap-3 text-xl sm:text-2xl">
+                            <span className="text-[#f96c50]">
                                 <GiAirplaneDeparture />
                             </span>
-                            <p className="text-white tracking-wider text-xl font-bold">
+                            <p className="text-white tracking-wider font-bold">
                                 {selectedFlight.departureCity} (
                                 {selectedFlight.departureCountry})
                             </p>
                         </div>
-                        <div className="flex-center  gap-3 text-2xl">
-                            <span className=" text-[#f96c50]">
+                        <div className="flex items-center text-nowrap justify-start gap-3 text-xl sm:text-2xl">
+                            <span className="text-[#f96c50]">
                                 <GiAirplaneArrival />
                             </span>
-                            <p className="text-white tracking-wider text-xl font-bold">
+                            <p className="text-white tracking-wider font-bold">
                                 {selectedFlight.arrivalCity} (
                                 {selectedFlight.arrivalCountry})
                             </p>
                         </div>
                     </div>
-                    <div className="flex-center gap-10 mt-5">
-                        <div className="flex-center  gap-3 text-2xl">
-                            <span className=" text-[#f96c50]">
+                    <div className="flex flex-col sm:flex-row justify-center gap-10 mt-5 px-4">
+                        <div className="flex justify-center gap-3 text-xl sm:text-2xl">
+                            <span className="text-[#f96c50]">
                                 <MdGroup />
                             </span>
-                            <p className="text-white tracking-wider text-xl font-bold">
+                            <p className="text-white tracking-wider font-bold">
                                 {selectedFlight.seatsAvailable} Available Seats
                             </p>
                         </div>
-                        <div className="flex-center  gap-3 text-2xl">
-                            <span className=" text-[#f96c50]">
+                        <div className="flex justify-center gap-3 text-xl sm:text-2xl">
+                            <span className="text-[#f96c50]">
                                 <FaRegClock />
                             </span>
-                            <p className="text-white tracking-wider text-xl font-bold">
+                            <p className="text-white tracking-wider font-bold">
                                 {selectedFlight.duration}h
                             </p>
                         </div>
                     </div>
                 </motion.div>
             </div>
+
             <div className="flex-center w-full">
                 <motion.div
                     initial={{
@@ -230,9 +232,9 @@ function Flight() {
                         ease: 'easeInOut',
                         delay: 0.2,
                     }}
-                    className="w-full flex-center flex-col p-20 py-15 gap-8 max-w-6xl"
+                    className="w-full flex-center flex-col p-10 md:p-20 py-15 gap-8 max-w-6xl"
                 >
-                    <h1 className="text-[#f96c50] capitalize md:text-3xl font-bold text-2xl tracking-widest mb-3">
+                    <h1 className="text-[#f96c50] text-nowrap capitalize md:text-3xl font-bold text-2xl tracking-widest mb-3">
                         Book Your Flight
                     </h1>
                     <form

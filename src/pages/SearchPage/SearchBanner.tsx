@@ -13,21 +13,21 @@ function SearchBanner() {
         fetchAndSetImage();
     }, [params]); // Runs only when 'goingTo' changes
     return (
-        <div className=" mt-[5%] relative w-[80%] flex-center">
-            <div className="w-full flex-center">
+        <div className="mt-[6%] relative w-full md:w-[80%] flex justify-center items-center">
+            <div className="w-full">
                 <img
-                    className="object-center object-cover w-[100%] h-[600px] rounded-4xl"
+                    className="object-center object-cover w-full h-[50vh] sm:h-[60vh] md:h-[600px] rounded-4xl"
                     src={bannerImage}
-                    alt=""
+                    alt="Banner"
                 />
             </div>
-            <div className="absolute left-0 rounded-4xl w-[40%] bg-[#e06249df] h-[600px] flex-center">
-                <div className="flex-start gap-6 text-white flex-col">
-                    <h1 className=" font-bold uppercase tracking-widest text-3xl">
+            <div className="absolute left-0 rounded-4xl w-full sm:w-[50%] md:w-[40%] bg-[#e06249df] h-[50vh] sm:h-[60vh] md:h-[600px] flex justify-center items-center">
+                <div className="flex justify-start gap-6 text-white flex-col px-4 sm:px-8">
+                    <h1 className="font-bold uppercase tracking-widest text-2xl sm:text-3xl md:text-4xl">
                         {params.to} <br /> getaway
                     </h1>
-                    <p className="font-medium tracking-wide">
-                        discover possibilities of travelling !
+                    <p className="font-medium tracking-wide text-base sm:text-lg md:text-xl">
+                        discover possibilities of travelling!
                     </p>
                 </div>
             </div>

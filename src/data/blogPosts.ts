@@ -9,8 +9,7 @@ export const blogPosts: BlogPost[] = [
         comments: 0,
         day: '15th',
         month: 'MAR',
-        shortDescription:
-            'Japan is a country rich in history, culture, and breathtaking scenery...',
+        shortDescription: 'Japan is a country rich in history, culture, and...',
         fullDescription:
             'Japan is a country rich in history, culture, and breathtaking scenery. From the bustling streets of Tokyo to the serene temples of Kyoto, there is something for every traveler.',
         image: '/assets/japanblog.jpg',
@@ -163,7 +162,7 @@ export const blogPosts: BlogPost[] = [
         day: '15th',
         month: 'MAR',
         shortDescription:
-            'Autumn in South Korea is a breathtaking season, with landscapes...',
+            'Autumn in South Korea is a breathtaking season, with...',
         fullDescription: `Autumn in South Korea is a breathtaking season, with landscapes painted in shades of red, orange, and yellow. Whether you're strolling through ancient palaces or hiking in national parks, the beauty of fall is everywhere.`,
         image: '/assets/koreablog.jpg',
         highImage: '/assets/highkoreablog.jpg',
@@ -290,7 +289,7 @@ export const blogPosts: BlogPost[] = [
         day: '15th',
         month: 'MAR',
         shortDescription:
-            'Thailand is famous for its stunning beaches, vibrant cities, and rich...',
+            'Thailand is famous for its stunning beaches, vibrant...',
         fullDescription:
             'Thailand is famous for its stunning beaches, vibrant cities, and rich culture, but beyond the well-known tourist spots, there are hidden gems waiting to be explored.',
         image: '/assets/thailandblog.jpg',
@@ -415,7 +414,7 @@ export const blogPosts: BlogPost[] = [
         day: '15th',
         month: 'MAR',
         shortDescription:
-            'Italy is a land of history, art, and breathtaking architecture, where...',
+            'Italy is a land of history, art, and breathtaking architecture...',
         fullDescription:
             'Italy is a land of history, art, and breathtaking architecture, where every city tells a unique story. From ancient ruins to Renaissance masterpieces, there’s no shortage of wonders to explore.',
         image: '/assets/italyblog.jpg',

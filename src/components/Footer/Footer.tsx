@@ -3,132 +3,107 @@ import { FaPhone } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { FaLocationDot } from 'react-icons/fa6';
 import { motion } from 'framer-motion';
+
 function Footer() {
     return (
-        <footer className="bg-[#323043] w-full h-[45vh] px-25 flex-between">
-            <div className="flex-start flex-col gap-5">
-                <div className="flex-start flex-col border-b pb-5 border-white">
-                    <h1 className="flex-center cursor-pointer text-white font-semibold hover:opacity-70 transition-all duration-500 hover:gap-4 gap-2 tracking-widest  text-2xl">
-                        <GiCommercialAirplane /> SkyFare{' '}
-                    </h1>
-                    <p className="capitalize mt-2 text-[#a7a7a7]">
-                        welcome to our trip and travel agency
-                    </p>
+        <footer className="bg-[#323043] w-full py-12 px-6">
+            <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between gap-10">
+                {/* Column 1 - Brand Info */}
+                <div className="flex flex-col gap-5 text-center md:text-left">
+                    <div className="border-b pb-5 border-white">
+                        <h1 className="flex items-center justify-center md:justify-start gap-2 text-white font-semibold hover:opacity-70 transition-all duration-500 tracking-widest text-2xl cursor-pointer">
+                            <GiCommercialAirplane /> SkyFare
+                        </h1>
+                        <p className="mt-2 text-[#a7a7a7] capitalize">
+                            welcome to our trip and travel agency
+                        </p>
+                    </div>
+                    <div className="flex flex-col gap-2 text-[#a7a7a7]">
+                        <p className="flex items-center justify-center md:justify-start gap-3">
+                            <FaPhone className="text-[#e06149]" /> 92 666 888
+                            0000
+                        </p>
+                        <p className="flex items-center justify-center md:justify-start gap-3">
+                            <MdEmail className="text-[#e06149]" />{' '}
+                            skyfare@gmail.com
+                        </p>
+                        <p className="flex items-center justify-center md:justify-start gap-3">
+                            <FaLocationDot className="text-[#e06149]" /> 66
+                            Broklyn Street New York, USA
+                        </p>
+                    </div>
                 </div>
-                <div className="flex-start flex-col gap-2">
-                    <p className="flex-center gap-4 text-[#a7a7a7]">
-                        <span className="text-[#e06149]">
-                            <FaPhone />
-                        </span>
-                        92 666 888 0000
-                    </p>
-                    <p className="flex-center gap-4 text-[#a7a7a7]">
-                        <span className="text-[#e06149]">
-                            <MdEmail />
-                        </span>
-                        skyfare@gmail.com
-                    </p>
-                    <p className="flex-center gap-4 text-[#a7a7a7]">
-                        <span className="text-[#e06149]">
-                            <FaLocationDot />
-                        </span>
-                        66 Broklyn Street New York,USA
-                    </p>
-                </div>
-            </div>
-            <div className="flex-start flex-col gap-5">
-                <div className="flex-start flex-col">
-                    <h1 className="flex-center cursor-pointer text-white font-semibold hover:opacity-70 transition-all duration-500 hover:gap-4 gap-2 tracking-widest  text-2xl">
+
+                {/* Column 2 - Company */}
+                <div className="flex flex-col gap-4 text-center md:text-left">
+                    <h2 className="text-white text-2xl font-semibold tracking-widest">
                         Company
-                    </h1>
+                    </h2>
+                    <ul className="flex flex-col gap-2 text-[#a7a7a7]">
+                        {[
+                            'About us',
+                            'Community Blogs',
+                            'Rewards',
+                            'Work with us',
+                            'Contact',
+                        ].map((item, i) => (
+                            <li
+                                key={i}
+                                className="hover:opacity-70 transition-all duration-300 cursor-pointer"
+                            >
+                                <a href="/">{item}</a>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-                <div className="flex-start flex-col gap-2">
-                    <nav>
-                        <ul className="list-none flex-start flex-col gap-2">
-                            <li className=" cursor-pointer hover:opacity-70 transition-all duration-300 text-[#a7a7a7]">
-                                <a href="/">About us</a>
-                            </li>
-                            <li className=" cursor-pointer hover:opacity-70 transition-all duration-300 text-[#a7a7a7]">
-                                <a href="/">Community Blogs</a>
-                            </li>
-                            <li className=" cursor-pointer hover:opacity-70 transition-all duration-300 text-[#a7a7a7]">
-                                <a href="/">Rewards</a>
-                            </li>
-                            <li className=" cursor-pointer hover:opacity-70 transition-all duration-300 text-[#a7a7a7]">
-                                <a href="/">Work with us</a>
-                            </li>
-                            <li className=" cursor-pointer hover:opacity-70 transition-all duration-300 text-[#a7a7a7]">
-                                <a href="/">Contact</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <div className="flex-start flex-col gap-5">
-                <div className="flex-start flex-col">
-                    <h1 className="flex-center cursor-pointer text-white font-semibold hover:opacity-70 transition-all duration-500 hover:gap-4 gap-2 tracking-widest  text-2xl">
+
+                {/* Column 3 - Explore */}
+                <div className="flex flex-col gap-4 text-center md:text-left">
+                    <h2 className="text-white text-2xl font-semibold tracking-widest">
                         Explore
-                    </h1>
+                    </h2>
+                    <ul className="flex flex-col gap-2 text-[#a7a7a7]">
+                        {[
+                            'Account',
+                            'Privacy Policy',
+                            'Affiliate Program',
+                            'Our Partners',
+                            'Events',
+                        ].map((item, i) => (
+                            <li
+                                key={i}
+                                className="hover:opacity-70 transition-all duration-300 cursor-pointer"
+                            >
+                                <a href="/">{item}</a>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-                <div className="flex-start flex-col gap-2">
-                    <nav>
-                        <ul className="list-none flex-start flex-col gap-2">
-                            <li className=" cursor-pointer hover:opacity-70 transition-all duration-300 text-[#a7a7a7]">
-                                <a href="/">Account</a>
-                            </li>
-                            <li className=" cursor-pointer hover:opacity-70 transition-all duration-300 text-[#a7a7a7]">
-                                <a href="/">Privacy Policy</a>
-                            </li>
-                            <li className=" cursor-pointer hover:opacity-70 transition-all duration-300 text-[#a7a7a7]">
-                                <a href="/">Affilliate Program</a>
-                            </li>
-                            <li className=" cursor-pointer hover:opacity-70 transition-all duration-300 text-[#a7a7a7]">
-                                <a href="/">Our Partners</a>
-                            </li>
-                            <li className=" cursor-pointer hover:opacity-70 transition-all duration-300 text-[#a7a7a7]">
-                                <a href="/">Events</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <div className="flex-start flex-col gap-5">
-                <div className="flex-start flex-col">
-                    <h1 className="flex-center cursor-pointer text-white font-semibold hover:opacity-70 transition-all duration-500 hover:gap-4 gap-2 tracking-widest  text-2xl">
+
+                {/* Column 4 - Newsletter */}
+                <div className="flex flex-col gap-5 text-center md:text-left">
+                    <h2 className="text-white text-2xl font-semibold tracking-widest">
                         Newsletter
-                    </h1>
-                </div>
-                <div className="flex-start flex-col gap-2">
-                    <div className="w-[110%]">
+                    </h2>
+                    <div className="w-full">
                         <input
-                            className="w-[100%] bg-[#21202c] outline-none placeholder:text-gray-400 p-6 h-15 border border-transparent focus:border-[#e06149]  transition-all duration-300 rounded-lg text-white tracking-wide"
+                            className="w-full bg-[#21202c] outline-none placeholder:text-gray-400 p-4 border border-transparent focus:border-[#e06149] transition-all duration-300 rounded-lg text-white tracking-wide"
                             placeholder="Email Address"
                             type="text"
                         />
                         <motion.button
-                            whileHover={{
-                                scale: 1.05,
-                            }}
-                            whileTap={{
-                                scale: 1,
-                            }}
-                            transition={{
-                                duration: 0.125,
-                                ease: 'easeInOut',
-                            }}
-                            className="w-full  cursor-pointer   font-semibold tracking-wide mt-4 bg-[#e06149] rounded-lg text-white uppercase h-15"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 1 }}
+                            transition={{ duration: 0.125, ease: 'easeInOut' }}
+                            className="w-full mt-4 bg-[#e06149] rounded-lg text-white uppercase font-semibold tracking-wide py-3"
                         >
-                            subscribe
+                            Subscribe
                         </motion.button>
-                        <div className="flex mt-4 items-center gap-2 ">
-                            <input
-                                type="checkbox"
-                                name="agreement"
-                                id="agreement"
-                            />
+                        <div className="flex items-center gap-2 mt-4 justify-center md:justify-start">
+                            <input type="checkbox" id="agreement" />
                             <label
                                 htmlFor="agreement"
-                                className="text-[#a7a7a7]"
+                                className="text-[#a7a7a7] text-sm"
                             >
                                 I agree to all terms and policies
                             </label>

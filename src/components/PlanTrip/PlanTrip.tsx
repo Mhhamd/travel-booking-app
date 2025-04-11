@@ -37,12 +37,12 @@ function PlanTrip() {
                 </div>
             </div>
 
-            <div className=" flex-start flex-col gap-6 p-12 py-0">
-                <div className="flex flex-col gap-3">
-                    <p className="text-[#f96c50] font-semibold tracking-wide">
+            <div className=" flex items-center md:items-start justify-start flex-col gap-6 p-12 py-0">
+                <div className="flex  flex-col gap-3">
+                    <p className="text-[#f96c50] text-center md:text-left font-semibold tracking-wide">
                         Get to know us
                     </p>
-                    <h1 className="text-gray-700 capitalize text-nowrap  font-bold text-3xl tracking-widest ">
+                    <h1 className="text-gray-700 capitalize text-center text-nowrap  font-bold text-2xl md:text-3xl tracking-widest ">
                         Plan your trip with <br /> skyFare
                     </h1>
                 </div>
@@ -87,7 +87,8 @@ function PlanTrip() {
                             duration: 0.125,
                             ease: 'easeInOut',
                         }}
-                        className="btn-style"
+                        className="btn-style mt-2
+                        "
                     >
                         Find My Flight
                     </motion.button>

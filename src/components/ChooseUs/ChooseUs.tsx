@@ -38,23 +38,23 @@ function ChooseUs() {
                 duration: 1.5,
                 ease: 'easeInOut',
             }}
-            className="flex w-full"
+            className="flex flex-col lg:flex-row w-full"
         >
             <div className="w-full relative">
                 <div className="absolute h-[60%] -right-2 top-[25%] bg-[#f96c50]  w-3 rounded-2xl flex-center "></div>
                 <img
-                    className=" h-full object-center z-[20] object-cover"
+                    className="h-full object-center z-[20] object-cover"
                     src="/assets/chooseus.jpg"
                     alt="chooseus"
                 />
             </div>
-            <div className="bg-[#323043] p-16  text-white w-full ">
+            <div className="bg-[#323043] p-10 md:p-16  text-white w-full ">
                 <div className="flex-start flex-col gap-4">
                     <p className="para-style">Our benefit lists</p>
-                    <h1 className="font-bold capitalize text-3xl">
+                    <h1 className="font-bold capitalize text-2xl text-nowrap md:text-wrap md:text-3xl">
                         why choose skyfare
                     </h1>
-                    <p className="text-[#9e9cb1]">
+                    <p className="text-[#9e9cb1] ">
                         Planning your next adventure has never been easier. At
                         SkyFare, we provide seamless travel experiences with
                         unbeatable deals, reliable booking options, and 24/7

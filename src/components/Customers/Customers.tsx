@@ -87,7 +87,7 @@ function Customers() {
             }}
             className="w-full relative "
         >
-            <div className="absolute top-0">
+            <div className="absolute -top-24 -rotate-5 -left-24 md:top-0">
                 <AirPlaneSVG />
             </div>
             <div className="w-full absolute overflow-hidden bg-[#f9f5ef] -bottom-24 h-[60%] flex-center ">
@@ -99,17 +99,19 @@ function Customers() {
                     />
                 </div>
             </div>
-            <div className="flex-center relative flex-col w-full gap-12 pt-0  p-24 pb-0">
+            <div className="flex-center relative flex-col w-full gap-12 pt-0  md:p-24 p-10 pb-0">
                 <div className="flex-center flex-col">
                     <div className="flex-center flex-col gap-4">
                         <p className="para-style">Testimonials & Reviews</p>
-                        <h1 className="header-style">What they're saying</h1>
+                        <h1 className="header-style text-nowrap">
+                            What they're saying
+                        </h1>
                     </div>
                 </div>
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay]}
-                    spaceBetween={20}
-                    slidesPerView={4}
+                    spaceBetween={50}
+                    slidesPerView={1}
                     pagination={false}
                     autoplay={{
                         delay: 3000,
@@ -117,6 +119,23 @@ function Customers() {
                     }}
                     loop={true}
                     speed={800}
+                    breakpoints={{
+                        640: {
+                            slidesPerView: 1,
+                            spaceBetween: 10,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                        },
+                        // when window width is >= 1280px
+                        1280: {
+                            slidesPerView: 4,
+                            spaceBetween: 20,
+                        },
+                    }}
                     className="w-full z-30  flex items-center  justify-center  "
                 >
                     {customerData.map((person) => {
@@ -152,12 +171,12 @@ function Customers() {
                 </Swiper>
             </div>
 
-            <div className="w-full relative mt-32  ">
+            <div className="w-full relative mt-32 md:px-20 px-6  ">
                 {images.length > 0 && (
                     <Swiper
                         modules={[Navigation, Pagination, Autoplay]}
-                        spaceBetween={20}
-                        slidesPerView={4}
+                        spaceBetween={50}
+                        slidesPerView={1}
                         pagination={false}
                         autoplay={{
                             delay: 3000,
@@ -165,6 +184,23 @@ function Customers() {
                         }}
                         loop={true}
                         speed={800}
+                        breakpoints={{
+                            640: {
+                                slidesPerView: 1,
+                                spaceBetween: 10,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                            },
+                            1024: {
+                                slidesPerView: 3,
+                            },
+                            // when window width is >= 1280px
+                            1280: {
+                                slidesPerView: 4,
+                                spaceBetween: 20,
+                            },
+                        }}
                         className="w-full z-30  flex items-center  justify-center   h-full overflow-hidden "
                     >
                         {images?.map((img) => {

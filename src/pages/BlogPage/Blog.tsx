@@ -20,18 +20,18 @@ function Blog() {
     const isInView = useInView(targetRef, { once: true });
 
     return (
-        <div className="w-full">
+        <div className="w-full overflow-x-hidden">
             <header>
                 <Header />
             </header>
             <Banner />
-            <div className="h-[120vh] relative">
+            <div className="relative min-h-[130vh]">
                 <IntroductionSection
                     imgUrl={currentBlog?.country ?? ''}
                     introduction={currentBlog?.introduction ?? ''}
                 />
             </div>
-            <div className="h-[120vh] relative">
+            <div className="relative min-h-[130vh]">
                 <TopDestinationIntro />
             </div>
             <div>
@@ -50,28 +50,22 @@ function Blog() {
                     duration: 1.5,
                     ease: 'easeInOut',
                 }}
-                className="w-full h-[50vh] flex items-start flex-col mb-12 justify-start p-15 mt-10"
+                className="w-full  flex flex-col items-start justify-start px-6 sm:px-10 md:px-20 lg:px-32 py-12 mt-10"
             >
-                <h1 className="header-style">final Thoughts</h1>
-                <p className="mt-10 text-xl tracking-widest max-w-300 text-gray-700 leading-10 font-medium">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
+                    Final Thoughts
+                </h1>
+                <p className="mt-6 text-base sm:text-lg md:text-xl tracking-wide max-w-4xl text-gray-700 leading-relaxed text-left">
                     {currentBlog?.finalThoughts}
                 </p>
-                <div className="flex-center  w-full mt-10">
+                <div className="flex justify-start w-full mt-8">
                     <MotionLink
-                        to={'/'}
+                        to="/"
                         onClick={handleScroll}
-                        whileHover={{
-                            scale: 1.05,
-                            opacity: 1,
-                        }}
-                        whileTap={{
-                            scale: 1,
-                        }}
-                        transition={{
-                            duration: 0.125,
-                            ease: 'easeInOut',
-                        }}
-                        className="btn-style"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 1 }}
+                        transition={{ duration: 0.125 }}
+                        className="btn-style text-sm sm:text-base px-6 py-3"
                     >
                         Book Now
                     </MotionLink>
@@ -106,19 +100,16 @@ function SetBackgroundImage({ fetchImg }: BackgroundImage) {
         <motion.div
             ref={targetRef}
             style={{
-                backgroundImage: `url(${introImage})`, // Set background image only if url exists
+                backgroundImage: `url(${introImage})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 scale,
-                willChange: scale,
+                willChange: 'transform',
             }}
-            className="sticky top-0 w-full h-screen  z-[-1]"
+            className="sticky top-0 w-full h-[130vh] z-[-1]"
         >
             <motion.div
-                style={{
-                    opacity,
-                    willChange: opacity,
-                }}
+                style={{ opacity, willChange: 'opacity' }}
                 className="absolute inset-0 bg-neutral-950/80"
             />
         </motion.div>
@@ -145,16 +136,13 @@ function IntroductionSection({
             <SetBackgroundImage fetchImg={imgUrl} />
             <motion.div
                 ref={targetRef}
-                style={{
-                    opacity,
-                    y,
-                }}
-                className="absolute p-10 left-0 top-0 w-full justify-center flex items-center h-screen flex-col  z-30"
+                style={{ opacity, y }}
+                className="absolute p-6 sm:p-10 left-0 top-0 w-full justify-center flex items-center h-[130vh] flex-col z-30 text-center"
             >
-                <h1 className="text-white text-3xl md:text-4xl font-bold  mb-6 lg:mb-5">
+                <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
                     Introduction
                 </h1>
-                <p className="text-white/80 text-md md:text-lg font-medium leading-relaxed tracking-wide">
+                <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-3xl leading-relaxed tracking-wide">
                     {introduction}
                 </p>
             </motion.div>
@@ -175,16 +163,13 @@ function TopDestinationIntro() {
             <SetBackgroundImage fetchImg="airplane window" />
             <motion.div
                 ref={targetRef}
-                style={{
-                    opacity,
-                    y,
-                }}
-                className="absolute p-10 left-0 top-0 w-full justify-center flex items-center h-screen flex-col  z-30"
+                style={{ opacity, y }}
+                className="absolute p-6 sm:p-10 left-0 top-0 w-full justify-center flex items-center h-[130vh] flex-col z-30 text-center"
             >
-                <h1 className="text-white text-3xl md:text-4xl font-bold  mb-6 lg:mb-5">
+                <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
                     Top Destinations
                 </h1>
-                <p className="text-white/80 text-md md:text-lg font-medium leading-relaxed tracking-wide">
+                <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-3xl leading-relaxed tracking-wide">
                     Ready for your next escape? Discover where fellow travelers
                     are heading and get inspired for your next big journey.
                 </p>
@@ -203,13 +188,12 @@ type TopDestinationProps = {
 
 function TopDestinations({ topDestinations }: TopDestinationProps) {
     return (
-        <div className="w-full ">
+        <div className="w-full">
             {topDestinations.map((item, index) => {
                 const cityLocation = item.title.trim().split(' ')[0];
                 return (
                     <div key={index}>
-                        <div className="relative w-full h-[130vh]">
-                            {/* Background Image */}
+                        <div className="relative min-h-[130vh]">
                             <SetBackgroundImage fetchImg={cityLocation} />
                             <TopDestinationsText
                                 title={item.title}
@@ -247,31 +231,27 @@ function TopDestinationsText({
     return (
         <motion.div
             ref={targetRef}
-            style={{
-                opacity,
-                y,
-                willChange: 'transform, opacity', // Hint to the browser
-            }}
-            className="absolute p-10 left-0 top-0 w-full h-full flex justify-center items-center flex-col z-30"
+            style={{ opacity, y }}
+            className="absolute px-6 sm:px-10 left-0 top-0 w-full h-full flex justify-center items-center flex-col z-30 text-center"
         >
-            <h1 className="text-white text-3xl md:text-6xl font-bold mb-6 lg:mb-5">
+            <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
                 {cityLocation}
             </h1>
-            <h1 className="text-white text-md md:text-lg font-medium mb-6 lg:mb-5">
+            <h2 className="text-white text-base sm:text-lg mb-4">
                 {citySplit}
-            </h1>
-            <p className="text-[#f96c50] text-md md:text-lg font-medium leading-relaxed tracking-wide">
+            </h2>
+            <p className="text-[#f96c50] text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed tracking-wide">
                 {titleDescription}
             </p>
 
-            <div className="flex-center flex-col mt-12 w-full">
-                <h1 className="text-white mt-7 capitalize font-bold tracking-widest mb-7 text-2xl">
+            <div className="flex flex-col items-center mt-10 w-full px-4">
+                <h3 className="text-white mt-6 capitalize font-bold tracking-widest text-xl sm:text-2xl mb-5">
                     Top Attractions in {cityLocation}
-                </h1>
-                <ul className="list-disc flex-col text-white/80">
+                </h3>
+                <ul className="list-disc text-left text-white/80 max-w-2xl pl-4">
                     {mustSeeItems.map((place, placeIdx) => (
-                        <li key={placeIdx} className="mt-5">
-                            <span className="font-bold tracking-wider text-white ">
+                        <li key={placeIdx} className="mt-3">
+                            <span className="font-bold tracking-wide text-white">
                                 {place.name}:
                             </span>{' '}
                             {place.whyVisit}
@@ -279,19 +259,11 @@ function TopDestinationsText({
                     ))}
                 </ul>
                 <motion.button
-                    whileHover={{
-                        scale: 1.05,
-                        opacity: 1,
-                    }}
-                    whileTap={{
-                        scale: 1,
-                    }}
-                    transition={{
-                        duration: 0.125,
-                        ease: 'easeInOut',
-                    }}
-                    className="text-white font-semibold tracking-widest py-4 w-70 rounded-sm bg-[#f96c50]
-           hover:cursor-pointer hover:opacity-80 transition-opacity duration-300 mt-10"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 1 }}
+                    transition={{ duration: 0.125 }}
+                    className="text-white font-semibold tracking-widest px-6 py-3 rounded bg-[#f96c50]
+                    hover:opacity-80 transition-opacity duration-300 mt-8 text-sm sm:text-base"
                 >
                     Save to itinerary
                 </motion.button>
