@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import SmoothScroll from './utils/SmoothScroll.tsx';
-import { BrowserRouter, RouterProvider } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom'; // Use HashRouter
 import { Provider } from 'react-redux';
 import store, { persistor } from './state/store.ts';
 import { router } from './routes/routes.tsx';
@@ -13,9 +13,7 @@ createRoot(document.getElementById('root')!).render(
         <SmoothScroll>
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
-                    <BrowserRouter basename="/travel-booking-app">
-                        <RouterProvider router={router} />
-                    </BrowserRouter>
+                    <RouterProvider router={router} />
                 </PersistGate>
             </Provider>
         </SmoothScroll>
