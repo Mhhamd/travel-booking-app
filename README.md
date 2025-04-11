@@ -20,4 +20,6 @@ This is a **travel booking app** built using **React**, **TypeScript**, and **Re
 -   **Swiper**: For displaying images and slideshows
 -   **Mock Data**: No API used; mock data used for flight details and travel information
 
-##
+## Deployment
+
+The app is live and can be accessed at: [https://your-deployed-site-url](https://your-deployed-site-url)
