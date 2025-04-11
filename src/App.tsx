@@ -20,11 +20,13 @@ export default function App() {
                 <Banner />
                 <TopDestinations />
                 <PlanTrip />
-                <div className="flex-center flex-col w-full">
-                    <IconicTravelSpots />
-                    <DiscoverSection />
-                    <OurPartners />
-                </div>
+            </div>
+            <div className="flex-center mt-24 flex-col w-full">
+                <IconicTravelSpots />
+                <DiscoverSection />
+                <OurPartners />
+            </div>
+            <div className="flex flex-col w-full gap-24">
                 <Customers />
                 <ChooseUs />
                 <Articles />

@@ -85,9 +85,9 @@ function Customers() {
                 duration: 1.5,
                 ease: 'easeInOut',
             }}
-            className="w-full relative "
+            className="w-full relative mt-10 "
         >
-            <div className="absolute -top-24 -rotate-5 -left-24 md:top-0">
+            <div className="absolute top-3 -rotate-5 -left-24 md:top-12 md:left-3">
                 <AirPlaneSVG />
             </div>
             <div className="w-full absolute overflow-hidden bg-[#f9f5ef] -bottom-24 h-[60%] flex-center ">
@@ -99,7 +99,7 @@ function Customers() {
                     />
                 </div>
             </div>
-            <div className="flex-center relative flex-col w-full gap-12 pt-0  md:p-24 p-10 pb-0">
+            <div className="flex-center relative flex-col w-full gap-12 pt-24 md:pt-15 md:px-24 p-10 pb-0">
                 <div className="flex-center flex-col">
                     <div className="flex-center flex-col gap-4">
                         <p className="para-style">Testimonials & Reviews</p>

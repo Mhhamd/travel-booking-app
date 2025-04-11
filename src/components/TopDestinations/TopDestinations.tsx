@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { setPopular } from '../../state/slices/popularSlice';
 import { Link } from 'react-router-dom';
 import { handleScroll } from '../../utils/scrollToTop';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { fetchImages } from '../../utils/fetchImages';
 interface UnsplashImage {
     urls: {
@@ -23,7 +23,16 @@ interface Destination {
 const MotionLink = motion(Link);
 function TopDestinations() {
     const ref = useRef<HTMLDivElement | null>(null);
-    const isInView = useInView(ref, { once: true });
+    const isInView = useInView(ref, {
+        once: true,
+        margin: '-100px 0px 0px 0px', // Negative bottom margin makes it trigger earlier
+    });
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ['end end', 'end start'],
+    });
+    const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+    const y = useTransform(scrollYProgress, [0, 1], [1, 0]);
     const dispatch = useDispatch();
     const [destinations, setDestinations] = useState<Destination[]>([]);
 
@@ -75,18 +84,16 @@ function TopDestinations() {
     };
     return (
         <motion.div
-            initial={{
-                opacity: 0,
-                scale: 0,
-                y: '20%',
+            style={{
+                opacity,
+                y,
             }}
-            animate={isInView ? { opacity: 1, y: '0%', scale: 1 } : {}}
             transition={{
                 duration: 1.5,
                 ease: 'easeInOut',
                 staggerChildren: 0.5,
             }}
-            className="flex-center gap-12 flex-col p-12 mt-10"
+            className="flex-center gap-12 flex-col p-12 mt-0 md:mt-10"
         >
             <div className="flex-center flex-col gap-4">
                 <h1 className="font-medium text-[#f96c50] tracking-wider">

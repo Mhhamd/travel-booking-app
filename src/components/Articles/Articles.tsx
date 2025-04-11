@@ -23,9 +23,9 @@ function Articles() {
                 duration: 1.5,
                 ease: 'easeInOut',
             }}
-            className="w-full flex-center flex-col px-0 md:px-40"
+            className="w-full flex flex-col px-0 md:px-40"
         >
-            <div className="flex md:items-start items-center justify-center md:justify-start mb-5 flex-col gap-2">
+            <div className="flex lg:items-start items-center justify-center md:justify-start mb-5 flex-col gap-2">
                 <p className="para-style text-nowrap">From the blog post</p>
                 <h1 className="header-style text-nowrap">News & Articles</h1>
             </div>
@@ -47,6 +47,7 @@ function Articles() {
                     },
                     768: {
                         slidesPerView: 1,
+                        spaceBetween: 20,
                     },
                     1024: {
                         slidesPerView: 2,
@@ -57,7 +58,7 @@ function Articles() {
                         spaceBetween: 20,
                     },
                 }}
-                className="sm:w-[40vw] w-[90vw] lg:w-full z-30 mt-5 flex items-center overflow-visible h-[60vh]  justify-center "
+                className="sm:w-[50vw] w-[90vw] lg:w-full z-30 mt-5 flex items-center overflow-visible h-[60vh]  justify-center "
             >
                 {blogPosts.map((blog) => {
                     return (
