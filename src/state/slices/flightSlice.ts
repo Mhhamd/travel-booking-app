@@ -31,7 +31,7 @@ const flightsSlice = createSlice({
     initialState,
     reducers: {
         addFlight: (state, action: PayloadAction<FlightState>) => {
-            return { ...action.payload };
+            return { ...state, ...action.payload };
         },
     },
 });

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
-import { useParams } from 'react-router-dom';
 
 const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({
     children,
