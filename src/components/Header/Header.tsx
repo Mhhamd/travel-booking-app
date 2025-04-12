@@ -66,6 +66,7 @@ function Header() {
                 <ul className="hidden  md:flex font-medium tracking-wide  gap-6">
                     {navData.map((item) => (
                         <a
+                            href={item.link}
                             key={item.name}
                             className={`list-none relative group  transition-all duration-300  ${
                                 item.active

@@ -23,7 +23,7 @@ function Articles() {
                 duration: 1.5,
                 ease: 'easeInOut',
             }}
-            className="w-full flex flex-col px-0 md:px-40"
+            className="w-full flex flex-col md:px-10"
         >
             <div className="flex lg:items-start items-center justify-center md:justify-start mb-5 flex-col gap-2">
                 <p className="para-style text-nowrap">From the blog post</p>
@@ -58,13 +58,13 @@ function Articles() {
                         spaceBetween: 20,
                     },
                 }}
-                className="sm:w-[60vw] w-[70vw] md:w-[40vw] lg:w-full z-30 mt-5 flex items-center overflow-visible h-[60vh]  justify-center "
+                className="sm:w-[60vw]  w-[100vw] md:h-[47vh] md:w-[60vw] lg:w-full z-30 mt-5 flex items-center overflow-visible h-[60vh]  justify-center "
             >
                 {blogPosts.map((blog) => {
                     return (
                         <SwiperSlide
                             key={blog.id}
-                            className="w-[20vw] overflow-visible border shadow-lg border-black/50 rounded-lg relative"
+                            className="w-[20vw]  overflow-visible  border shadow-lg border-black/50 rounded-lg relative"
                         >
                             <div className="w-full relative overflow-hidden">
                                 <img
@@ -103,7 +103,7 @@ function Articles() {
                                     </div>
                                 </div>
                                 <div className="w-full mt-3">
-                                    <h1 className="text-gray-700 capitalize font-bold 2xl:text-xl tracking-widest">
+                                    <h1 className="text-gray-700 capitalize font-bold md:2xl text-xl tracking-widest">
                                         {blog.title}
                                     </h1>
                                 </div>

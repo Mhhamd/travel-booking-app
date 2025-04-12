@@ -42,15 +42,15 @@ function OurPartners() {
             className="bg-red-400 w-full h-[20vh] flex items-center justify-between px-8 md:px-16 lg:px-32 gap-8 md:gap-16"
         >
             <div>
-                <h1 className="text-white text-2xl md:text-4xl font-bold text-center text-nowrap md:text-left">
+                <h1 className="text-white text-xl sm:text-3xl md:text-left xl:text-4xl font-bold text-center text-nowrap ">
                     Our partners
                 </h1>
             </div>
             <div className="flex-1 overflow-hidden">
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay]}
-                    spaceBetween={20}
-                    slidesPerView={3}
+                    spaceBetween={5}
+                    slidesPerView={2}
                     pagination={false}
                     autoplay={{
                         delay: 3000,
@@ -58,15 +58,21 @@ function OurPartners() {
                     }}
                     loop={true}
                     speed={800}
+                    breakpoints={{
+                        1280: {
+                            slidesPerView: 4,
+                            spaceBetween: 20,
+                        },
+                    }}
                     className="w-full z-30  flex items-center  justify-center  "
                 >
                     {partnersImg.map((partner, index) => (
                         <SwiperSlide
-                            className="  flex items-center justify-center mx-4"
+                            className="  flex items-center justify-center "
                             key={`${partner.alter}-${index}`}
                         >
                             <img
-                                className="w-24 md:w-32 h-auto"
+                                className="w-24 md:w-30 h-auto"
                                 src={partner.image}
                                 alt={partner.alter}
                             />

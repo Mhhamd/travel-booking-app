@@ -108,7 +108,7 @@ function TopDestinations() {
                 animate={isInView ? 'show' : 'hidden'}
                 ref={ref}
                 variants={container}
-                className="grid lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-4 place-content-center capitalize"
+                className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-4 place-content-center capitalize"
             >
                 {destinations.map(({ city, image }) => (
                     <MotionLink

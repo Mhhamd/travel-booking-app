@@ -74,7 +74,7 @@ function IconicTravelSpots() {
                 duration: 1.5,
                 ease: 'easeInOut',
             }}
-            className="flex-center w-full flex-col gap-12 p-12 pt-3"
+            className="flex-center w-full flex-col gap-12 px-5 pb-5 sm:px-5 xl:p-12 xl:pt-3"
         >
             <div className="flex-center gap-4 flex-col">
                 <p className="text-lg text-[#ff6b6b] font-semibold">
@@ -116,7 +116,7 @@ function IconicTravelSpots() {
                             spaceBetween: 20,
                         },
                     }}
-                    className="w-full flex justify-center  relative h-[55vh]"
+                    className="w-full flex justify-center  relative h-[60vh] md:h-[50vh] lg:h-[65vh]"
                 >
                     <div className="absolute right-0 w-[50%] h-[50vh] bg-black/50 z-10"></div>
                     {destinations.map((destination, index) => (

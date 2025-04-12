@@ -99,7 +99,7 @@ function Customers() {
                     />
                 </div>
             </div>
-            <div className="flex-center relative flex-col w-full gap-12 pt-24 md:pt-15 md:px-24 p-10 pb-0">
+            <div className="flex-center relative flex-col w-full gap-12 pt-24 md:pt-15 p-10 pb-0">
                 <div className="flex-center flex-col">
                     <div className="flex-center flex-col gap-4">
                         <p className="para-style">Testimonials & Reviews</p>
@@ -136,7 +136,7 @@ function Customers() {
                             spaceBetween: 20,
                         },
                     }}
-                    className=" z-30  sm:w-[50vw] w-[60vw] md:w-[70vw] lg:w-full flex items-center  justify-center  "
+                    className=" z-30  sm:w-[50vw] w-[80vw] md:w-[80vw] lg:w-full flex items-center  justify-center  "
                 >
                     {customerData.map((person) => {
                         return (
@@ -144,7 +144,7 @@ function Customers() {
                                 className=" z-30 p-6 flex flex-col items-center justify-center bg-white border border-black/30 rounded-2xl "
                                 key={person.name}
                             >
-                                <div className="z-30 flex justify-center flex-col items-center gap-4 h-[60vh]">
+                                <div className="z-30 flex justify-center flex-col items-center gap-4 h-[60vh]  sm:h-[50vh] md:h-[47vh] xl:h-[60vh]">
                                     <img
                                         className="w-30 rounded-full object-center object-cover"
                                         src={person.image}
